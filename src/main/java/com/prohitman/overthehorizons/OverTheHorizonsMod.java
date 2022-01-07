@@ -1,0 +1,70 @@
+package com.prohitman.overthehorizons;
+
+import com.prohitman.overthehorizons.core.init.ModBlocks;
+import com.prohitman.overthehorizons.core.init.ModItemGroups;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegistryObject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.stream.Collectors;
+
+@Mod("overthehorizons")
+public class OverTheHorizonsMod
+{
+    // Directly reference a log4j logger.
+    private static final Logger LOGGER = LogManager.getLogger();
+    public static final String MOD_ID = "overthehorizons";
+
+    public OverTheHorizonsMod() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    private void setup(final FMLCommonSetupEvent event)
+    {
+    }
+
+    private void enqueueIMC(final InterModEnqueueEvent event)
+    {
+    }
+
+    private void processIMC(final InterModProcessEvent event)
+    {
+
+    }
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+
+    }
+
+    @SubscribeEvent
+    public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
+        final IForgeRegistry<Item> registry = event.getRegistry();
+
+        ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
+            final Item.Properties properties = new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS);
+            final BlockItem blockItem = new BlockItem(block, properties);
+            blockItem.setRegistryName(block.getRegistryName());
+            registry.register(blockItem);
+        });
+    }
+
+}
