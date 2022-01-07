@@ -12,7 +12,7 @@ public class ModItemGroups {
         @Override
         @OnlyIn(Dist.CLIENT)
         public ItemStack makeIcon() {
-            return new ItemStack(Items.MOSS_BLOCK);
+            return new ItemStack(ModBlocks.DRIED_BIRCH_LEAVES.get());
         }
     }).hideTitle();
 }

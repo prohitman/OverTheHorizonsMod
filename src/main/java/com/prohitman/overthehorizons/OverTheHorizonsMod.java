@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -24,6 +25,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.stream.Collectors;
 
 @Mod("overthehorizons")
+@Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class OverTheHorizonsMod
 {
     // Directly reference a log4j logger.
@@ -31,9 +33,13 @@ public class OverTheHorizonsMod
     public static final String MOD_ID = "overthehorizons";
 
     public OverTheHorizonsMod() {
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+
+        ModBlocks.BLOCKS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

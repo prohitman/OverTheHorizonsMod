@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "overthehorizons:block/dried_oak_leaves"
+    }
+}

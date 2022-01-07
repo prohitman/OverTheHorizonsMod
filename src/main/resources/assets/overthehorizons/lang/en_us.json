@@ -4,6 +4,12 @@
 	"language.code": "en_us",
 
 	"block.overthehorizons.adobe": "Adobe",
+	"block.overthehorizons.smooth_adobe": "Smooth Adobe",
+	"block.overthehorizons.framed_adobe": " Framed Adobe",
+	"block.overthehorizons.adobe_bricks": "Adobe Bricks",
+	"block.overthehorizons.dried_birch_leaves": "Dried Birch Leaves",
+	"block.overthehorizons.dried_oak_leaves": "Dried Oak Leaves",
+	"block.overthehorizons.dried_dark_oak_leaves": "Dried Dark Oak Leaves",
 
 	"itemGroup.overthehorizons": "Over The Horizons"
 }
