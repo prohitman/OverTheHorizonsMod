@@ -1,6 +1,7 @@
 package com.prohitman.overthehorizons.core.init;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.common.blocks.DriedLeavesBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
@@ -28,7 +29,7 @@ public class ModBlocks
 
     //Tree
     public static final RegistryObject<Block> DRIED_BIRCH_LEAVES = BLOCKS.register("dried_birch_leaves", () -> leaves(SoundType.AZALEA_LEAVES));
-    public static final RegistryObject<Block> DRIED_OAK_LEAVES = BLOCKS.register("dried_oak_leaves", () -> leaves(SoundType.AZALEA_LEAVES));
+    public static final RegistryObject<Block> DRIED_OAK_LEAVES = BLOCKS.register("dried_oak_leaves", () -> new DriedLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn(ModBlocks::ocelotOrParrot).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never)));
     public static final RegistryObject<Block> DRIED_DARK_OAK_LEAVES = BLOCKS.register("dried_dark_oak_leaves", () -> leaves(SoundType.AZALEA_LEAVES));
 
 
@@ -40,7 +41,7 @@ public class ModBlocks
         return new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(soundType).noOcclusion().isValidSpawn(ModBlocks::ocelotOrParrot).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never));
     }
 
-    private static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
+    private static boolean never(BlockState state, BlockGetter getter, BlockPos pos) {
         return false;
     }
 

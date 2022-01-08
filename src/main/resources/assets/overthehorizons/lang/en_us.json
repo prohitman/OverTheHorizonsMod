@@ -11,5 +11,10 @@
 	"block.overthehorizons.dried_oak_leaves": "Dried Oak Leaves",
 	"block.overthehorizons.dried_dark_oak_leaves": "Dried Dark Oak Leaves",
 
+	"particle.overthehorizons.dark_oak_leaf_particle": "Dark Oak Leaf",
+	"particle.overthehorizons.oak_leaf_particle": "Oak Leaf",
+	"particle.overthehorizons.birch_leaf_particle": "Birch Leaf",
+
+
 	"itemGroup.overthehorizons": "Over The Horizons"
 }
