@@ -15,8 +15,8 @@ public class ModParticleTypes {
 
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, OverTheHorizonsMod.MOD_ID);
 
-    public static final RegistryObject<SimpleParticleType> OAK_LEAF_PARTICLE = PARTICLES.register("oak_leaf_particle", () -> new SimpleParticleType(true));
-    public static final RegistryObject<SimpleParticleType> DARK_OAK_LEAF_PARTICLE = PARTICLES.register( "dark_oak_leaf_particle", () -> new SimpleParticleType(true));
-    public static final RegistryObject<SimpleParticleType> BIRCH_LEAF_PARTICLE = PARTICLES.register("birch_leaf_particle", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> ORANGE_LEAF_PARTICLE = PARTICLES.register("orange_leaf_particle", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> BROWN_LEAF_PARTICLE = PARTICLES.register( "brown_leaf_particle", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> YELLOW_LEAF_PARTICLE = PARTICLES.register("yellow_leaf_particle", () -> new SimpleParticleType(true));
 
 }

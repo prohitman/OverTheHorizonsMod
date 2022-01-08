@@ -15,8 +15,8 @@ public class ClientEventBusSubscriber {
 
     @SubscribeEvent
     public static void registerParticleProviders(ParticleFactoryRegisterEvent event){
-        Minecraft.getInstance().particleEngine.register(ModParticleTypes.OAK_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
-        Minecraft.getInstance().particleEngine.register(ModParticleTypes.BIRCH_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
-        Minecraft.getInstance().particleEngine.register(ModParticleTypes.DARK_OAK_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ModParticleTypes.ORANGE_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ModParticleTypes.YELLOW_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ModParticleTypes.BROWN_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
     }
 }

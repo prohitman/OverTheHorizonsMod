@@ -12,6 +12,9 @@ import org.jetbrains.annotations.Nullable;
 public class LeafParticle extends TextureSheetParticle {
     protected LeafParticle(ClientLevel level, double x, double y, double z) {
         super(level, x, y, z);
+        this.gravity *= 0.02F;
+        this.setSize(0.5f, 0.5f);
+        this.lifetime = 40;
     }
 
     public void tick() {
@@ -27,11 +30,6 @@ public class LeafParticle extends TextureSheetParticle {
                 this.xd *= (double)0.98F;
                 this.yd *= (double)0.98F;
                 this.zd *= (double)0.98F;
-                BlockPos blockpos = new BlockPos(this.x, this.y, this.z);
-                FluidState fluidstate = this.level.getFluidState(blockpos);
-                if (this.y < (double)((float)blockpos.getY() + fluidstate.getHeight(this.level, blockpos))) {
-                    this.remove();
-                }
             }
         }
     }
@@ -44,6 +42,9 @@ public class LeafParticle extends TextureSheetParticle {
     }
 
     protected void postMoveUpdate() {
+        if (this.onGround) {
+            this.remove();
+        }
     }
 
     @Override
@@ -63,6 +64,8 @@ public class LeafParticle extends TextureSheetParticle {
         @Override
         public Particle createParticle(SimpleParticleType pType, ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
             LeafParticle leafParticle = new LeafParticle(pLevel, pX, pY, pZ);
+            leafParticle.lifetime = 100;
+            leafParticle.gravity = 0.003F;
             leafParticle.pickSprite(this.sprite);
             return leafParticle;
         }
