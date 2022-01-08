@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CarpetBlock;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -31,6 +32,12 @@ public class ModBlocks
     public static final RegistryObject<Block> DRIED_BIRCH_LEAVES = BLOCKS.register("dried_birch_leaves", () -> leaves(SoundType.AZALEA_LEAVES, ModLeavesBlock.LeafParticleType.YELLOW));
     public static final RegistryObject<Block> DRIED_OAK_LEAVES = BLOCKS.register("dried_oak_leaves", () -> leaves(SoundType.AZALEA_LEAVES, ModLeavesBlock.LeafParticleType.BROWN));
     public static final RegistryObject<Block> DRIED_DARK_OAK_LEAVES = BLOCKS.register("dried_dark_oak_leaves", () -> leaves(SoundType.AZALEA_LEAVES, ModLeavesBlock.LeafParticleType.RED));
+
+    public static final RegistryObject<Block> FALLEN_LEAVES = BLOCKS.register("fallen_leaves", () -> new CarpetBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).noOcclusion().strength(0.1F).sound(SoundType.MOSS_CARPET)));
+
+
+
+
 
 
     private static Block normalStoneBlock(MaterialColor color, SoundType soundType){

@@ -2,16 +2,25 @@ package com.prohitman.overthehorizons.client.events;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.particles.LeafParticle;
+import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModParticleTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEngine;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventBusSubscriber {
+
+    @SubscribeEvent
+    public static void clientSetup(FMLClientSetupEvent event){
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.cutoutMipped());
+    }
 
     @SubscribeEvent
     public static void registerParticleProviders(ParticleFactoryRegisterEvent event){
