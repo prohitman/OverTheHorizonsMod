@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 public class LeafParticle extends TextureSheetParticle {
     public int tickCounter = 0;
     public int i;
+
     protected LeafParticle(ClientLevel level, double x, double y, double z) {
         super(level, x, y, z);
         this.gravity *= 0.01F;

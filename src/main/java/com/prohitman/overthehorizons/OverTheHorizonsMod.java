@@ -3,6 +3,7 @@ package com.prohitman.overthehorizons;
 import com.prohitman.overthehorizons.common.events.CommonForgeEvents;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModItemGroups;
+import com.prohitman.overthehorizons.core.init.ModItems;
 import com.prohitman.overthehorizons.core.init.ModParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -43,6 +44,7 @@ public class OverTheHorizonsMod
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 
         ModBlocks.BLOCKS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
         ModParticleTypes.PARTICLES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);

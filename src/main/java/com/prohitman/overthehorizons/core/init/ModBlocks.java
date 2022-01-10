@@ -1,6 +1,7 @@
 package com.prohitman.overthehorizons.core.init;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.common.LichestoneBlock;
 import com.prohitman.overthehorizons.common.blocks.ModLeavesBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
@@ -18,8 +19,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModBlocks
-{
+public class ModBlocks {
     //Blocks
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, OverTheHorizonsMod.MOD_ID);
 
@@ -27,6 +27,9 @@ public class ModBlocks
     public static final RegistryObject<Block> FRAMED_ADOBE = BLOCKS.register("framed_adobe", () -> normalStoneBlock(MaterialColor.COLOR_YELLOW, SoundType.STONE));
     public static final RegistryObject<Block> SMOOTH_ADOBE = BLOCKS.register("smooth_adobe", () -> normalStoneBlock(MaterialColor.COLOR_YELLOW, SoundType.STONE));
     public static final RegistryObject<Block> ADOBE_BRICKS = BLOCKS.register("adobe_bricks", () -> normalStoneBlock(MaterialColor.COLOR_YELLOW, SoundType.STONE));
+
+    public static final RegistryObject<Block> RED_LICHENSTONE = BLOCKS.register("red_lichenstone", () -> new LichestoneBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final RegistryObject<Block> GREEN_LICHENSTONE = BLOCKS.register("green_lichenstone", () -> new LichestoneBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
 
     //Tree
     public static final RegistryObject<Block> DRIED_BIRCH_LEAVES = BLOCKS.register("dried_birch_leaves", () -> leaves(SoundType.AZALEA_LEAVES, ModLeavesBlock.LeafParticleType.YELLOW));
@@ -36,11 +39,7 @@ public class ModBlocks
     public static final RegistryObject<Block> FALLEN_LEAVES = BLOCKS.register("fallen_leaves", () -> new CarpetBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).noOcclusion().strength(0.1F).sound(SoundType.MOSS_CARPET)));
 
 
-
-
-
-
-    private static Block normalStoneBlock(MaterialColor color, SoundType soundType){
+    private static Block normalStoneBlock(MaterialColor color, SoundType soundType) {
         return new Block(BlockBehaviour.Properties.of(Material.STONE, color).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(soundType));
     }
 
