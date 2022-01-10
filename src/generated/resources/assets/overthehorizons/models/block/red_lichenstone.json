@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "overthehorizons:block/red_lichenstone_side",
+    "bottom": "minecraft:block/stone",
+    "top": "overthehorizons:block/red_lichenstone_top"
+  }
+}

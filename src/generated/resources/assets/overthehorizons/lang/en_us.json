@@ -1,0 +1,23 @@
+{
+  "block.overthehorizons.adobe": "Adobe",
+  "block.overthehorizons.smooth_adobe": "Smooth Adobe",
+  "block.overthehorizons.framed_adobe": " Framed Adobe",
+  "block.overthehorizons.adobe_bricks": "Adobe Bricks",
+  "block.overthehorizons.dried_birch_leaves": "Dried Birch Leaves",
+  "block.overthehorizons.dried_oak_leaves": "Dried Oak Leaves",
+  "block.overthehorizons.dried_dark_oak_leaves": "Dried Dark Oak Leaves",
+  "block.overthehorizons.fallen_leaves": "Fallen Leaves",
+  "block.overthehorizons.green_lichenstone": "Green Lichenstone",
+  "block.overthehorizons.red_lichenstone": "Red Lichenstone",
+
+  "item.overthehorizons.lichen_cluster": "Lichen Cluster",
+
+  "particle.overthehorizons.brown_leaf_particle": "Brown Leaf",
+  "particle.overthehorizons.orange_leaf_particle": "Orange Leaf",
+  "particle.overthehorizons.yellow_leaf_particle": "Yellow Leaf",
+
+
+  "itemGroup.overthehorizons": "Over The Horizons"
+
+
+}

@@ -1,4 +1,4 @@
-package com.prohitman.overthehorizons.common;
+package com.prohitman.overthehorizons.common.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -11,8 +11,8 @@ import net.minecraftforge.common.util.ForgeSoundType;
 import org.jetbrains.annotations.Nullable;
 
 public class LichestoneBlock extends Block {
-    public LichestoneBlock(Properties p_49795_) {
-        super(p_49795_);
+    public LichestoneBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
