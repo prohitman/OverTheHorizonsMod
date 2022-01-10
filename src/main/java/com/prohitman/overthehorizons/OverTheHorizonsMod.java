@@ -1,5 +1,6 @@
 package com.prohitman.overthehorizons;
 
+import com.prohitman.overthehorizons.common.events.CommonForgeEvents;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModItemGroups;
 import com.prohitman.overthehorizons.core.init.ModParticleTypes;
@@ -7,6 +8,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -36,7 +38,7 @@ public class OverTheHorizonsMod
     public OverTheHorizonsMod() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(CommonForgeEvents::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 
@@ -44,10 +46,6 @@ public class OverTheHorizonsMod
         ModParticleTypes.PARTICLES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    private void setup(final FMLCommonSetupEvent event)
-    {
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

@@ -5,40 +5,32 @@ import net.minecraft.client.particle.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
 public class LeafParticle extends TextureSheetParticle {
+    public int tickCounter = 0;
+    public int i;
     protected LeafParticle(ClientLevel level, double x, double y, double z) {
         super(level, x, y, z);
-        this.gravity *= 0.02F;
-        this.setSize(0.5f, 0.5f);
+        this.gravity *= 0.01F;
+        this.quadSize *= this.random.nextFloat() * 2.0F + 0.5F;
         this.lifetime = 40;
+        this.i = this.random.nextBoolean() ? 1 : -1;
     }
 
     public void tick() {
-        this.xo = this.x;
-        this.yo = this.y;
-        this.zo = this.z;
-        this.preMoveUpdate();
-        if (!this.removed) {
-            this.yd -= (double)this.gravity;
-            this.move(this.xd, this.yd, this.zd);
+        super.tick();
+        tickCounter++;
+        if(!this.removed){
+            double yVel = 1 + Math.cos(tickCounter/20d)*0.05D;
+            this.yd -= this.gravity * yVel;
+            double xVel = this.i * Math.cos(tickCounter / 20d) * (this.random.nextDouble(0.03D) + 0.01D);
+            this.setParticleSpeed(xVel, this.yd, this.zd);
             this.postMoveUpdate();
-            if (!this.removed) {
-                this.xd *= (double)0.98F;
-                this.yd *= (double)0.98F;
-                this.zd *= (double)0.98F;
-            }
         }
-    }
-
-    protected void preMoveUpdate() {
-        if (this.lifetime-- <= 0) {
-            this.remove();
-        }
-
     }
 
     protected void postMoveUpdate() {
@@ -64,8 +56,8 @@ public class LeafParticle extends TextureSheetParticle {
         @Override
         public Particle createParticle(SimpleParticleType pType, ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
             LeafParticle leafParticle = new LeafParticle(pLevel, pX, pY, pZ);
-            leafParticle.lifetime = 100;
-            leafParticle.gravity = 0.003F;
+            leafParticle.lifetime = 10000;
+            leafParticle.gravity = 0.001F;
             leafParticle.pickSprite(this.sprite);
             return leafParticle;
         }

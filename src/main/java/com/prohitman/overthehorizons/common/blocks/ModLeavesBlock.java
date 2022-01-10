@@ -1,5 +1,6 @@
 package com.prohitman.overthehorizons.common.blocks;
 
+import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModParticleTypes;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -8,21 +9,65 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.AirBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
 
-public class ModLeavesBlock extends LeavesBlock {
+public class ModLeavesBlock extends LeavesBlock{
     private final LeafParticleType leafParticleType;
+    private static final Logger LOGGER = LogManager.getLogger();
+
     public ModLeavesBlock(Properties properties, LeafParticleType leafParticleType) {
         super(properties);
         this.leafParticleType = leafParticleType;
+    }
+
+    @Override
+    public boolean isRandomlyTicking(BlockState pState) {
+        return true;
+    }
+
+    @Override
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+        Random rand = new Random();
+        boolean flag = false;
+        int y = pPos.getY();
+        int counter = 0;
+        int random = rand.nextInt(15);
+        if(random == 1){
+            do{
+                //LOGGER.info("The method is called!");
+                y--;
+                counter++;
+                BlockPos pos = new BlockPos(pPos.getX(), y, pPos.getZ());
+                BlockPos underPos = new BlockPos(pPos.getX(), y - 1, pPos.getZ());
+                Block block = pLevel.getBlockState(pos).getBlock();
+                if(!(block instanceof AirBlock || !block.defaultBlockState().isSolidRender(pLevel, underPos)/* block.defaultBlockState().isFaceSturdy(pLevel, underPos, Direction.UP)*/)){
+                    flag = true;
+                    BlockPos leavesPos = new BlockPos(pPos.getX(), y + 1, pPos.getZ());
+                    if(pLevel.getBlockState(leavesPos).getBlock() instanceof AirBlock){
+                        pLevel.setBlock(leavesPos, ModBlocks.FALLEN_LEAVES.get().defaultBlockState(), 2);
+                        //LOGGER.info("The block should be placed!");
+                    }
+                }else if(block.defaultBlockState().isSolidRender(pLevel, underPos)){
+                    flag = true;
+                }
+
+            }while(!flag && counter <= 50);
+        }
+
+        super.tick(pState, pLevel, pPos, pRandom);
     }
 
     /**
@@ -30,11 +75,9 @@ public class ModLeavesBlock extends LeavesBlock {
      */
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRand) {
         if (this.leafParticleType != LeafParticleType.NONE) {
-            //for(int i = 0; i < pRand.nextInt(1) + 1; ++i) {
-            if(pRand.nextInt(3) == 0){
+            if(pRand.nextInt(10) == 0){
                 this.trySpawnDripParticles(pLevel, pPos, pState, this.leafParticleType);
             }
-            //}
         }
 
     }
