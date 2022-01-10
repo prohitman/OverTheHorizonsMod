@@ -1,7 +1,15 @@
 {
+  "block.overthehorizons.adobe": "Adobe",
+  "block.overthehorizons.adobe_bricks": "Adobe Bricks",
+  "block.overthehorizons.dried_birch_leaves": "Dried Birch Leaves",
+  "block.overthehorizons.dried_dark_oak_leaves": "Dried Dark Oak Leaves",
+  "block.overthehorizons.dried_oak_leaves": "Dried Oak Leaves",
+  "block.overthehorizons.framed_adobe": "Framed Adobe",
   "block.overthehorizons.green_lichen_coverage": "Green Lichen Coverage",
   "block.overthehorizons.green_lichenstone": "Green Lichenstone",
   "block.overthehorizons.red_lichen_coverage": "Red Lichen Coverage",
   "block.overthehorizons.red_lichenstone": "Red Lichenstone",
-  "item.overthehorizons.lichen_cluster": "Lichen Cluster"
+  "block.overthehorizons.smooth_adobe": "Smooth Adobe",
+  "item.overthehorizons.lichen_cluster": "Lichen Cluster",
+  "itemGroup.overthehorizons": "Over The Horizons Mod"
 }
