@@ -17,6 +17,8 @@ public class ModItemModels extends ItemModelProvider {
         //Blocks
         withExistingParent(ModBlocks.RED_LICHENSTONE.get().getRegistryName().getPath(), modLoc("block/red_lichenstone"));
         withExistingParent(ModBlocks.GREEN_LICHENSTONE.get().getRegistryName().getPath(), modLoc("block/green_lichenstone"));
+        withExistingParent(ModBlocks.RED_LICHEN_COVERAGE.get().getRegistryName().getPath(), modLoc("block/red_lichen_coverage"));
+        withExistingParent(ModBlocks.GREEN_LICHEN_COVERAGE.get().getRegistryName().getPath(), modLoc("block/green_lichen_coverage"));
 
         //Items
         singleTexture(ModItems.LICHEN_CLUSTER.get().getRegistryName().getPath(),

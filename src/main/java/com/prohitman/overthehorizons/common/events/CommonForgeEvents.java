@@ -2,6 +2,7 @@ package com.prohitman.overthehorizons.common.events;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
+import com.prohitman.overthehorizons.core.init.ModItems;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,6 +19,9 @@ public class CommonForgeEvents {
             ComposterBlock.COMPOSTABLES.put(ModBlocks.DRIED_BIRCH_LEAVES.get().asItem(), 0.3F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.DRIED_OAK_LEAVES.get().asItem(), 0.3F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.DRIED_DARK_OAK_LEAVES.get().asItem(), 0.3F);
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.RED_LICHEN_COVERAGE.get().asItem(), 0.3F);
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.GREEN_LICHEN_COVERAGE.get().asItem(), 0.3F);
+            ComposterBlock.COMPOSTABLES.put(ModItems.LICHEN_CLUSTER.get().asItem(), 0.8F);
         });
     }
 }

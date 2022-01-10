@@ -30,5 +30,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.ADOBE_BRICKS.get())
                 .add(ModBlocks.SMOOTH_ADOBE.get())
                 .add(ModBlocks.FRAMED_ADOBE.get());
+        tag(BlockTags.REPLACEABLE_PLANTS)
+                .add(ModBlocks.GREEN_LICHEN_COVERAGE.get())
+                .add(ModBlocks.RED_LICHEN_COVERAGE.get());
     }
 }
