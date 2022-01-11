@@ -26,6 +26,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_LICHENSTONE.get(), "Red Lichenstone");
         add(ModBlocks.GREEN_LICHEN_COVERAGE.get(), "Green Lichen Coverage");
         add(ModBlocks.RED_LICHEN_COVERAGE.get(), "Red Lichen Coverage");
+        add(ModBlocks.TREE_MOSS.get(), "Tree Moss");
+        add(ModBlocks.PEBBLES.get(), "Pebbles");
 
         add(ModItems.LICHEN_CLUSTER.get(), "Lichen Cluster");
     }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "overthehorizons:block/pebbles_side",
+    "end": "overthehorizons:block/pebbles_top"
+  }
+}

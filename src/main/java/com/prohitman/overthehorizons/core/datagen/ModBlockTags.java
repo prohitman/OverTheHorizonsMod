@@ -22,16 +22,20 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.ADOBE.get())
                 .add(ModBlocks.ADOBE_BRICKS.get())
                 .add(ModBlocks.SMOOTH_ADOBE.get())
-                .add(ModBlocks.FRAMED_ADOBE.get());
+                .add(ModBlocks.FRAMED_ADOBE.get())
+                .add(ModBlocks.PEBBLES.get());
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.GREEN_LICHENSTONE.get())
                 .add(ModBlocks.RED_LICHENSTONE.get())
                 .add(ModBlocks.ADOBE.get())
                 .add(ModBlocks.ADOBE_BRICKS.get())
                 .add(ModBlocks.SMOOTH_ADOBE.get())
-                .add(ModBlocks.FRAMED_ADOBE.get());
+                .add(ModBlocks.FRAMED_ADOBE.get())
+                .add(ModBlocks.PEBBLES.get());
         tag(BlockTags.REPLACEABLE_PLANTS)
                 .add(ModBlocks.GREEN_LICHEN_COVERAGE.get())
                 .add(ModBlocks.RED_LICHEN_COVERAGE.get());
+        tag(BlockTags.CLIMBABLE)
+                .add(ModBlocks.TREE_MOSS.get());
     }
 }
