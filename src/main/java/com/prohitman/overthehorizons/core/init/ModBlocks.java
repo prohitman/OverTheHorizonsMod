@@ -1,9 +1,7 @@
 package com.prohitman.overthehorizons.core.init;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
-import com.prohitman.overthehorizons.common.blocks.LichenCoverageBlock;
-import com.prohitman.overthehorizons.common.blocks.LichestoneBlock;
-import com.prohitman.overthehorizons.common.blocks.ModLeavesBlock;
+import com.prohitman.overthehorizons.common.blocks.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
@@ -27,6 +25,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_LICHENSTONE = BLOCKS.register("red_lichenstone", () -> new LichestoneBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).randomTicks().requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
     public static final RegistryObject<Block> GREEN_LICHENSTONE = BLOCKS.register("green_lichenstone", () -> new LichestoneBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).randomTicks().requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
     public static final RegistryObject<Block> PEBBLES = BLOCKS.register("pebbles", () -> normalStoneBlock(MaterialColor.STONE, SoundType.STONE));
+    public static final RegistryObject<Block> RIVER_ROCKS = BLOCKS.register("river_rocks", () -> new RiverRocks(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F).sound(SoundType.STONE)));
 
     //Tree
     public static final RegistryObject<Block> DRIED_BIRCH_LEAVES = BLOCKS.register("dried_birch_leaves", () -> leaves(SoundType.AZALEA_LEAVES, ModLeavesBlock.LeafParticleType.YELLOW));
@@ -38,6 +37,7 @@ public class ModBlocks {
     //Plants
     public static final RegistryObject<Block> RED_LICHEN_COVERAGE = BLOCKS.register("red_lichen_coverage", () -> new LichenCoverageBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES)));
     public static final RegistryObject<Block> GREEN_LICHEN_COVERAGE = BLOCKS.register("green_lichen_coverage", () -> new LichenCoverageBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES)));
+    public static final RegistryObject<Block> DUCKWEED = BLOCKS.register("duckweed", () -> new Duckweed(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.LILY_PAD).noOcclusion()));
 
     private static Block normalStoneBlock(MaterialColor color, SoundType soundType) {
         return new Block(BlockBehaviour.Properties.of(Material.STONE, color).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(soundType));

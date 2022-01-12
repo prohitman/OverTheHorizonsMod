@@ -23,6 +23,7 @@ public class ClientEventBusSubscriber {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_LICHEN_COVERAGE.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_LICHEN_COVERAGE.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TREE_MOSS.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DUCKWEED.get(), RenderType.cutoutMipped());
     }
 
     @SubscribeEvent

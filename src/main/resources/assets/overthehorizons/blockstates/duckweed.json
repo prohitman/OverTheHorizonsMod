@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "overthehorizons:block/duckweed"
+      },
+      {
+        "model": "overthehorizons:block/duckweed",
+        "y": 90
+      },
+      {
+        "model": "overthehorizons:block/duckweed",
+        "y": 180
+      },
+      {
+        "model": "overthehorizons:block/duckweed",
+        "y": 270
+      }
+    ]
+  }
+}

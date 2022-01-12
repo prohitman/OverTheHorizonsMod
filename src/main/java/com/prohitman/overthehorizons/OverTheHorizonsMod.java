@@ -63,16 +63,6 @@ public class OverTheHorizonsMod
 
     }
 
-    @SubscribeEvent
-    public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
-        final IForgeRegistry<Item> registry = event.getRegistry();
 
-        ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
-            final Item.Properties properties = new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS);
-            final BlockItem blockItem = new BlockItem(block, properties);
-            blockItem.setRegistryName(block.getRegistryName());
-            registry.register(blockItem);
-        });
-    }
 
 }
