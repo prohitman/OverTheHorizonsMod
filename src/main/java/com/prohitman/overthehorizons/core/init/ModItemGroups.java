@@ -14,7 +14,7 @@ public class ModItemGroups {
         @Override
         @OnlyIn(Dist.CLIENT)
         public ItemStack makeIcon() {
-            return new ItemStack(ModBlocks.GREEN_LICHENSTONE.get());
+            return new ItemStack(ModBlocks.PINE_CONE.get());
         }
     }).hideTitle();
 }

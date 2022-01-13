@@ -28,11 +28,24 @@ public class ModBlocks {
     public static final RegistryObject<Block> RIVER_ROCKS = BLOCKS.register("river_rocks", () -> new RiverRocks(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F).sound(SoundType.STONE)));
 
     //Tree
+    public static final RegistryObject<Block> PINE_LEAVES = BLOCKS.register("pine_leaves", () -> leaves(SoundType.GRASS, ModLeavesBlock.LeafParticleType.NONE));
     public static final RegistryObject<Block> DRIED_BIRCH_LEAVES = BLOCKS.register("dried_birch_leaves", () -> leaves(SoundType.AZALEA_LEAVES, ModLeavesBlock.LeafParticleType.YELLOW));
     public static final RegistryObject<Block> DRIED_OAK_LEAVES = BLOCKS.register("dried_oak_leaves", () -> leaves(SoundType.AZALEA_LEAVES, ModLeavesBlock.LeafParticleType.BROWN));
     public static final RegistryObject<Block> DRIED_DARK_OAK_LEAVES = BLOCKS.register("dried_dark_oak_leaves", () -> leaves(SoundType.AZALEA_LEAVES, ModLeavesBlock.LeafParticleType.RED));
     public static final RegistryObject<Block> FALLEN_LEAVES = BLOCKS.register("fallen_leaves", () -> new CarpetBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).noOcclusion().strength(0.1F).sound(SoundType.MOSS_CARPET)));
     public static final RegistryObject<Block> TREE_MOSS = BLOCKS.register("tree_moss", () -> new VineBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT).noCollission().strength(0.1F).sound(SoundType.VINE)));
+    public static final RegistryObject<RotatedPillarBlock> PINE_LOG = BLOCKS.register("pine_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_PINE_LOG = BLOCKS.register("stripped_pine_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> PINE_PLANKS = BLOCKS.register("pine_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<StairBlock> PINE_STAIRS = BLOCKS.register("pine_stairs", () -> new StairBlock(() -> PINE_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<SlabBlock> PINE_SLAB = BLOCKS.register("pine_slab", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<PressurePlateBlock> PINE_PRESSURE_PLATE = BLOCKS.register("pine_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<WoodButtonBlock> PINE_BUTTON = BLOCKS.register("pine_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<DoorBlock> PINE_DOOR = BLOCKS.register("pine_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion()));
+    public static final RegistryObject<TrapDoorBlock> PINE_TRAPDOOR = BLOCKS.register("pine_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength( 3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
+    public static final RegistryObject<Block> PINE_CONE = BLOCKS.register("pine_cone", () -> new PineConeBlock(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.WOOD).noCollission().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<FenceBlock> PINE_FENCE = BLOCKS.register("pine_fence", () -> new FenceBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength( 3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
+    public static final RegistryObject<FenceGateBlock> PINE_FENCE_GATE = BLOCKS.register("pine_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength( 3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
 
     //Plants
     public static final RegistryObject<Block> RED_LICHEN_COVERAGE = BLOCKS.register("red_lichen_coverage", () -> new LichenCoverageBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES)));
@@ -51,6 +64,9 @@ public class ModBlocks {
         return false;
     }
 
+    private static Boolean never(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> entityType) {
+        return (boolean)false;
+    }
     private static Boolean ocelotOrParrot(BlockState state, BlockGetter blockGetter, BlockPos pos, EntityType<?> entityType) {
         return entityType == EntityType.OCELOT || entityType == EntityType.PARROT;
     }

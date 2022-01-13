@@ -1,6 +1,7 @@
 package com.prohitman.overthehorizons.core.datagen;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.core.init.ModBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -16,6 +17,7 @@ public class ModItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags() {
-        //tag(Tags.Items.);
+        tag(Tags.Items.FENCE_GATES).add(ModBlocks.PINE_FENCE_GATE.get().asItem());
+        tag(Tags.Items.FENCES).add(ModBlocks.PINE_FENCE.get().asItem());
     }
 }

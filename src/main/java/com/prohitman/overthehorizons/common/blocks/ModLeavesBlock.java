@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Block;
@@ -76,13 +77,13 @@ public class ModLeavesBlock extends LeavesBlock{
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRand) {
         if (this.leafParticleType != LeafParticleType.NONE) {
             if(pRand.nextInt(10) == 0){
-                this.trySpawnDripParticles(pLevel, pPos, pState, this.leafParticleType);
+                this.trySpawnLeavesParticles(pLevel, pPos, pState, this.leafParticleType);
             }
         }
 
     }
 
-    private void trySpawnDripParticles(Level pLevel, BlockPos pPos, BlockState pState, LeafParticleType type) {
+    private void trySpawnLeavesParticles(Level pLevel, BlockPos pPos, BlockState pState, LeafParticleType type) {
         if (pState.getFluidState().isEmpty() && !(pLevel.random.nextFloat() < 0.3F)) {
             VoxelShape voxelshape = pState.getCollisionShape(pLevel, pPos);
             double d0 = voxelshape.max(Direction.Axis.Y);

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "overthehorizons:block/pine_log",
+    "end": "overthehorizons:block/pine_log_top"
+  }
+}

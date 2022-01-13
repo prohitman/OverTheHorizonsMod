@@ -32,6 +32,21 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.DUCKWEED.get(), "Duckweed");
         add(ModBlocks.FALLEN_LEAVES.get(), "Fallen Leaves");
 
+        add(ModBlocks.PINE_LEAVES.get(), "Pine Leaves");
+        add(ModBlocks.PINE_SLAB.get(), "Pine Slab");
+        add(ModBlocks.STRIPPED_PINE_LOG.get(), "Stripped Pine Log");
+        add(ModBlocks.PINE_STAIRS.get(), "Pine Stairs");
+        add(ModBlocks.PINE_BUTTON.get(), "Pine Button");
+        add(ModBlocks.PINE_DOOR.get(), "Pine Door");
+        add(ModBlocks.PINE_PRESSURE_PLATE.get(), "Pine Pressure Plate");
+        add(ModBlocks.PINE_LOG.get(), "Pine Log");
+        add(ModBlocks.PINE_CONE.get(), "Pine Cone");
+        add(ModBlocks.PINE_TRAPDOOR.get(), "Pine Trapdoor");
+        add(ModBlocks.PINE_PLANKS.get(), "Pine Planks");
+        add(ModBlocks.PINE_FENCE.get(), "Pine Fence");
+        add(ModBlocks.PINE_FENCE_GATE.get(), "Pine Fence Gate");
+
         add(ModItems.LICHEN_CLUSTER.get(), "Lichen Cluster");
+        add(ModItems.COPPER_BULLET.get(), "Copper Bullet");
     }
 }

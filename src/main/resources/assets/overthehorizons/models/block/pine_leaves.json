@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "overthehorizons:block/pine_leaves"
+  }
+}
