@@ -54,5 +54,8 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture(ModItems.COPPER_BULLET.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/copper_bullet"));
+        singleTexture(ModItems.PINE_SIGN.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/pine_sign"));
     }
 }

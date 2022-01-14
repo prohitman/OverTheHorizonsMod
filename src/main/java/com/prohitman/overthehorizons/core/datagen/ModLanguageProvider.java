@@ -48,5 +48,6 @@ public class ModLanguageProvider extends LanguageProvider {
 
         add(ModItems.LICHEN_CLUSTER.get(), "Lichen Cluster");
         add(ModItems.COPPER_BULLET.get(), "Copper Bullet");
+        add(ModItems.PINE_SIGN.get(), "Pine Sign");
     }
 }

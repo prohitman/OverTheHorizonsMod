@@ -3,7 +3,9 @@ package com.prohitman.overthehorizons.common.events;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModItems;
+import com.prohitman.overthehorizons.core.init.ModWoodTypes;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +25,8 @@ public class CommonForgeEvents {
             ComposterBlock.COMPOSTABLES.put(ModBlocks.GREEN_LICHEN_COVERAGE.get().asItem(), 0.3F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.TREE_MOSS.get().asItem(), 0.5F);
             ComposterBlock.COMPOSTABLES.put(ModItems.LICHEN_CLUSTER.get().asItem(), 0.8F);
+
+            WoodType.register(ModWoodTypes.PINE);
         });
     }
 }

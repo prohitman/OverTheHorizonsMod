@@ -1,7 +1,7 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "particle": "block/vine",
+        "particle": "overthehorizons:block/tree_moss",
         "vine": "overthehorizons:block/tree_moss"
     },
     "elements": [

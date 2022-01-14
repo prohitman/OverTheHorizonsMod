@@ -2,6 +2,7 @@ package com.prohitman.overthehorizons.common.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -17,7 +18,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IPlantable;
 
 public class PineConeBlock extends BushBlock{
-    public static final VoxelShape SHAPE = Block.box(2, 0, 2, 10, 12, 10);
+    public static final VoxelShape SHAPE = Block.box(4, 4, 4, 12, 16, 12);
 
     public PineConeBlock(Properties properties) {
         super(properties);
@@ -44,7 +45,7 @@ public class PineConeBlock extends BushBlock{
     }
 
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return Block.canSupportCenter(pLevel, pPos.above(), Direction.DOWN);
+        return Block.canSupportCenter(pLevel, pPos.above(), Direction.DOWN) || pLevel.getBlockState(pPos.above()).is(BlockTags.LEAVES);
     }
 
     public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {

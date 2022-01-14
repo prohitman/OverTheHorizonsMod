@@ -8,6 +8,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
@@ -46,6 +47,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> PINE_CONE = BLOCKS.register("pine_cone", () -> new PineConeBlock(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.WOOD).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<FenceBlock> PINE_FENCE = BLOCKS.register("pine_fence", () -> new FenceBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength( 3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
     public static final RegistryObject<FenceGateBlock> PINE_FENCE_GATE = BLOCKS.register("pine_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength( 3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
+    public static final RegistryObject<ModStandingSignBlock> PINE_STANDING_SIGN = BLOCKS.register("pine_standing_sign", () -> new ModStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ModWoodTypes.PINE));
+    public static final RegistryObject<ModWallSignBlock> PINE_WALL_SIGN = BLOCKS.register("pine_wall_sign", () -> new ModWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ModWoodTypes.PINE));
 
     //Plants
     public static final RegistryObject<Block> RED_LICHEN_COVERAGE = BLOCKS.register("red_lichen_coverage", () -> new LichenCoverageBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES)));

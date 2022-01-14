@@ -34,5 +34,6 @@ public class ModBlockStates extends BlockStateProvider {
         simpleBlock(ModBlocks.PINE_CONE.get(), models().cross("pine_cone", modLoc("block/pine_cone")));
         fenceBlock(ModBlocks.PINE_FENCE.get(), modLoc("block/pine_planks"));
         fenceGateBlock(ModBlocks.PINE_FENCE_GATE.get(), modLoc("block/pine_planks"));
+        signBlock(ModBlocks.PINE_STANDING_SIGN.get(), ModBlocks.PINE_WALL_SIGN.get(), modLoc("entity/signs/pine"));
     }
 }

@@ -1,10 +1,7 @@
 package com.prohitman.overthehorizons;
 
 import com.prohitman.overthehorizons.common.events.CommonForgeEvents;
-import com.prohitman.overthehorizons.core.init.ModBlocks;
-import com.prohitman.overthehorizons.core.init.ModItemGroups;
-import com.prohitman.overthehorizons.core.init.ModItems;
-import com.prohitman.overthehorizons.core.init.ModParticleTypes;
+import com.prohitman.overthehorizons.core.init.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -46,6 +43,7 @@ public class OverTheHorizonsMod
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModParticleTypes.PARTICLES.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
