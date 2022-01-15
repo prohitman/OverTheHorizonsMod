@@ -2,14 +2,15 @@ package com.prohitman.overthehorizons.client.events;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.particles.LeafParticle;
+import com.prohitman.overthehorizons.client.renderers.ModBoatRenderer;
 import com.prohitman.overthehorizons.common.blocks.entity.ModSignBlockEntity;
-import com.prohitman.overthehorizons.core.init.ModBlockEntities;
-import com.prohitman.overthehorizons.core.init.ModBlocks;
-import com.prohitman.overthehorizons.core.init.ModParticleTypes;
-import com.prohitman.overthehorizons.core.init.ModWoodTypes;
+import com.prohitman.overthehorizons.common.entity.ModBoat;
+import com.prohitman.overthehorizons.core.init.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -19,6 +20,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.texture.AtlasSet;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Blocks;
@@ -57,7 +59,15 @@ public class ClientEventBusSubscriber {
     }
 
     @SubscribeEvent
-    public static void registerBlockEntityRenderers(EntityRenderersEvent.RegisterRenderers event){
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event){
+        event.registerEntityRenderer(ModEntityTypes.MOD_BOAT.get(), ModBoatRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event){
+        for(ModBoat.ModType boat$type : ModBoat.ModType.values()) {
+            event.registerLayerDefinition(ModBoatRenderer.createBoatModelName(boat$type), BoatModel::createBodyModel);
+        }
     }
 
     @SubscribeEvent

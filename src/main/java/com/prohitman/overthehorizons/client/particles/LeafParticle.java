@@ -28,7 +28,7 @@ public class LeafParticle extends TextureSheetParticle {
         if(!this.removed){
             double yVel = 1 + Math.cos(tickCounter/20d)*0.05D;
             this.yd -= this.gravity * yVel;
-            double xVel = this.i * Math.cos(tickCounter / 20d) * (this.random.nextDouble(0.03D) + 0.01D);
+            double xVel = this.i * Math.cos(tickCounter / 20d) * (this.random.nextDouble(0.03d) + 0.01D);
             this.setParticleSpeed(xVel, this.yd, this.zd);
             this.postMoveUpdate();
         }
