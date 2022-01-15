@@ -51,5 +51,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.COPPER_BULLET.get(), "Copper Bullet");
         add(ModItems.PINE_SIGN.get(), "Pine Sign");
         add(ModItems.PINE_BOAT.get(), "Pine Boat");
+        add(ModItems.HUNTING_RIFLE.get(), "Hunting Rifle");
+
     }
 }

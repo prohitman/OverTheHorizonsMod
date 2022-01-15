@@ -1,10 +1,16 @@
 package com.prohitman.overthehorizons.client.events;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.client.keybinds.ModKeyBindings;
 import com.prohitman.overthehorizons.client.particles.LeafParticle;
 import com.prohitman.overthehorizons.client.renderers.ModBoatRenderer;
 import com.prohitman.overthehorizons.common.blocks.entity.ModSignBlockEntity;
 import com.prohitman.overthehorizons.common.entity.ModBoat;
+import com.prohitman.overthehorizons.common.item.HuntingRifleItem;
+import com.prohitman.overthehorizons.common.network.MessageExtendedReachAttack;
+import com.prohitman.overthehorizons.common.network.MessageReloadRifle;
+import com.prohitman.overthehorizons.common.network.OTHPacketHandler;
 import com.prohitman.overthehorizons.core.init.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
@@ -12,6 +18,7 @@ import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.particle.ParticleEngine;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -20,15 +27,21 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.texture.AtlasSet;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -42,6 +55,7 @@ public class ClientEventBusSubscriber {
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event){
         event.enqueueWork(() -> {
+            ModKeyBindings.init();
 
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_LICHEN_COVERAGE.get(), RenderType.cutoutMipped());
@@ -79,11 +93,11 @@ public class ClientEventBusSubscriber {
 
     @SubscribeEvent
     public static void registerBlockLeavesColors(ColorHandlerEvent.Block event){
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> new Color(0x00FF00).getRGB(), ModBlocks.PINE_LEAVES.get());
+        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> new Color(0x9FFF9F).getRGB(), ModBlocks.PINE_LEAVES.get());
     }
 
     @SubscribeEvent
     public static void registerBlockItemLeavesColors(ColorHandlerEvent.Item event){
-        event.getItemColors().register((pState, pTintIndex) -> new Color(0x00FF00).getRGB(), ModBlocks.PINE_LEAVES.get());
+        event.getItemColors().register((pState, pTintIndex) -> new Color(0x9FFF9F).getRGB(), ModBlocks.PINE_LEAVES.get());
     }
 }

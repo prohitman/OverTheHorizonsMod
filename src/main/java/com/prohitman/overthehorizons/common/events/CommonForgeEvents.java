@@ -1,6 +1,7 @@
 package com.prohitman.overthehorizons.common.events;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.common.network.OTHPacketHandler;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModItems;
 import com.prohitman.overthehorizons.core.init.ModWoodTypes;
@@ -17,6 +18,8 @@ public class CommonForgeEvents {
     @SubscribeEvent
     public static void setup(final FMLCommonSetupEvent event){
         event.enqueueWork(() -> {
+            OTHPacketHandler.init();
+
             ComposterBlock.COMPOSTABLES.put(ModBlocks.FALLEN_LEAVES.get().asItem(), 0.3F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.DRIED_BIRCH_LEAVES.get().asItem(), 0.3F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.DRIED_OAK_LEAVES.get().asItem(), 0.3F);

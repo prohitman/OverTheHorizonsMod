@@ -60,5 +60,6 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture(ModItems.PINE_BOAT.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/pine_boat"));
+
     }
 }
