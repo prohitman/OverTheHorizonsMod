@@ -6,11 +6,14 @@ import com.prohitman.overthehorizons.common.network.MessageDecreaseBullets;
 import com.prohitman.overthehorizons.common.network.MessageExtendedReachAttack;
 import com.prohitman.overthehorizons.common.network.OTHPacketHandler;
 import com.prohitman.overthehorizons.common.util.IExtendedReach;
+import com.prohitman.overthehorizons.core.init.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.KeybindComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -23,6 +26,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractGlassBlock;
 import net.minecraft.world.level.block.Block;
@@ -32,6 +36,10 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.settings.KeyBindingMap;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class HuntingRifleItem extends Item implements IExtendedReach {
     public int distance;
@@ -97,7 +105,7 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        Item item = user.getItemInHand(hand).getItem();
+        //Item item = user.getItemInHand(hand).getItem();
         if (user.isHolding(this)) {
                 if (world.isClientSide) {
                     CompoundTag tag = user.getMainHandItem().getOrCreateTag();
@@ -141,7 +149,7 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
                         tag.putInt("AmmoCount", k);
                     } else {
                         if (!user.isCreative()) {
-                            world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.ANVIL_FALL, SoundSource.PLAYERS, 1.0F, 1.0F);
+                            world.playSound(user, user.getX(), user.getY(), user.getZ(), ModSounds.RIFLE_NO_AMMO.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
                             user.displayClientMessage((new TextComponent("overthehorizons.message.no_ammo")).withStyle(ChatFormatting.RED, ChatFormatting.BOLD), true);
                         }
@@ -151,6 +159,25 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
 
         return super.use(world, user, hand);
     }
+
+    /*@Override
+    public void appendHoverText(ItemStack stack, @Nullable Level pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {
+        HuntingRifleItem rifleitem = (HuntingRifleItem) stack.getItem();
+        CompoundTag tag = stack.getTag();
+        int bullets = 0;
+        if (tag != null) {
+            bullets = tag.getInt("AmmoCount");
+        }
+
+        if (Key.isKeyPressed(Minecraft.getInstance().getWindow().get.getHandle(), GLFW.GLFW_KEY_LEFT_SHIFT)) {
+            tooltip.add((new TranslatableText("nwbase.tooltip.bullet_shooting_range")).formatted(Formatting.BLUE).append("\u00A77" + 20));
+            tooltip.add((new TranslatableText("nwbase.tooltip.bullet_capacity")).formatted(Formatting.BLUE).append("\u00A77" + 20));
+            tooltip.add((new TranslatableText("nwbase.tooltip.current_bullets")).formatted(Formatting.BLUE).append("\u00A77" + ((Integer) bullets).toString()));
+        } else {
+            tooltip.add((new TranslatableText("nwbase.tooltip.press_shift")).formatted(Formatting.GRAY));
+        }
+    }*/
+
 
     @Override
     public boolean isDamageable(ItemStack stack) {

@@ -2,6 +2,7 @@ package com.prohitman.overthehorizons.common.network;
 
 import com.prohitman.overthehorizons.common.item.HuntingRifleItem;
 import com.prohitman.overthehorizons.core.init.ModItems;
+import com.prohitman.overthehorizons.core.init.ModSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -66,7 +67,7 @@ public class MessageReloadRifle implements IMessage<MessageReloadRifle> {
 
                                         tag.putInt("AmmoCount", bulletnumber);
                                         thePlayer.getCooldowns().addCooldown(rifleItem, 4*i);
-                                        thePlayer.getLevel().playSound(null, thePlayer.getOnPos(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS, 0.5f, 1f);
+                                        thePlayer.getLevel().playSound(null, thePlayer.getOnPos(), ModSounds.RIFLE_RELOAD.get(), SoundSource.PLAYERS, 0.5f, 1f);
                                     }
                                 }
                         }

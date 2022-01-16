@@ -1,0 +1,24 @@
+{
+  "rifle_shoot_bullet": {
+    "subtitle": "subtitles.overthehorizons.rifle_shoot_bullet",
+    "sounds": [
+      "overthehorizons:rifle/shoot/bullet/rifle_shoot_bullet_1",
+      "overthehorizons:rifle/shoot/bullet/rifle_shoot_bullet_2",
+      "overthehorizons:rifle/shoot/bullet/rifle_shoot_bullet_3"
+    ]
+  },
+  "rifle_reload": {
+    "subtitle": "subtitles.overthehorizons.rifle_reload",
+    "sounds": [
+      "overthehorizons:rifle/reload/rifle_reload_1",
+      "overthehorizons:rifle/reload/rifle_reload_2",
+      "overthehorizons:rifle/reload/rifle_reload_3"
+    ]
+  },
+  "rifle_no_ammo": {
+  "subtitle": "subtitles.overthehorizons.rifle_no_ammo",
+  "sounds": [
+    "overthehorizons:rifle/no_ammo"
+  ]
+}
+}

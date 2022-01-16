@@ -4,6 +4,7 @@ import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModEntityTypes;
 import com.prohitman.overthehorizons.core.init.ModItems;
+import com.prohitman.overthehorizons.core.init.ModSounds;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -53,5 +54,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.PINE_BOAT.get(), "Pine Boat");
         add(ModItems.HUNTING_RIFLE.get(), "Hunting Rifle");
 
+        add("subtitles.overthehorizons.rifle_shoot_bullet", "Rifle Shooting Bullet");
+        add("subtitles.overthehorizons.rifle_reload", "Reloading Rifle");
+        add("subtitles.overthehorizons.rifle_no_ammo", "Rifle No Ammo");
+
+        add("overthehorizons.message.no_ammo", "No Ammo!!");
+
+        add("key.overthehorizons.reload_rifle","Reload Rifle");
     }
 }

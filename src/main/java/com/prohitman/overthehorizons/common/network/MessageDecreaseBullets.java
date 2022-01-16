@@ -1,6 +1,7 @@
 package com.prohitman.overthehorizons.common.network;
 
 import com.prohitman.overthehorizons.common.util.IExtendedReach;
+import com.prohitman.overthehorizons.core.init.ModSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -52,7 +53,7 @@ public class MessageDecreaseBullets implements IMessage<MessageDecreaseBullets> 
             if (!thePlayer.isCreative()) {
                 stack.hurtAndBreak(1, thePlayer, e -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));
             }
-            thePlayer.getLevel().playSound(null, thePlayer.getOnPos(), SoundEvents.FIREWORK_ROCKET_SHOOT, SoundSource.PLAYERS, 0.5f, 1f);
+            thePlayer.getLevel().playSound(null, thePlayer.getOnPos(), ModSounds.RIFLE_SHOOT_BULLET.get(), SoundSource.PLAYERS, 0.5f, 1f);
             tag.putInt("AmmoCount", bullets);
         });
         ctx.get().setPacketHandled(true);// no response message

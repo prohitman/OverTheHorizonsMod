@@ -33,5 +33,10 @@
   "item.overthehorizons.hunting_rifle": "Hunting Rifle",
   "item.overthehorizons.lichen_cluster": "Lichen Cluster",
   "item.overthehorizons.pine_boat": "Pine Boat",
-  "itemGroup.overthehorizons": "Over The Horizons Mod"
+  "itemGroup.overthehorizons": "Over The Horizons Mod",
+  "key.overthehorizons.reload_rifle": "Reload Rifle",
+  "overthehorizons.message.no_ammo": "No Ammo!!",
+  "subtitles.overthehorizons.rifle_no_ammo": "Rifle No Ammo",
+  "subtitles.overthehorizons.rifle_reload": "Reloading Rifle",
+  "subtitles.overthehorizons.rifle_shoot_bullet": "Rifle Shooting Bullet"
 }

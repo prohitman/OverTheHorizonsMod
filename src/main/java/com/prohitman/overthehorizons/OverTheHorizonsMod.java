@@ -45,6 +45,7 @@ public class OverTheHorizonsMod
         ModParticleTypes.PARTICLES.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModEntityTypes.ENTITY_TYPES.register(modEventBus);
+        ModSounds.SOUND_TYPES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
