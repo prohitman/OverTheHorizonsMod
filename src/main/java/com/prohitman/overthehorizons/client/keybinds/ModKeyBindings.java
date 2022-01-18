@@ -7,12 +7,15 @@ import net.minecraftforge.client.ClientRegistry;
 
 public final class ModKeyBindings {
     public static KeyMapping reloadRifleKeyMapping;
+    public static KeyMapping zoomRifleKeyMapping;
+
 
     private ModKeyBindings() {
     }
 
     public static void init() {
         reloadRifleKeyMapping = registerKey("reload_rifle", KeyMapping.CATEGORY_GAMEPLAY, InputConstants.KEY_R);
+        zoomRifleKeyMapping = registerKey("zoom_rifle", KeyMapping.CATEGORY_GAMEPLAY, InputConstants.KEY_B);
     }
 
     private static KeyMapping registerKey(String name, String category, int keycode) {

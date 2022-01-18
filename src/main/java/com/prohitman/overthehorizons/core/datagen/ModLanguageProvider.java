@@ -58,7 +58,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("subtitles.overthehorizons.rifle_reload", "Reloading Rifle");
         add("subtitles.overthehorizons.rifle_no_ammo", "Rifle No Ammo");
 
-        add("overthehorizons.message.no_ammo", "No Ammo!!");
+        add("overthehorizons.message.no_ammo", "No Ammo!!!");
 
         add("key.overthehorizons.reload_rifle","Reload Rifle");
     }
