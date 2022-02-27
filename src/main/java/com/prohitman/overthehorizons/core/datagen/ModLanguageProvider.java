@@ -60,6 +60,11 @@ public class ModLanguageProvider extends LanguageProvider {
 
         add("overthehorizons.message.no_ammo", "No Ammo!!!");
 
+        add("overthehorizons.tooltip.press_shift", "press\\u00A79 [SHIFT]\\u00A77 for more info.");
+        add("overthehorizons.tooltip.rifle_shooting_range", "Rifle Shooting Range: ");
+        add("overthehorizons.tooltip.bullet_capacity", "Bullet Capacity: ");
+        add("overthehorizons.tooltip.current_bullets", "Current Bullets: ");
+
         add("key.overthehorizons.reload_rifle","Reload Rifle");
     }
 }

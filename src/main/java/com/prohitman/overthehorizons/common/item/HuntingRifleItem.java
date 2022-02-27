@@ -9,6 +9,7 @@ import com.prohitman.overthehorizons.common.util.IExtendedReach;
 import com.prohitman.overthehorizons.core.init.ModSounds;
 import com.prohitman.overthehorizons.core.util.ExtendedReachUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -104,24 +105,23 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
         return super.use(world, user, hand);
     }
 
-    /*@Override
+    @Override
     public void appendHoverText(ItemStack stack, @Nullable Level pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {
-        HuntingRifleItem rifleitem = (HuntingRifleItem) stack.getItem();
+        //HuntingRifleItem rifleitem = (HuntingRifleItem) stack.getItem();
         CompoundTag tag = stack.getTag();
         int bullets = 0;
         if (tag != null) {
             bullets = tag.getInt("AmmoCount");
         }
 
-        if (Key.isKeyPressed(Minecraft.getInstance().getWindow().get.getHandle(), GLFW.GLFW_KEY_LEFT_SHIFT)) {
-            tooltip.add((new TranslatableText("nwbase.tooltip.bullet_shooting_range")).formatted(Formatting.BLUE).append("\u00A77" + 20));
-            tooltip.add((new TranslatableText("nwbase.tooltip.bullet_capacity")).formatted(Formatting.BLUE).append("\u00A77" + 20));
-            tooltip.add((new TranslatableText("nwbase.tooltip.current_bullets")).formatted(Formatting.BLUE).append("\u00A77" + ((Integer) bullets).toString()));
+        if (Minecraft.getInstance().options.keyShift.isDown()) {
+            tooltip.add((new TranslatableComponent("overthehorizon.tooltip.rifle_shooting_range")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 20));
+            tooltip.add((new TranslatableComponent("overthehorizon.tooltip.bullet_capacity")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 25));
+            tooltip.add((new TranslatableComponent("overthehorizon.tooltip.current_bullets")).withStyle(ChatFormatting.BLUE).append("\u00A77" + ((Integer) bullets)));
         } else {
-            tooltip.add((new TranslatableText("nwbase.tooltip.press_shift")).formatted(Formatting.GRAY));
+            tooltip.add((new TranslatableComponent("overthehorizon.tooltip.press_shift")).withStyle(ChatFormatting.GRAY));
         }
-    }*/
-
+    }
 
     @Override
     public boolean isDamageable(ItemStack stack) {
