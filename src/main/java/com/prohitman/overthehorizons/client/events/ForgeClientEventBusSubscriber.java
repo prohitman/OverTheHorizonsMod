@@ -68,13 +68,13 @@ public final class ForgeClientEventBusSubscriber {
         }
     }
 
-    @SubscribeEvent
-    public static void mouseHandler(ScreenEvent.MouseDragEvent event){
-        if(Minecraft.getInstance().options.getCameraType().isFirstPerson()
-                && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem){
-
-        }
-    }
+//    @SubscribeEvent
+//    public static void mouseHandler(ScreenEvent.MouseDragEvent event){
+//        if(Minecraft.getInstance().options.getCameraType().isFirstPerson()
+//                && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem){
+//
+//        }
+//    }
 
     @SubscribeEvent
     public static void modifyFOV(FOVModifierEvent event){

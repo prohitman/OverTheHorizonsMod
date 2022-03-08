@@ -114,13 +114,13 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
             bullets = tag.getInt("AmmoCount");
         }
 
-        if (Minecraft.getInstance().options.keyShift.isDown()) {
-            tooltip.add((new TranslatableComponent("overthehorizon.tooltip.rifle_shooting_range")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 20));
-            tooltip.add((new TranslatableComponent("overthehorizon.tooltip.bullet_capacity")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 25));
-            tooltip.add((new TranslatableComponent("overthehorizon.tooltip.current_bullets")).withStyle(ChatFormatting.BLUE).append("\u00A77" + ((Integer) bullets)));
-        } else {
-            tooltip.add((new TranslatableComponent("overthehorizon.tooltip.press_shift")).withStyle(ChatFormatting.GRAY));
-        }
+        //if (Minecraft.getInstance().options.keyShift.isDown()) {
+        tooltip.add((new TranslatableComponent("overthehorizons.tooltip.rifle_shooting_range")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 20));
+        tooltip.add((new TranslatableComponent("overthehorizons.tooltip.bullet_capacity")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 25));
+        tooltip.add((new TranslatableComponent("overthehorizons.tooltip.current_bullets")).withStyle(ChatFormatting.BLUE).append("\u00A77" + ((Integer) bullets)));
+        //} else {
+        //    tooltip.add((new TranslatableComponent("overthehorizons.tooltip.press_shift")).withStyle(ChatFormatting.GRAY));
+        //}
     }
 
     @Override

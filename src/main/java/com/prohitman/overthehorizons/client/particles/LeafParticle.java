@@ -8,11 +8,11 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class LeafParticle extends TextureSheetParticle {
-    public int tickCounter = 0;
-    public int i;
+    public int tickCounter = 0, i;
 
     protected LeafParticle(ClientLevel level, double x, double y, double z) {
         super(level, x, y, z);
@@ -41,7 +41,7 @@ public class LeafParticle extends TextureSheetParticle {
     }
 
     @Override
-    public ParticleRenderType getRenderType() {
+    public @NotNull ParticleRenderType getRenderType() {
         return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 

@@ -81,7 +81,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.PINE_TRAPDOOR.get());
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.PINE_STAIRS.get());
-        tag(BlockTags.FENCES)
+        tag(BlockTags.WOODEN_FENCES)
                 .add(ModBlocks.PINE_FENCE.get());
         tag(BlockTags.FENCE_GATES)
                 .add(ModBlocks.PINE_FENCE_GATE.get());
