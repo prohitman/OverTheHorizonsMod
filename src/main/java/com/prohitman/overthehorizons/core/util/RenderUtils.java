@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import javax.annotation.Nullable;
 
 public class RenderUtils {
-    public static void renderSpyglassOverlay(float p_168676_) {
+    public static void renderSpyglassOverlay(float pfloat) {
         int screenHeight = Minecraft.getInstance().getWindow().getGuiScaledHeight();
         int screenWidth = Minecraft.getInstance().getWindow().getGuiScaledWidth();
 
@@ -20,11 +21,11 @@ public class RenderUtils {
         RenderSystem.depthMask(false);
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, new ResourceLocation("textures/misc/spyglass_scope.png"));
+        RenderSystem.setShaderTexture(0, new ResourceLocation(OverTheHorizonsMod.MOD_ID + ":textures/item/rifle_scope.png"));
         Tesselator tesselator = Tesselator.getInstance();
         BufferBuilder bufferbuilder = tesselator.getBuilder();
         float f = (float)Math.min(Minecraft.getInstance().getWindow().getGuiScaledWidth(),screenHeight);
-        float f1 = Math.min((float)screenWidth / f, (float)screenHeight / f) * p_168676_;
+        float f1 = Math.min((float)screenWidth / f, (float)screenHeight / f) * pfloat;
         float f2 = f * f1;
         float f3 = f * f1;
         float f4 = ((float)screenWidth - f2) / 2.0F;
@@ -94,7 +95,7 @@ public class RenderUtils {
             RenderSystem.disableTexture();
         }
 
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 0.5F);
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
     }
 

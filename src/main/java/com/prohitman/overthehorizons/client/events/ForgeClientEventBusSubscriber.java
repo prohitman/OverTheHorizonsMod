@@ -54,9 +54,9 @@ public final class ForgeClientEventBusSubscriber {
     }
 
     @SubscribeEvent
-    public static void renderScope(RenderGameOverlayEvent.PreLayer event){
+    public static void renderScope(RenderGameOverlayEvent.PostLayer event){
         //float f = Minecraft.getInstance().getDeltaFrameTime();
-        //float scopeScale = Mth.lerp(0.5F * f,1.0f, 1.125F);
+        //float scopeScale = Mth.lerp(0.5F * f,0.2f, 1.125F); SCOPE FRAME ANIM
         if (Minecraft.getInstance().options.getCameraType().isFirstPerson() && event.getType() == RenderGameOverlayEvent.ElementType.LAYER
                 && ModKeyBindings.zoomRifleKeyMapping.isDown()) {
             assert Minecraft.getInstance().player != null;

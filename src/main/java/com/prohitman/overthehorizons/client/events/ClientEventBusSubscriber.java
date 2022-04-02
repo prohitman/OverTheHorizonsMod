@@ -13,6 +13,7 @@ import com.prohitman.overthehorizons.common.network.MessageExtendedReachAttack;
 import com.prohitman.overthehorizons.common.network.MessageReloadRifle;
 import com.prohitman.overthehorizons.common.network.OTHPacketHandler;
 import com.prohitman.overthehorizons.core.init.*;
+import com.prohitman.overthehorizons.core.util.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
@@ -73,9 +74,10 @@ public class ClientEventBusSubscriber {
             BlockEntityRenderers.register(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
             Sheets.addWoodType(ModWoodTypes.PINE);
         });
-        /*OverlayRegistry.registerOverlayTop("Spyglass", (gui, mStack, partialTicks, screenWidth, screenHeight) -> {
+
+        /*OverlayRegistry.registerOverlayTop("RifleScope", (gui, mStack, partialTicks, screenWidth, screenHeight) -> {
             gui.setupOverlayRenderState(true, false);
-            ForgeClientEventBusSubscriber.renderSpyglassOverlay();
+            RenderUtils.renderSpyglassOverlay(1.0f);
         });*/
     }
 
