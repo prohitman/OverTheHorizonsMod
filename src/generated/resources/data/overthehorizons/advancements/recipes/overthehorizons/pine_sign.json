@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "overthehorizons:pine_sign"
+    ]
+  },
+  "criteria": {
+    "pine_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "overthehorizons:pine_planks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overthehorizons:pine_sign"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pine_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

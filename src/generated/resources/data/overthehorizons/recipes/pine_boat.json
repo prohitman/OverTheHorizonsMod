@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "overthehorizons:pine_planks"
+    }
+  },
+  "result": {
+    "item": "overthehorizons:pine_boat"
+  }
+}

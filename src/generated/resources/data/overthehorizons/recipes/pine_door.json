@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "overthehorizons:pine_planks"
+    }
+  },
+  "result": {
+    "item": "overthehorizons:pine_door",
+    "count": 3
+  }
+}

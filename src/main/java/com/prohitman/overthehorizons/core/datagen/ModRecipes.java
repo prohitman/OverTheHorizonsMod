@@ -1,8 +1,12 @@
 package com.prohitman.overthehorizons.core.datagen;
 
+import com.prohitman.overthehorizons.core.init.ModBlocks;
+import com.prohitman.overthehorizons.core.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
 
@@ -12,7 +16,18 @@ public class ModRecipes extends RecipeProvider {
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
-
+    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+        woodenBoat(consumer, ModItems.PINE_BOAT.get(), ModBlocks.PINE_PLANKS.get().asItem());
+        woodFromLogs(consumer, ModBlocks.PINE_WOOD.get().asItem(), ModBlocks.PINE_LOG.get().asItem());
+        planksFromLog(consumer, ModBlocks.PINE_PLANKS.get().asItem(), ModItemTags.PINE_LOGS);
+        stairBuilder(ModBlocks.PINE_STAIRS.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
+        fenceBuilder(ModBlocks.PINE_FENCE.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
+        fenceGateBuilder(ModBlocks.PINE_FENCE_GATE.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
+        doorBuilder(ModBlocks.PINE_DOOR.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
+        buttonBuilder(ModBlocks.PINE_BUTTON.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
+        pressurePlateBuilder(ModBlocks.PINE_PRESSURE_PLATE.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
+        trapdoorBuilder(ModBlocks.PINE_TRAPDOOR.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
+        signBuilder(ModBlocks.PINE_STANDING_SIGN.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
+        slab(consumer, ModBlocks.PINE_SLAB.get().asItem(), ModBlocks.PINE_PLANKS.get().asItem());
     }
 }

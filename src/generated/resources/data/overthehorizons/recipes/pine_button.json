@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "overthehorizons:pine_planks"
+    }
+  ],
+  "result": {
+    "item": "overthehorizons:pine_button"
+  }
+}
