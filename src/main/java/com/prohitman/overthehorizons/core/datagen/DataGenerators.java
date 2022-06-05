@@ -17,6 +17,7 @@ public class DataGenerators {
             ModBlockTags blockTags = new ModBlockTags(dataGenerator, event.getExistingFileHelper());
             dataGenerator.addProvider(blockTags);
             dataGenerator.addProvider(new ModItemTags(dataGenerator, blockTags, event.getExistingFileHelper()));
+            dataGenerator.addProvider(new ModLootTables(dataGenerator));
         }
         if(event.includeClient()){
             dataGenerator.addProvider(new ModBlockStates(dataGenerator, event.getExistingFileHelper()));

@@ -37,7 +37,9 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.PINE_FENCE_GATE.get())
                 .add(ModBlocks.PINE_WALL_SIGN.get())
                 .add(ModBlocks.PINE_STANDING_SIGN.get())
-                .add(ModBlocks.PINE_TRAPDOOR.get());
+                .add(ModBlocks.PINE_TRAPDOOR.get())
+                .add(ModBlocks.PINE_WOOD.get())
+                .add(ModBlocks.STRIPPED_PINE_WOOD.get());
         tag(BlockTags.MINEABLE_WITH_HOE).add(ModBlocks.PINE_LEAVES.get())
                 .add(ModBlocks.DRIED_BIRCH_LEAVES.get())
                 .add(ModBlocks.DRIED_DARK_OAK_LEAVES.get())
@@ -57,10 +59,14 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.TREE_MOSS.get());
         tag(BlockTags.LOGS)
                 .add(ModBlocks.STRIPPED_PINE_LOG.get())
-                .add(ModBlocks.PINE_LOG.get());
+                .add(ModBlocks.PINE_LOG.get())
+                .add(ModBlocks.STRIPPED_PINE_WOOD.get())
+                .add(ModBlocks.PINE_WOOD.get());
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.STRIPPED_PINE_LOG.get())
-                .add(ModBlocks.PINE_LOG.get());
+                .add(ModBlocks.PINE_LOG.get())
+                .add(ModBlocks.STRIPPED_PINE_WOOD.get())
+                .add(ModBlocks.PINE_WOOD.get());
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.PINE_LEAVES.get())
                 .add(ModBlocks.FALLEN_LEAVES.get())

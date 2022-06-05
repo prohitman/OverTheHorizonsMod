@@ -31,6 +31,8 @@ public class ModBlockStates extends BlockStateProvider {
         pressurePlateBlock(ModBlocks.PINE_PRESSURE_PLATE.get(), modLoc("block/pine_planks"));
         logBlock(ModBlocks.PINE_LOG.get());
         logBlock(ModBlocks.STRIPPED_PINE_LOG.get());
+        simpleBlock(ModBlocks.PINE_WOOD.get(), models().cubeAll("pine_wood", modLoc("block/pine_log")));
+        simpleBlock(ModBlocks.STRIPPED_PINE_WOOD.get(), models().cubeAll("stripped_pine_wood", modLoc("block/stripped_pine_log")));
         simpleBlock(ModBlocks.PINE_CONE.get(), models().cross("pine_cone", modLoc("block/pine_cone")));
         fenceBlock(ModBlocks.PINE_FENCE.get(), modLoc("block/pine_planks"));
         fenceGateBlock(ModBlocks.PINE_FENCE_GATE.get(), modLoc("block/pine_planks"));

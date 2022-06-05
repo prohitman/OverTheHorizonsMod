@@ -22,6 +22,8 @@ public class ModItemModels extends ItemModelProvider {
         withExistingParent(ModBlocks.PINE_TRAPDOOR.get().getRegistryName().getPath(), modLoc("block/pine_trapdoor_bottom"));
         withExistingParent(ModBlocks.PINE_PLANKS.get().getRegistryName().getPath(), modLoc("block/pine_planks"));
         withExistingParent(ModBlocks.PINE_LOG.get().getRegistryName().getPath(), modLoc("block/pine_log"));
+        withExistingParent(ModBlocks.PINE_WOOD.get().getRegistryName().getPath(), modLoc("block/pine_wood"));
+        withExistingParent(ModBlocks.STRIPPED_PINE_WOOD.get().getRegistryName().getPath(), modLoc("block/stripped_pine_wood"));
         withExistingParent(ModBlocks.PINE_BUTTON.get().getRegistryName().getPath(), modLoc("block/pine_button_inventory"));
         withExistingParent(ModBlocks.PINE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/pine_pressure_plate"));
         withExistingParent(ModBlocks.PINE_SLAB.get().getRegistryName().getPath(), modLoc("block/pine_slab"));
@@ -54,6 +56,9 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture(ModItems.COPPER_BULLET.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/copper_bullet"));
+        singleTexture(ModItems.PINE_TEA.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/pine_tea"));
         singleTexture(ModItems.PINE_SIGN.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/pine_sign"));

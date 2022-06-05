@@ -1,6 +1,5 @@
 package com.prohitman.overthehorizons.common.item;
 
-import com.mojang.authlib.minecraft.client.MinecraftClient;
 import com.prohitman.overthehorizons.common.network.MessageBreakBlock;
 import com.prohitman.overthehorizons.common.network.MessageDecreaseBullets;
 import com.prohitman.overthehorizons.common.network.MessageExtendedReachAttack;

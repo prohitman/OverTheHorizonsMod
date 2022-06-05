@@ -15,7 +15,6 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
 public class ModBlockItem extends BlockItem {

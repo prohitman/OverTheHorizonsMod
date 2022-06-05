@@ -2,16 +2,13 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1,
+      "name": "smooth_adobe",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "overthehorizons:smooth_adobe"
-        }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
         }
       ]
     }

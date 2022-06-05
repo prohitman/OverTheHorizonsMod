@@ -31,7 +31,9 @@ import java.awt.event.MouseEvent;
 
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public final class ForgeClientEventBusSubscriber {
+    protected float scopeScale;
     private ForgeClientEventBusSubscriber(){
+
 
     }
 
@@ -55,17 +57,26 @@ public final class ForgeClientEventBusSubscriber {
 
     @SubscribeEvent
     public static void renderScope(RenderGameOverlayEvent.PostLayer event){
-        //float f = Minecraft.getInstance().getDeltaFrameTime();
-        //float scopeScale = Mth.lerp(0.5F * f,0.2f, 1.125F); SCOPE FRAME ANIM
+        float f = Minecraft.getInstance().getDeltaFrameTime();
+        float scopeScale = Mth.lerp(0.5F * f,0.5f, 1.125F); //SCOPE FRAME ANIM
+        RenderSystem.enableBlend();
+        RenderSystem.enableDepthTest();
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.defaultBlendFunc();
+
         if (Minecraft.getInstance().options.getCameraType().isFirstPerson() && event.getType() == RenderGameOverlayEvent.ElementType.LAYER
                 && ModKeyBindings.zoomRifleKeyMapping.isDown()) {
             assert Minecraft.getInstance().player != null;
             if (Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
                 RenderUtils.setupOverlayRenderState(true, false, Gui.GUI_ICONS_LOCATION);
-                RenderUtils.renderSpyglassOverlay(1.0f);
+                RenderUtils.renderSpyglassOverlay(1.0f);//1.0
                 //renderTextureOverlay(new ResourceLocation("textures/misc/spyglass_scope.png"), 1.0f);
+            }else{
+                scopeScale = 0.5f;
             }
         }
+
+        RenderSystem.disableBlend();
     }
 
 //    @SubscribeEvent

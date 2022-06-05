@@ -41,6 +41,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.PINE_BUTTON.get(), "Pine Button");
         add(ModBlocks.PINE_DOOR.get(), "Pine Door");
         add(ModBlocks.PINE_PRESSURE_PLATE.get(), "Pine Pressure Plate");
+        add(ModBlocks.PINE_WOOD.get(), "Pine Wood");
+        add(ModBlocks.STRIPPED_PINE_WOOD.get(), "Stripped Pine Wood");
         add(ModBlocks.PINE_LOG.get(), "Pine Log");
         add(ModBlocks.PINE_CONE.get(), "Pine Cone");
         add(ModBlocks.PINE_TRAPDOOR.get(), "Pine Trapdoor");
@@ -53,6 +55,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.PINE_SIGN.get(), "Pine Sign");
         add(ModItems.PINE_BOAT.get(), "Pine Boat");
         add(ModItems.HUNTING_RIFLE.get(), "Hunting Rifle");
+        add(ModItems.PINE_TEA.get(), "Pine Tea");
 
         add("subtitles.overthehorizons.rifle_shoot_bullet", "Rifle Shooting Bullet");
         add("subtitles.overthehorizons.rifle_reload", "Reloading Rifle");
