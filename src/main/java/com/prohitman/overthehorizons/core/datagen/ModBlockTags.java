@@ -50,7 +50,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.PINE_LEAVES.get())
                 .add(ModBlocks.DRIED_BIRCH_LEAVES.get())
                 .add(ModBlocks.DRIED_DARK_OAK_LEAVES.get())
-                .add(ModBlocks.DRIED_OAK_LEAVES.get());
+                .add(ModBlocks.DRIED_OAK_LEAVES.get())
+                .add(ModBlocks.PACKED_ROOTS.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(ModBlocks.ARID_SOIL.get());
         tag(BlockTags.NEEDS_STONE_TOOL)

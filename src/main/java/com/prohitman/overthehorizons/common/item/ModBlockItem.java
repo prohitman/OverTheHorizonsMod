@@ -46,6 +46,25 @@ public class ModBlockItem extends BlockItem {
     @Override
     public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
         Block block = this.getBlock();
+        if(block == ModBlocks.PINE_CONE.get())
+            return 50;
+        if(block == ModBlocks.DRIED_BIRCH_LEAVES.get())
+            return 225;
+        if(block == ModBlocks.DRIED_DARK_OAK_LEAVES.get())
+            return 225;
+        if(block == ModBlocks.DRIED_OAK_LEAVES.get())
+            return 225;
+        if(block == ModBlocks.PACKED_ROOTS.get())
+            return 250;
+        if(block == ModBlocks.ROSE.get())
+            return 10;
+        if(block == ModBlocks.TREE_MOSS.get())
+            return 100;
+        if(block == ModBlocks.GREEN_LICHEN_COVERAGE.get())
+            return 75;
+        if(block == ModBlocks.RED_LICHEN_COVERAGE.get())
+            return 75;
+
         return super.getBurnTime(itemStack, recipeType);
     }
 }

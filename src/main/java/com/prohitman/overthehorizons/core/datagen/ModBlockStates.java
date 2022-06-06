@@ -22,6 +22,8 @@ public class ModBlockStates extends BlockStateProvider {
         simpleBlock(ModBlocks.GREEN_LICHEN_COVERAGE.get(), models().cross("green_lichen_coverage", modLoc("block/green_lichen_coverage")));
         simpleBlock(ModBlocks.PEBBLES.get(), models().cubeColumn("pebbles", modLoc("block/pebbles_side"), modLoc("block/pebbles_top")));
         simpleBlock(ModBlocks.ARID_SOIL.get(), models().cubeAll("arid_soil", modLoc("block/arid_soil")));
+        simpleBlock(ModBlocks.PACKED_ROOTS.get(), models().cubeAll("packed_roots", modLoc("block/packed_roots")));
+        simpleBlock(ModBlocks.ROSE.get(), models().cross("rose", modLoc("block/rose")));
 
         slabBlock(ModBlocks.ADOBE_SLAB.get(), modLoc("block/adobe"), modLoc("block/adobe"));
         stairsBlock(ModBlocks.ADOBE_STAIRS.get(), modLoc("block/adobe"));

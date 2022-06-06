@@ -16,10 +16,10 @@ import net.minecraftforge.common.Tags;
 import java.util.Random;
 import java.util.logging.Level;
 
-public class LichenCluster extends Item {
+public class LichenCluster extends BaseFuelItem {
     Random random = new Random();
-    public LichenCluster(Properties pProperties) {
-        super(pProperties);
+    public LichenCluster(Properties pProperties, int fuelValue) {
+        super(pProperties, fuelValue);
     }
 
     @Override

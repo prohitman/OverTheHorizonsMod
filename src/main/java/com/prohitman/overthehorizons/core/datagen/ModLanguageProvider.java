@@ -40,6 +40,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.DUCKWEED.get(), "Duckweed");
         add(ModBlocks.FALLEN_LEAVES.get(), "Fallen Leaves");
         add(ModBlocks.ARID_SOIL.get(), "Arid Soil");
+        add(ModBlocks.PACKED_ROOTS.get(), "Packed Roots");
+        add(ModBlocks.ROSE.get(), "Rose");
 
         add(ModBlocks.PINE_LEAVES.get(), "Pine Leaves");
         add(ModBlocks.PINE_SLAB.get(), "Pine Slab");
