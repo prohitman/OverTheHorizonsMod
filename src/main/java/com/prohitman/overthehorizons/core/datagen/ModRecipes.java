@@ -5,6 +5,11 @@ import com.prohitman.overthehorizons.core.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
@@ -17,6 +22,13 @@ public class ModRecipes extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+        ShapelessRecipeBuilder
+                .shapeless(ModItems.PINE_TEA.get())
+                .requires(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER).getItem())
+                .requires(Items.SUGAR)
+                .requires(ModBlocks.PINE_CONE.get())
+                .unlockedBy("pine_cone", has(ModBlocks.PINE_CONE.get())).save(consumer);
+
         woodenBoat(consumer, ModItems.PINE_BOAT.get(), ModBlocks.PINE_PLANKS.get().asItem());
         woodFromLogs(consumer, ModBlocks.PINE_WOOD.get().asItem(), ModBlocks.PINE_LOG.get().asItem());
         planksFromLog(consumer, ModBlocks.PINE_PLANKS.get().asItem(), ModItemTags.PINE_LOGS);

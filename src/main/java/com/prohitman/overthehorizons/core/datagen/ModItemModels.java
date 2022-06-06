@@ -31,7 +31,7 @@ public class ModItemModels extends ItemModelProvider {
         withExistingParent(ModBlocks.STRIPPED_PINE_LOG.get().getRegistryName().getPath(), modLoc("block/stripped_pine_log"));
         withExistingParent(ModBlocks.PINE_LEAVES.get().getRegistryName().getPath(), modLoc("block/pine_leaves"));
         withExistingParent(ModBlocks.PINE_FENCE_GATE.get().getRegistryName().getPath(), modLoc("block/pine_fence_gate"));
-        withExistingParent(ModBlocks.PINE_FENCE.get().getRegistryName().getPath(), modLoc("block/pine_fence_post"));
+        withExistingParent(ModBlocks.PINE_FENCE.get().getRegistryName().getPath(), modLoc("block/pine_fence_inventory"));
         withExistingParent(ModBlocks.ADOBE_SLAB.get().getRegistryName().getPath(), modLoc("block/adobe_slab"));
         withExistingParent(ModBlocks.ADOBE_STAIRS.get().getRegistryName().getPath(), modLoc("block/adobe_stairs"));
         withExistingParent(ModBlocks.SMOOTH_ADOBE_SLAB.get().getRegistryName().getPath(), modLoc("block/smooth_adobe_slab"));

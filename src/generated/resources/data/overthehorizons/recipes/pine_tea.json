@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "overthehorizons:pine_cone"
+    }
+  ],
+  "result": {
+    "item": "overthehorizons:pine_tea"
+  }
+}
