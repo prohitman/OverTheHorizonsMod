@@ -27,6 +27,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> GREEN_LICHENSTONE = BLOCKS.register("green_lichenstone", () -> new LichestoneBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).randomTicks().requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
     public static final RegistryObject<Block> PEBBLES = BLOCKS.register("pebbles", () -> normalStoneBlock(MaterialColor.STONE, SoundType.STONE));
     public static final RegistryObject<Block> RIVER_ROCKS = BLOCKS.register("river_rocks", () -> new RiverRocks(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F).sound(SoundType.STONE)));
+    public static final RegistryObject<StairBlock> ADOBE_STAIRS = BLOCKS.register("adobe_stairs", () -> new StairBlock(() -> ADOBE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ADOBE.get())));
+    public static final RegistryObject<SlabBlock> ADOBE_SLAB = BLOCKS.register("adobe_slab", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(2.0F, 6.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<StairBlock> SMOOTH_ADOBE_STAIRS = BLOCKS.register("smooth_adobe_stairs", () -> new StairBlock(() -> SMOOTH_ADOBE.get().defaultBlockState(), BlockBehaviour.Properties.copy(SMOOTH_ADOBE.get())));
+    public static final RegistryObject<SlabBlock> SMOOTH_ADOBE_SLAB = BLOCKS.register("smooth_adobe_slab", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(2.0F, 6.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<StairBlock> ADOBE_BRICKS_STAIRS = BLOCKS.register("adobe_bricks_stairs", () -> new StairBlock(() -> ADOBE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ADOBE_BRICKS.get())));
+    public static final RegistryObject<SlabBlock> ADOBE_BRICKS_SLAB = BLOCKS.register("adobe_bricks_slab", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(2.0F, 6.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> ARID_SOIL = BLOCKS.register("arid_soil", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
 
     //Tree
     public static final RegistryObject<Block> PINE_LEAVES = BLOCKS.register("pine_leaves", () -> leaves(SoundType.GRASS, ModLeavesBlock.LeafParticleType.NONE));

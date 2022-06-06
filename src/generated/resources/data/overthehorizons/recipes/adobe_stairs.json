@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "overthehorizons:adobe"
+    }
+  },
+  "result": {
+    "item": "overthehorizons:adobe_stairs",
+    "count": 4
+  }
+}

@@ -21,6 +21,14 @@ public class ModBlockStates extends BlockStateProvider {
         simpleBlock(ModBlocks.RED_LICHEN_COVERAGE.get(), models().cross("red_lichen_coverage", modLoc("block/red_lichen_coverage")));
         simpleBlock(ModBlocks.GREEN_LICHEN_COVERAGE.get(), models().cross("green_lichen_coverage", modLoc("block/green_lichen_coverage")));
         simpleBlock(ModBlocks.PEBBLES.get(), models().cubeColumn("pebbles", modLoc("block/pebbles_side"), modLoc("block/pebbles_top")));
+        simpleBlock(ModBlocks.ARID_SOIL.get(), models().cubeAll("arid_soil", modLoc("block/arid_soil")));
+
+        slabBlock(ModBlocks.ADOBE_SLAB.get(), modLoc("block/adobe"), modLoc("block/adobe"));
+        stairsBlock(ModBlocks.ADOBE_STAIRS.get(), modLoc("block/adobe"));
+        slabBlock(ModBlocks.ADOBE_BRICKS_SLAB.get(), modLoc("block/adobe_bricks"), modLoc("block/adobe_bricks"));
+        stairsBlock(ModBlocks.ADOBE_BRICKS_STAIRS.get(), modLoc("block/adobe_bricks"));
+        slabBlock(ModBlocks.SMOOTH_ADOBE_SLAB.get(), modLoc("block/smooth_adobe"), modLoc("block/smooth_adobe"));
+        stairsBlock(ModBlocks.SMOOTH_ADOBE_STAIRS.get(), modLoc("block/smooth_adobe"));
 
         simpleBlock(ModBlocks.PINE_PLANKS.get(), models().cubeAll("pine_planks", modLoc("block/pine_planks")));
         trapdoorBlock(ModBlocks.PINE_TRAPDOOR.get(), modLoc("block/pine_trapdoor"), true);

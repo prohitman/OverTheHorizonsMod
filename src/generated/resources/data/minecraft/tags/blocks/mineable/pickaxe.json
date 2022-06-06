@@ -7,6 +7,12 @@
     "overthehorizons:adobe_bricks",
     "overthehorizons:smooth_adobe",
     "overthehorizons:framed_adobe",
-    "overthehorizons:pebbles"
+    "overthehorizons:pebbles",
+    "overthehorizons:adobe_stairs",
+    "overthehorizons:adobe_slab",
+    "overthehorizons:adobe_bricks_stairs",
+    "overthehorizons:adobe_bricks_slab",
+    "overthehorizons:smooth_adobe_slab",
+    "overthehorizons:smooth_adobe_stairs"
   ]
 }

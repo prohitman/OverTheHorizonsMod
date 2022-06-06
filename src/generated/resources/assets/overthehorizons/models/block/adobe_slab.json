@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "overthehorizons:block/adobe",
+    "bottom": "overthehorizons:block/adobe",
+    "top": "overthehorizons:block/adobe"
+  }
+}

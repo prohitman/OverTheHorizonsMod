@@ -23,7 +23,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.ADOBE_BRICKS.get())
                 .add(ModBlocks.SMOOTH_ADOBE.get())
                 .add(ModBlocks.FRAMED_ADOBE.get())
-                .add(ModBlocks.PEBBLES.get());
+                .add(ModBlocks.PEBBLES.get())
+                .add(ModBlocks.ADOBE_STAIRS.get())
+                .add(ModBlocks.ADOBE_SLAB.get())
+                .add(ModBlocks.ADOBE_BRICKS_STAIRS.get())
+                .add(ModBlocks.ADOBE_BRICKS_SLAB.get())
+                .add(ModBlocks.SMOOTH_ADOBE_SLAB.get())
+                .add(ModBlocks.SMOOTH_ADOBE_STAIRS.get());
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.PINE_LOG.get())
                 .add(ModBlocks.PINE_BUTTON.get())
@@ -40,10 +46,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.PINE_TRAPDOOR.get())
                 .add(ModBlocks.PINE_WOOD.get())
                 .add(ModBlocks.STRIPPED_PINE_WOOD.get());
-        tag(BlockTags.MINEABLE_WITH_HOE).add(ModBlocks.PINE_LEAVES.get())
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.PINE_LEAVES.get())
                 .add(ModBlocks.DRIED_BIRCH_LEAVES.get())
                 .add(ModBlocks.DRIED_DARK_OAK_LEAVES.get())
                 .add(ModBlocks.DRIED_OAK_LEAVES.get());
+        tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(ModBlocks.ARID_SOIL.get());
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.GREEN_LICHENSTONE.get())
                 .add(ModBlocks.RED_LICHENSTONE.get())

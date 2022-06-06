@@ -14,12 +14,17 @@ public class ModLootTables extends BaseLootTableProvider{
 
     @Override
     protected void addTables() {
-
-        //Wood
+        lootTables.put(ModBlocks.ARID_SOIL.get(), createSimpleTable("arid_soil", ModBlocks.ARID_SOIL.get()));
         lootTables.put(ModBlocks.STRIPPED_PINE_WOOD.get(), createSimpleTable("stripped_pine_wood", ModBlocks.STRIPPED_PINE_WOOD.get()));
         lootTables.put(ModBlocks.ADOBE.get(), createSimpleTable("adobe", ModBlocks.ADOBE.get()));
         lootTables.put(ModBlocks.FRAMED_ADOBE.get(), createSimpleTable("framed_adobe", ModBlocks.FRAMED_ADOBE.get()));
         lootTables.put(ModBlocks.SMOOTH_ADOBE.get(), createSimpleTable("smooth_adobe", ModBlocks.SMOOTH_ADOBE.get()));
+        lootTables.put(ModBlocks.SMOOTH_ADOBE_SLAB.get(), createSimpleTable("smooth_adobe_slab", ModBlocks.SMOOTH_ADOBE_SLAB.get()));
+        lootTables.put(ModBlocks.SMOOTH_ADOBE_STAIRS.get(), createSimpleTable("smooth_adobe_stairs", ModBlocks.SMOOTH_ADOBE_STAIRS.get()));
+        lootTables.put(ModBlocks.ADOBE_SLAB.get(), createSimpleTable("adobe_slab", ModBlocks.ADOBE_SLAB.get()));
+        lootTables.put(ModBlocks.ADOBE_STAIRS.get(), createSimpleTable("adobe_stairs", ModBlocks.ADOBE_STAIRS.get()));
+        lootTables.put(ModBlocks.ADOBE_BRICKS_SLAB.get(), createSimpleTable("adobe_bricks_slab", ModBlocks.ADOBE_BRICKS_SLAB.get()));
+        lootTables.put(ModBlocks.ADOBE_BRICKS_STAIRS.get(), createSimpleTable("adobe_bricks_stairs", ModBlocks.ADOBE_BRICKS_STAIRS.get()));
         lootTables.put(ModBlocks.ADOBE_BRICKS.get(), createSimpleTable("adobe_bricks", ModBlocks.ADOBE_BRICKS.get()));
         lootTables.put(ModBlocks.RED_LICHENSTONE.get(), createSimpleTable("red_lichenstone", Blocks.COBBLESTONE));
         lootTables.put(ModBlocks.GREEN_LICHENSTONE.get(), createSimpleTable("green_lichenstone", Blocks.COBBLESTONE));

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "overthehorizons:block/smooth_adobe_slab_top"
+    },
+    "type=bottom": {
+      "model": "overthehorizons:block/smooth_adobe_slab"
+    },
+    "type=double": {
+      "model": "overthehorizons:block/smooth_adobe"
+    }
+  }
+}

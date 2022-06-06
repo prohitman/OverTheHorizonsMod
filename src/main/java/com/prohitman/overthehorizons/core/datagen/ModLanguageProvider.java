@@ -21,6 +21,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ADOBE_BRICKS.get(), "Adobe Bricks");
         add(ModBlocks.FRAMED_ADOBE.get(), "Framed Adobe");
         add(ModBlocks.SMOOTH_ADOBE.get(), "Smooth Adobe");
+        add(ModBlocks.ADOBE_STAIRS.get(), "Adobe Stairs");
+        add(ModBlocks.SMOOTH_ADOBE_STAIRS.get(), "Smooth Adobe Stairs");
+        add(ModBlocks.ADOBE_BRICKS_STAIRS.get(), "Adobe Bricks Stairs");
+        add(ModBlocks.ADOBE_BRICKS_SLAB.get(), "Adobe Bricks Slab");
+        add(ModBlocks.SMOOTH_ADOBE_SLAB.get(), "Smooth Adobe Slab");
+        add(ModBlocks.ADOBE_SLAB.get(), "Adobe Slab");
         add(ModBlocks.DRIED_DARK_OAK_LEAVES.get(), "Dried Dark Oak Leaves");
         add(ModBlocks.DRIED_OAK_LEAVES.get(), "Dried Oak Leaves");
         add(ModBlocks.DRIED_BIRCH_LEAVES.get(), "Dried Birch Leaves");
@@ -33,6 +39,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RIVER_ROCKS.get(), "River Rocks");
         add(ModBlocks.DUCKWEED.get(), "Duckweed");
         add(ModBlocks.FALLEN_LEAVES.get(), "Fallen Leaves");
+        add(ModBlocks.ARID_SOIL.get(), "Arid Soil");
 
         add(ModBlocks.PINE_LEAVES.get(), "Pine Leaves");
         add(ModBlocks.PINE_SLAB.get(), "Pine Slab");

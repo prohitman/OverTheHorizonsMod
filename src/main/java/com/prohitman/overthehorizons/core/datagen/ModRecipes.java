@@ -29,5 +29,11 @@ public class ModRecipes extends RecipeProvider {
         trapdoorBuilder(ModBlocks.PINE_TRAPDOOR.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
         signBuilder(ModBlocks.PINE_STANDING_SIGN.get().asItem(), Ingredient.of(ModBlocks.PINE_PLANKS.get().asItem())).unlockedBy("pine_planks", has(ModBlocks.PINE_PLANKS.get())).save(consumer);
         slab(consumer, ModBlocks.PINE_SLAB.get().asItem(), ModBlocks.PINE_PLANKS.get().asItem());
+        slab(consumer, ModBlocks.ADOBE_SLAB.get().asItem(), ModBlocks.ADOBE.get().asItem());
+        slab(consumer, ModBlocks.SMOOTH_ADOBE_SLAB.get().asItem(), ModBlocks.SMOOTH_ADOBE.get().asItem());
+        slab(consumer, ModBlocks.ADOBE_BRICKS_SLAB.get().asItem(), ModBlocks.ADOBE_BRICKS.get().asItem());
+        stairBuilder(ModBlocks.SMOOTH_ADOBE_STAIRS.get().asItem(), Ingredient.of(ModBlocks.SMOOTH_ADOBE.get().asItem())).unlockedBy("smooth_adobe", has(ModBlocks.SMOOTH_ADOBE.get())).save(consumer);
+        stairBuilder(ModBlocks.ADOBE_STAIRS.get().asItem(), Ingredient.of(ModBlocks.ADOBE.get().asItem())).unlockedBy("adobe", has(ModBlocks.ADOBE.get())).save(consumer);
+        stairBuilder(ModBlocks.ADOBE_BRICKS_STAIRS.get().asItem(), Ingredient.of(ModBlocks.ADOBE_BRICKS.get().asItem())).unlockedBy("adobe_bricks", has(ModBlocks.ADOBE_BRICKS.get())).save(consumer);
     }
 }

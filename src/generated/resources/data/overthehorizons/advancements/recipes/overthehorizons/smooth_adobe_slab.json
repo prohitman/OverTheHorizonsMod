@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "overthehorizons:smooth_adobe_slab"
+    ]
+  },
+  "criteria": {
+    "has_smooth_adobe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "overthehorizons:smooth_adobe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overthehorizons:smooth_adobe_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smooth_adobe",
+      "has_the_recipe"
+    ]
+  ]
+}

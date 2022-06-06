@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "overthehorizons:block/adobe",
+    "bottom": "overthehorizons:block/adobe",
+    "top": "overthehorizons:block/adobe"
+  }
+}

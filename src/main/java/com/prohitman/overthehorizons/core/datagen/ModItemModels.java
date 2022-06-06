@@ -31,7 +31,14 @@ public class ModItemModels extends ItemModelProvider {
         withExistingParent(ModBlocks.STRIPPED_PINE_LOG.get().getRegistryName().getPath(), modLoc("block/stripped_pine_log"));
         withExistingParent(ModBlocks.PINE_LEAVES.get().getRegistryName().getPath(), modLoc("block/pine_leaves"));
         withExistingParent(ModBlocks.PINE_FENCE_GATE.get().getRegistryName().getPath(), modLoc("block/pine_fence_gate"));
-        withExistingParent(ModBlocks.PINE_FENCE.get().getRegistryName().getPath(), modLoc("block/pine_fence_inventory"));
+        withExistingParent(ModBlocks.PINE_FENCE.get().getRegistryName().getPath(), modLoc("block/pine_fence_post"));
+        withExistingParent(ModBlocks.ADOBE_SLAB.get().getRegistryName().getPath(), modLoc("block/adobe_slab"));
+        withExistingParent(ModBlocks.ADOBE_STAIRS.get().getRegistryName().getPath(), modLoc("block/adobe_stairs"));
+        withExistingParent(ModBlocks.SMOOTH_ADOBE_SLAB.get().getRegistryName().getPath(), modLoc("block/smooth_adobe_slab"));
+        withExistingParent(ModBlocks.SMOOTH_ADOBE_STAIRS.get().getRegistryName().getPath(), modLoc("block/smooth_adobe_stairs"));
+        withExistingParent(ModBlocks.ADOBE_BRICKS_SLAB.get().getRegistryName().getPath(), modLoc("block/adobe_bricks_slab"));
+        withExistingParent(ModBlocks.ADOBE_BRICKS_STAIRS.get().getRegistryName().getPath(), modLoc("block/adobe_bricks_stairs"));
+        withExistingParent(ModBlocks.ARID_SOIL.get().getRegistryName().getPath(), modLoc("block/arid_soil"));
 
         singleTexture((ModBlocks.GREEN_LICHEN_COVERAGE.get().getRegistryName().getPath()),
                 mcLoc("item/generated"),
