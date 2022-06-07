@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
@@ -30,9 +31,9 @@ public class LichenCoverageBlock extends BushBlock implements IForgeShearable {
         return BlockBehaviour.OffsetType.XZ;
     }
 
-    @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
+        Vec3 vec3 = pState.getOffset(pLevel, pPos);
+        return SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
 
     /**

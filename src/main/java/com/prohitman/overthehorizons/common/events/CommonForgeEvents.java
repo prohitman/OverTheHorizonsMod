@@ -36,6 +36,9 @@ public class CommonForgeEvents {
     }
 
     public static void registerCompostables(){
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.DUNE_GRASS.get().asItem(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.WILD_WHEAT.get().asItem(), 0.4F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.TALL_WILD_WHEAT.get().asItem(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.FALLEN_LEAVES.get().asItem(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.DRIED_BIRCH_LEAVES.get().asItem(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.DRIED_OAK_LEAVES.get().asItem(), 0.3F);
@@ -44,6 +47,7 @@ public class CommonForgeEvents {
         ComposterBlock.COMPOSTABLES.put(ModBlocks.GREEN_LICHEN_COVERAGE.get().asItem(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.PINE_LEAVES.get().asItem(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.TREE_MOSS.get().asItem(), 0.5F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.PINE_CONE.get().asItem(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModItems.LICHEN_CLUSTER.get().asItem(), 0.8F);
     }
 

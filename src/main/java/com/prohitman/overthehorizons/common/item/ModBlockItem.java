@@ -56,8 +56,6 @@ public class ModBlockItem extends BlockItem {
             return 225;
         if(block == ModBlocks.PACKED_ROOTS.get())
             return 250;
-        if(block == ModBlocks.ROSE.get())
-            return 10;
         if(block == ModBlocks.TREE_MOSS.get())
             return 100;
         if(block == ModBlocks.GREEN_LICHEN_COVERAGE.get())

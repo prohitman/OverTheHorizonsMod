@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "overthehorizons:block/tall_wild_wheat_top"
+  }
+}

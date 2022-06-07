@@ -66,6 +66,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_LICHEN_COVERAGE = BLOCKS.register("red_lichen_coverage", () -> new LichenCoverageBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES)));
     public static final RegistryObject<Block> GREEN_LICHEN_COVERAGE = BLOCKS.register("green_lichen_coverage", () -> new LichenCoverageBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES)));
     public static final RegistryObject<Block> DUCKWEED = BLOCKS.register("duckweed", () -> new Duckweed(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.LILY_PAD).noOcclusion()));
+    public static final RegistryObject<Block> DUNE_GRASS = BLOCKS.register("dune_grass", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> WILD_WHEAT = BLOCKS.register("wild_wheat", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<DoublePlantBlock> TALL_WILD_WHEAT = BLOCKS.register("tall_wild_wheat", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
 
     private static Block normalStoneBlock(MaterialColor color, SoundType soundType) {
         return new Block(BlockBehaviour.Properties.of(Material.STONE, color).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(soundType));

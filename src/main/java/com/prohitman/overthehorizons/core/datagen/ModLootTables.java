@@ -58,6 +58,9 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(ModBlocks.FALLEN_LEAVES.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.FALLEN_LEAVES.get()));
         lootTables.put(ModBlocks.RED_LICHEN_COVERAGE.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.RED_LICHEN_COVERAGE.get()));
         lootTables.put(ModBlocks.GREEN_LICHEN_COVERAGE.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.GREEN_LICHEN_COVERAGE.get()));
+        lootTables.put(ModBlocks.DUNE_GRASS.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.DUNE_GRASS.get()));
+        lootTables.put(ModBlocks.WILD_WHEAT.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.WILD_WHEAT.get()));
+        lootTables.put(ModBlocks.TALL_WILD_WHEAT.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.TALL_WILD_WHEAT.get()));
 
     }
 }

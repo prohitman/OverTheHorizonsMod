@@ -44,6 +44,15 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture((ModBlocks.ROSE.get().getRegistryName().getPath()),
                 mcLoc("item/generated"),
                 "layer0", modLoc("block/rose"));
+        singleTexture((ModBlocks.DUNE_GRASS.get().getRegistryName().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/dune_grass"));
+        singleTexture((ModBlocks.WILD_WHEAT.get().getRegistryName().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/wild_wheat"));
+        singleTexture((ModBlocks.TALL_WILD_WHEAT.get().getRegistryName().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/tall_wild_wheat_top"));
         singleTexture((ModBlocks.GREEN_LICHEN_COVERAGE.get().getRegistryName().getPath()),
                 mcLoc("item/generated"),
                 "layer0", modLoc("block/green_lichen_coverage"));
