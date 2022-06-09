@@ -8,8 +8,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ModItemGroups {
-    public static final String TAB_NAME = "overthehorizons";
-
     public static final CreativeModeTab OVER_THE_HORIZONS = (new CreativeModeTab(OverTheHorizonsMod.MOD_ID) {
         @Override
         @OnlyIn(Dist.CLIENT)

@@ -16,7 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModBlocks {
+public class ModBlocks {//REMEMBER TURN ON GRADLE ONLINE ONCE INTERNET IS BACK
     //Blocks
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, OverTheHorizonsMod.MOD_ID);
 
@@ -27,7 +27,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_LICHENSTONE = BLOCKS.register("red_lichenstone", () -> new LichestoneBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).randomTicks().requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
     public static final RegistryObject<Block> GREEN_LICHENSTONE = BLOCKS.register("green_lichenstone", () -> new LichestoneBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).randomTicks().requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
     public static final RegistryObject<Block> PEBBLES = BLOCKS.register("pebbles", () -> normalStoneBlock(MaterialColor.STONE, SoundType.STONE));
-    public static final RegistryObject<Block> RIVER_ROCKS = BLOCKS.register("river_rocks", () -> new RiverRocks(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> RIVER_ROCKS = BLOCKS.register("river_rocks", () -> new RiverRocks(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F).dynamicShape().sound(SoundType.STONE)));
     public static final RegistryObject<StairBlock> ADOBE_STAIRS = BLOCKS.register("adobe_stairs", () -> new StairBlock(() -> ADOBE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ADOBE.get())));
     public static final RegistryObject<SlabBlock> ADOBE_SLAB = BLOCKS.register("adobe_slab", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(2.0F, 6.0F).sound(SoundType.STONE)));
     public static final RegistryObject<StairBlock> SMOOTH_ADOBE_STAIRS = BLOCKS.register("smooth_adobe_stairs", () -> new StairBlock(() -> SMOOTH_ADOBE.get().defaultBlockState(), BlockBehaviour.Properties.copy(SMOOTH_ADOBE.get())));
@@ -35,7 +35,7 @@ public class ModBlocks {
     public static final RegistryObject<StairBlock> ADOBE_BRICKS_STAIRS = BLOCKS.register("adobe_bricks_stairs", () -> new StairBlock(() -> ADOBE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ADOBE_BRICKS.get())));
     public static final RegistryObject<SlabBlock> ADOBE_BRICKS_SLAB = BLOCKS.register("adobe_bricks_slab", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(2.0F, 6.0F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> ARID_SOIL = BLOCKS.register("arid_soil", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
-    public static final RegistryObject<Block> PACKED_ROOTS = BLOCKS.register("packed_roots", () -> new RootedDirtBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(0.5F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> PACKED_ROOTS = BLOCKS.register("packed_roots", () -> new RootedDirtBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(0.5F).sound(SoundType.ANVIL)));
 
     //Tree
     public static final RegistryObject<Block> PINE_LEAVES = BLOCKS.register("pine_leaves", () -> leaves(SoundType.GRASS, ModLeavesBlock.LeafParticleType.NONE));
@@ -65,7 +65,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ROSE = BLOCKS.register("rose", () -> new FlowerBlock(MobEffects.LUCK, 9, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> RED_LICHEN_COVERAGE = BLOCKS.register("red_lichen_coverage", () -> new LichenCoverageBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES)));
     public static final RegistryObject<Block> GREEN_LICHEN_COVERAGE = BLOCKS.register("green_lichen_coverage", () -> new LichenCoverageBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES)));
-    public static final RegistryObject<Block> DUCKWEED = BLOCKS.register("duckweed", () -> new Duckweed(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.LILY_PAD).noOcclusion()));
+    public static final RegistryObject<WaterlilyBlock> DUCKWEED = BLOCKS.register("duckweed", () -> new WaterlilyBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.LILY_PAD).noOcclusion()));
     public static final RegistryObject<Block> DUNE_GRASS = BLOCKS.register("dune_grass", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> WILD_WHEAT = BLOCKS.register("wild_wheat", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<DoublePlantBlock> TALL_WILD_WHEAT = BLOCKS.register("tall_wild_wheat", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));

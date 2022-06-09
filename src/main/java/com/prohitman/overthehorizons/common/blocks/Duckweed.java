@@ -22,7 +22,7 @@ import net.minecraftforge.common.PlantType;
 public class Duckweed extends WaterlilyBlock implements IPlantable {
     protected static final VoxelShape AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.5D, 16.0D);
 
-    public Duckweed(BlockBehaviour.Properties properties) {
+    public Duckweed(Properties properties) {
         super(properties);
     }
 

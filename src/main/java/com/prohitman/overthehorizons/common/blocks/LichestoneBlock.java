@@ -1,8 +1,12 @@
 package com.prohitman.overthehorizons.common.blocks;
 
+import com.prohitman.overthehorizons.core.init.ModBlocks;
+import com.prohitman.overthehorizons.core.init.ModFeatures;
 import com.prohitman.overthehorizons.core.init.ModItems;
+import com.prohitman.overthehorizons.core.util.ModFeatureUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -30,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class LichestoneBlock extends Block{
+public class LichestoneBlock extends Block implements BonemealableBlock{
     public LichestoneBlock(Properties properties) {
         super(properties);
     }
@@ -103,7 +107,7 @@ public class LichestoneBlock extends Block{
         }
     }
 
-    /*@Override
+    @Override
     public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
         return pLevel.getBlockState(pPos.above()).isAir();
     }
@@ -115,6 +119,10 @@ public class LichestoneBlock extends Block{
 
     @Override
     public void performBonemeal(ServerLevel pLevel, Random pRandom, BlockPos pPos, BlockState pState) {
-
-    }*/
+        if(pState.is(ModBlocks.GREEN_LICHENSTONE.get())){
+            ModFeatureUtils.GREEN_LICHENSTONE_PATCH_BONEMEAL.value().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
+        } else if(pState.is(ModBlocks.RED_LICHENSTONE.get())){
+            ModFeatureUtils.RED_LICHENSTONE_PATCH_BONEMEAL.value().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
+        }
+    }
 }

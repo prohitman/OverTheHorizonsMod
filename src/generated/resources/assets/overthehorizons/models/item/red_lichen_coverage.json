@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overthehorizons:block/red_lichen_coverage"
+    "layer0": "overthehorizons:item/red_lichen_coverage"
   }
 }

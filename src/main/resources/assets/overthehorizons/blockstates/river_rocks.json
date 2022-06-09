@@ -1,5 +1,19 @@
 {
     "variants": {
-        "": { "model": "overthehorizons:block/river_rocks" }
+        "facing=east": {
+            "model": "overthehorizons:block/river_rocks",
+            "y": 270
+        },
+        "facing=north": {
+            "model": "overthehorizons:block/river_rocks",
+            "y": 180
+        },
+        "facing=south": {
+            "model": "overthehorizons:block/river_rocks"
+        },
+        "facing=west": {
+            "model": "overthehorizons:block/river_rocks",
+            "y": 90
+        }
     }
 }

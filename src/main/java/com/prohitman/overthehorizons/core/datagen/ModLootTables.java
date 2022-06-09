@@ -2,9 +2,16 @@ package com.prohitman.overthehorizons.core.datagen;
 
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.fml.common.Mod;
 
 public class ModLootTables extends BaseLootTableProvider{
@@ -52,15 +59,16 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(ModBlocks.PINE_WALL_SIGN.get(), createSimpleTable("pine_wall_sign", ModBlocks.PINE_WALL_SIGN.get()));
         lootTables.put(ModBlocks.DUCKWEED.get(), createSimpleTable("duckweed", ModBlocks.DUCKWEED.get()));
         lootTables.put(ModBlocks.PINE_LEAVES.get(), createLeavesDrops(ModBlocks.PINE_LEAVES.get(), Blocks.BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
-        lootTables.put(ModBlocks.DRIED_BIRCH_LEAVES.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.DRIED_BIRCH_LEAVES.get()));
-        lootTables.put(ModBlocks.DRIED_OAK_LEAVES.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.DRIED_OAK_LEAVES.get()));
-        lootTables.put(ModBlocks.DRIED_DARK_OAK_LEAVES.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.DRIED_DARK_OAK_LEAVES.get()));
+        lootTables.put(ModBlocks.DRIED_BIRCH_LEAVES.get(),createDriedLeavesDrops(ModBlocks.DRIED_BIRCH_LEAVES.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        lootTables.put(ModBlocks.DRIED_OAK_LEAVES.get(), createDriedLeavesDrops(ModBlocks.DRIED_OAK_LEAVES.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        lootTables.put(ModBlocks.DRIED_DARK_OAK_LEAVES.get(), createDriedLeavesDrops(ModBlocks.DRIED_DARK_OAK_LEAVES.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         lootTables.put(ModBlocks.FALLEN_LEAVES.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.FALLEN_LEAVES.get()));
         lootTables.put(ModBlocks.RED_LICHEN_COVERAGE.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.RED_LICHEN_COVERAGE.get()));
         lootTables.put(ModBlocks.GREEN_LICHEN_COVERAGE.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.GREEN_LICHEN_COVERAGE.get()));
         lootTables.put(ModBlocks.DUNE_GRASS.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.DUNE_GRASS.get()));
         lootTables.put(ModBlocks.WILD_WHEAT.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.WILD_WHEAT.get()));
         lootTables.put(ModBlocks.TALL_WILD_WHEAT.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.TALL_WILD_WHEAT.get()));
+        lootTables.put(ModBlocks.PINE_DOOR.get(), createDoorTable(ModBlocks.PINE_DOOR.get()));
 
     }
 }

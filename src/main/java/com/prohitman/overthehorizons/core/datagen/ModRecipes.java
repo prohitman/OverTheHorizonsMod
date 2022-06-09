@@ -47,5 +47,6 @@ public class ModRecipes extends RecipeProvider {
         stairBuilder(ModBlocks.SMOOTH_ADOBE_STAIRS.get().asItem(), Ingredient.of(ModBlocks.SMOOTH_ADOBE.get().asItem())).unlockedBy("smooth_adobe", has(ModBlocks.SMOOTH_ADOBE.get())).save(consumer);
         stairBuilder(ModBlocks.ADOBE_STAIRS.get().asItem(), Ingredient.of(ModBlocks.ADOBE.get().asItem())).unlockedBy("adobe", has(ModBlocks.ADOBE.get())).save(consumer);
         stairBuilder(ModBlocks.ADOBE_BRICKS_STAIRS.get().asItem(), Ingredient.of(ModBlocks.ADOBE_BRICKS.get().asItem())).unlockedBy("adobe_bricks", has(ModBlocks.ADOBE_BRICKS.get())).save(consumer);
+
     }
 }

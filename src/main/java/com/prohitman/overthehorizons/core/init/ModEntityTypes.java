@@ -18,5 +18,4 @@ public class ModEntityTypes {
             .<ModBoat>of(ModBoat::new, MobCategory.MISC)
             .sized(1.375F, 0.5625F)
             .build(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "boat").toString()));
-    //public static final RegistryObject<EntityType<Boat>> PINE_BOAT = ENTITY_TYPES.register("pine_boat", () -> new Boat());
 }

@@ -48,6 +48,10 @@ public class ModBlockItem extends BlockItem {
         Block block = this.getBlock();
         if(block == ModBlocks.PINE_CONE.get())
             return 50;
+        if(block == ModBlocks.PINE_FENCE.get())
+            return 300;
+        if(block == ModBlocks.PINE_FENCE_GATE.get())
+            return 300;
         if(block == ModBlocks.DRIED_BIRCH_LEAVES.get())
             return 225;
         if(block == ModBlocks.DRIED_DARK_OAK_LEAVES.get())
