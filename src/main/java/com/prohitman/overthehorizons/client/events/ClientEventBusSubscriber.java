@@ -13,6 +13,7 @@ import com.prohitman.overthehorizons.common.network.MessageExtendedReachAttack;
 import com.prohitman.overthehorizons.common.network.MessageReloadRifle;
 import com.prohitman.overthehorizons.common.network.OTHPacketHandler;
 import com.prohitman.overthehorizons.core.init.*;
+import com.prohitman.overthehorizons.core.util.ModOverlayRenderer;
 import com.prohitman.overthehorizons.core.util.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
@@ -56,6 +57,14 @@ import java.awt.*;
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventBusSubscriber {
 
+    public static final IIngameOverlay RIFLE_SCOPE_ELEMENT = OverlayRegistry.registerOverlayTop("Rifle", (gui, poseStack, partialTick, screenWidth, screenHeight) -> {
+        gui.setupOverlayRenderState(true, false);
+        if(ModKeyBindings.zoomRifleKeyMapping.isDown() && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem){
+            ModOverlayRenderer.renderSpyglassOverlay();
+            //gui.renderSpyglassOverlay(OverTheHorizonsMod.scopeScale);
+        }
+    });
+
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event){
         event.enqueueWork(() -> {
@@ -78,11 +87,6 @@ public class ClientEventBusSubscriber {
             BlockEntityRenderers.register(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
             Sheets.addWoodType(ModWoodTypes.PINE);
         });
-
-        /*OverlayRegistry.registerOverlayTop("RifleScope", (gui, mStack, partialTicks, screenWidth, screenHeight) -> {
-            gui.setupOverlayRenderState(true, false);
-            RenderUtils.renderSpyglassOverlay(1.0f);
-        });*/
     }
 
     @SubscribeEvent

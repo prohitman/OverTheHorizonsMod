@@ -15,6 +15,7 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -32,7 +33,6 @@ import java.awt.event.MouseEvent;
 
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public final class ForgeClientEventBusSubscriber {
-    protected float scopeScale;
     private ForgeClientEventBusSubscriber(){
 
 
@@ -44,6 +44,12 @@ public final class ForgeClientEventBusSubscriber {
             OTHPacketHandler.HANDLER.sendToServer(new MessageReloadRifle());
             System.out.println("Keybinding pressed");
         }
+
+        if (ModKeyBindings.zoomRifleKeyMapping.consumeClick()) {
+            assert Minecraft.getInstance().player != null;
+            Minecraft.getInstance().player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
+            System.out.println("Sending Sound");
+        }
     }
 
     @SubscribeEvent
@@ -54,36 +60,6 @@ public final class ForgeClientEventBusSubscriber {
                 event.setCanceled(true);
             }
         }
-    }
-
-    @SubscribeEvent
-    public static void renderScope(RenderGameOverlayEvent.PostLayer event){
-        float f = Minecraft.getInstance().getDeltaFrameTime();
-        float scopeScale = Mth.lerp(0.5F * f,0.5f, 1.125F); //SCOPE FRAME ANIM
-        /*RenderSystem.enableBlend();
-        RenderSystem.enableDepthTest();
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.defaultBlendFunc();*/
-        if (Minecraft.getInstance().options.getCameraType().isFirstPerson() && event.getType() == RenderGameOverlayEvent.ElementType.LAYER
-                && ModKeyBindings.zoomRifleKeyMapping.isDown()) {
-            assert Minecraft.getInstance().player != null;
-            if (Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
-                RenderSystem.enableBlend();
-                RenderSystem.defaultBlendFunc();
-                RenderSystem.disableDepthTest();
-                RenderSystem.enableTexture();
-                RenderSystem.setShaderTexture(0, Gui.GUI_ICONS_LOCATION);
-                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                RenderSystem.setShader(GameRenderer::getPositionTexShader);
-                //RenderUtils.setupOverlayRenderState(true, false, Gui.GUI_ICONS_LOCATION);//Probable Origin of the problem
-                RenderUtils.renderSpyglassOverlay(1);//1.0
-                //renderTextureOverlay(new ResourceLocation("textures/misc/spyglass_scope.png"), 1.0f);
-            }else{
-                scopeScale = 0.5f;
-            }
-        }
-
-        //RenderSystem.disableBlend();
     }
 
 //    @SubscribeEvent

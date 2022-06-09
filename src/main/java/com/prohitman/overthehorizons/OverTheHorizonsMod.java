@@ -1,5 +1,6 @@
 package com.prohitman.overthehorizons;
 
+import com.prohitman.overthehorizons.client.events.ClientEventBusSubscriber;
 import com.prohitman.overthehorizons.common.events.CommonForgeEvents;
 import com.prohitman.overthehorizons.core.init.*;
 import net.minecraft.world.item.BlockItem;
@@ -32,6 +33,8 @@ public class OverTheHorizonsMod
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "overthehorizons";
+    public static float scopeScale = 0.5F;
+
 
     public OverTheHorizonsMod() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -39,6 +42,7 @@ public class OverTheHorizonsMod
         FMLJavaModLoadingContext.get().getModEventBus().addListener(CommonForgeEvents::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventBusSubscriber::clientSetup);
 
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
