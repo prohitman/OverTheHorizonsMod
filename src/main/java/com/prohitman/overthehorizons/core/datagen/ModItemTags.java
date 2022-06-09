@@ -72,8 +72,4 @@ public class ModItemTags extends ItemTagsProvider {
     private static TagKey<Item> bind(String pName) {
         return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(pName));
     }
-
-    public static TagKey<Item> create(final ResourceLocation name) {
-        return TagKey.create(Registry.ITEM_REGISTRY, name);
-    }
 }

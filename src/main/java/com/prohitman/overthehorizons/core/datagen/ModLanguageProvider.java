@@ -1,6 +1,7 @@
 package com.prohitman.overthehorizons.core.datagen;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.client.keybinds.ModKeyBindings;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModEntityTypes;
 import com.prohitman.overthehorizons.core.init.ModItems;
@@ -75,11 +76,12 @@ public class ModLanguageProvider extends LanguageProvider {
 
         add("overthehorizons.message.no_ammo", "No Ammo!!!");
 
-        add("overthehorizons.tooltip.press_shift", "press\\u00A79 [SHIFT]\\u00A77 for more info.");
+        //add("overthehorizons.tooltip.press_shift", "press\\u00A79 [SHIFT]\\u00A77 for more info.");
         add("overthehorizons.tooltip.rifle_shooting_range", "Rifle Shooting Range: ");
         add("overthehorizons.tooltip.bullet_capacity", "Bullet Capacity: ");
         add("overthehorizons.tooltip.current_bullets", "Current Bullets: ");
 
         add("key.overthehorizons.reload_rifle","Reload Rifle");
+        add("key.overthehorizons.zoom_rifle","Zoom Rifle");
     }
 }
