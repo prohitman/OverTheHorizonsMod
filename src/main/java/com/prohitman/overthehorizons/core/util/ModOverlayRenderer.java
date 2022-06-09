@@ -28,10 +28,10 @@ public class ModOverlayRenderer {
             assert Minecraft.getInstance().player != null;
             if (Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
                 renderSpyglassOverlay(OverTheHorizonsMod.scopeScale);
-            } else
+            }/* else
             {
                 OverTheHorizonsMod.scopeScale = 0.5F;
-            }
+            }*/
         }
     }
 

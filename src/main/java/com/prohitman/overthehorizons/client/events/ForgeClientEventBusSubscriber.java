@@ -1,35 +1,27 @@
 package com.prohitman.overthehorizons.client.events;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.keybinds.ModKeyBindings;
 import com.prohitman.overthehorizons.common.item.HuntingRifleItem;
 import com.prohitman.overthehorizons.common.network.MessageReloadRifle;
 import com.prohitman.overthehorizons.common.network.OTHPacketHandler;
-import com.prohitman.overthehorizons.core.util.RenderUtils;
-import net.minecraft.client.KeyMapping;
+import com.prohitman.overthehorizons.common.util.IExtendedReach;
+import com.prohitman.overthehorizons.core.util.ExtendedReachUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
+import net.minecraft.client.Options;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.ForgeHooksClient;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.*;
-import net.minecraftforge.client.gui.ForgeIngameGui;
-import net.minecraftforge.client.gui.IIngameOverlay;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import javax.annotation.Nullable;
-import java.awt.event.MouseEvent;
 
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public final class ForgeClientEventBusSubscriber {
@@ -44,12 +36,18 @@ public final class ForgeClientEventBusSubscriber {
             OTHPacketHandler.HANDLER.sendToServer(new MessageReloadRifle());
             System.out.println("Keybinding pressed");
         }
-
-        if (ModKeyBindings.zoomRifleKeyMapping.consumeClick()) {
-            assert Minecraft.getInstance().player != null;
-            Minecraft.getInstance().player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
-            System.out.println("Sending Sound");
+        if(Minecraft.getInstance().player != null){
+            if(!ModKeyBindings.zoomRifleKeyMapping.isDown()){
+                OverTheHorizonsMod.scopeScale = 0.5f;
+            }
         }
+        /*if(Minecraft.getInstance().player != null){
+            if (ModKeyBindings.zoomRifleKeyMapping.isDown()
+                    && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof  HuntingRifleItem) {
+                Minecraft.getInstance().player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
+                System.out.println("Sending Sound");
+            }
+        }*/
     }
 
     @SubscribeEvent
@@ -62,13 +60,53 @@ public final class ForgeClientEventBusSubscriber {
         }
     }
 
-//    @SubscribeEvent
-//    public static void mouseHandler(ScreenEvent.MouseDragEvent event){
-//        if(Minecraft.getInstance().options.getCameraType().isFirstPerson()
-//                && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem){
-//
-//        }
-//    }
+    /*@SubscribeEvent
+    public static void mouseHandler(ScreenEvent.MouseDragEvent event){
+        double d4 = Minecraft.getInstance().options.sensitivity * (double)0.6F + (double)0.2F;
+        double d5 = d4 * d4 * d4;
+        double d6 = d5 * 8.0D;
+        double d2;
+        double d3;
+        double accumulatedDX = Minecraft.getInstance().mouseHandler.getXVelocity();
+        double accumulatedDY = Minecraft.getInstance().mouseHandler.getYVelocity();
+
+        if(Minecraft.getInstance().options.getCameraType().isFirstPerson()
+                && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem
+                && ModKeyBindings.zoomRifleKeyMapping.isDown()){
+            Minecraft.getInstance().mouseHandler.turnPlayer();
+            d2 = accumulatedDX * d5;
+            d3 = accumulatedDY * d5;
+
+            accumulatedDX = 0;
+            accumulatedDY = 0;
+
+            int i = 1;
+            if (Minecraft.getInstance().options.invertYMouse) {
+                i = -1;
+            }
+            Minecraft.getInstance().getTutorial().onMouse(d2, d3);
+            if (Minecraft.getInstance().player != null) {
+                Minecraft.getInstance().player.turn(d2, d3 * (double)i);
+            }
+        }
+    }*/
+
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+    public static void onEvent(InputEvent event) {
+        LocalPlayer player = Minecraft.getInstance().player;
+        if (player != null) {
+            if (player.getMainHandItem().getItem() instanceof IExtendedReach) {
+                Item item = player.getMainHandItem().getItem();
+                if (((IExtendedReach) player.getMainHandItem().getItem()).getReach() > 5.0f) {
+                    Options keys = Minecraft.getInstance().options;
+                    if (keys.keyUse.consumeClick() && !player.getCooldowns().isOnCooldown(item)) {
+                        ExtendedReachUtils.extendAttackReach(player);
+                    }
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void modifyFOV(FOVModifierEvent event){

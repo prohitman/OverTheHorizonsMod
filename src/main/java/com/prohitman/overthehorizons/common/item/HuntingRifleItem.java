@@ -19,6 +19,7 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -27,9 +28,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractGlassBlock;
 import net.minecraft.world.level.block.Block;
@@ -40,19 +40,20 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.settings.KeyBindingMap;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class HuntingRifleItem extends Item implements IExtendedReach {
-    public int distance;
+    public static int distance;
 
     public HuntingRifleItem(Properties pProperties, int attackDistance) {
         super(pProperties);
-        this.distance = attackDistance;
+        distance = attackDistance;
     }
 
-    @Override
+    /*@Override
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemstack = user.getItemInHand(hand);
         if (user.isHolding(this)) {
@@ -100,8 +101,12 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
                 }
             }
         }
+        return InteractionResultHolder.fail(itemstack);
+        //return super.use(world, user, hand);
+    }*/
 
-        return super.use(world, user, hand);
+    public @NotNull UseAnim getUseAnimation(ItemStack pStack) {
+        return UseAnim.BOW;
     }
 
     @Override

@@ -1,12 +1,29 @@
 package com.prohitman.overthehorizons.core.util;
 
+import com.prohitman.overthehorizons.common.item.HuntingRifleItem;
+import com.prohitman.overthehorizons.common.network.MessageBreakBlock;
+import com.prohitman.overthehorizons.common.network.MessageDecreaseBullets;
+import com.prohitman.overthehorizons.common.network.MessageExtendedReachAttack;
+import com.prohitman.overthehorizons.common.network.OTHPacketHandler;
+import com.prohitman.overthehorizons.common.util.IExtendedReach;
+import com.prohitman.overthehorizons.core.init.ModSounds;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.AbstractGlassBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -63,6 +80,54 @@ public class ExtendedReachUtils {
                 }
 
                 Minecraft.getInstance().getProfiler().pop();
+            }
+        }
+    }
+    public static void extendAttackReach(LocalPlayer user) {
+        ItemStack itemstack = user.getMainHandItem();
+        if (itemstack.getItem() instanceof IExtendedReach) {
+            if (user.level.isClientSide) {
+                CompoundTag tag = user.getMainHandItem().getOrCreateTag();
+
+                int k = tag.getInt("AmmoCount");
+                if (k != 0 || user.isCreative()) {
+
+                    int j = HuntingRifleItem.distance;//((HuntingRifleItem) item).getMaterial().getBulletShootingRange();
+
+                    ExtendedReachUtils.getMouseOverExtended(j);
+                    switch (Minecraft.getInstance().hitResult.getType()) {
+                        case ENTITY:
+                            OTHPacketHandler.HANDLER.sendToServer(new MessageExtendedReachAttack(((EntityHitResult) Minecraft.getInstance().hitResult).getEntity().getId()));
+
+                            break;
+                        case BLOCK:
+                            BlockHitResult blockHitResult = (BlockHitResult) Minecraft.getInstance().hitResult;
+                            BlockPos blockPos = blockHitResult.getBlockPos();
+                            Block block = user.level.getBlockState(blockPos).getBlock();
+
+                            if (block instanceof AbstractGlassBlock || block instanceof StainedGlassPaneBlock || block == Blocks.GLASS_PANE) {
+                                OTHPacketHandler.HANDLER.sendToServer(new MessageBreakBlock(((BlockHitResult) Minecraft.getInstance().hitResult).getBlockPos()));
+                            }
+
+                        case MISS:
+                            break;
+
+                    }
+                    if (!user.isCreative()) {
+                        --k;
+                    }
+                    int i = 5;//((HuntingRifleItem) item).getMaterial().getCooldownMultiplier();
+                    user.getCooldowns().addCooldown(itemstack.getItem(), 4*i);
+                    OTHPacketHandler.HANDLER.sendToServer(new MessageDecreaseBullets(k));
+
+                    tag.putInt("AmmoCount", k);
+
+                } else {
+                    if (!user.isCreative()) {
+                        user.level.playSound(user, user.getX(), user.getY(), user.getZ(), ModSounds.RIFLE_NO_AMMO.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                        user.displayClientMessage((new TranslatableComponent("overthehorizons.message.no_ammo")).withStyle(ChatFormatting.RED, ChatFormatting.BOLD), true);
+                    }
+                }
             }
         }
     }
