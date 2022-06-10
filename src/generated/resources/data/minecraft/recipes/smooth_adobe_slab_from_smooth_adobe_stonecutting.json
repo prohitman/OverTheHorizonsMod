@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "overthehorizons:smooth_adobe"
+  },
+  "result": "overthehorizons:smooth_adobe_slab",
+  "count": 2
+}

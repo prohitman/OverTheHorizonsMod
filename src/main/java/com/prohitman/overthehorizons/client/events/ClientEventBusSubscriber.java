@@ -110,11 +110,15 @@ public class ClientEventBusSubscriber {
 
     @SubscribeEvent
     public static void registerBlockLeavesColors(ColorHandlerEvent.Block event){
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> new Color(0x9FFF9F).getRGB(), ModBlocks.PINE_LEAVES.get());
+        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) ->
+                pLevel != null && pPos != null ? BiomeColors.getAverageFoliageColor(pLevel, pPos) : FoliageColor.getDefaultColor(),
+                ModBlocks.PINE_LEAVES.get());
+
+        //event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> new Color(0x358539FF).getRGB(), ModBlocks.PINE_LEAVES.get());
     }
 
     @SubscribeEvent
     public static void registerBlockItemLeavesColors(ColorHandlerEvent.Item event){
-        event.getItemColors().register((pState, pTintIndex) -> new Color(0x9FFF9F).getRGB(), ModBlocks.PINE_LEAVES.get());
-    }
+        event.getItemColors().register((pState, pTintIndex) -> new Color(0x408143).getRGB(), ModBlocks.PINE_LEAVES.get());
+    }//4d6031
 }

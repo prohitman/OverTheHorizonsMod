@@ -1,5 +1,6 @@
 package com.prohitman.overthehorizons.common.item;
 
+import com.prohitman.overthehorizons.client.renderers.ItemStackRenderer;
 import com.prohitman.overthehorizons.common.network.MessageBreakBlock;
 import com.prohitman.overthehorizons.common.network.MessageDecreaseBullets;
 import com.prohitman.overthehorizons.common.network.MessageExtendedReachAttack;
@@ -10,6 +11,7 @@ import com.prohitman.overthehorizons.core.util.ExtendedReachUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -39,11 +41,13 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.client.settings.KeyBindingMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class HuntingRifleItem extends Item implements IExtendedReach {
     public static int distance;
@@ -104,6 +108,19 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
         return InteractionResultHolder.fail(itemstack);
         //return super.use(world, user, hand);
     }*/
+
+    @Override
+    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+        super.initializeClient(consumer);
+        consumer.accept(new IItemRenderProperties() {
+            private final BlockEntityWithoutLevelRenderer renderer = new ItemStackRenderer();
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                return renderer;
+            }
+        });
+    }
 
     public @NotNull UseAnim getUseAnimation(ItemStack pStack) {
         return UseAnim.BOW;

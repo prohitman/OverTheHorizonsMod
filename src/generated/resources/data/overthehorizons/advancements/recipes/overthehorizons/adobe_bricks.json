@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "overthehorizons:adobe_bricks"
+    ]
+  },
+  "criteria": {
+    "adobe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "overthehorizons:adobe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overthehorizons:adobe_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "adobe",
+      "has_the_recipe"
+    ]
+  ]
+}

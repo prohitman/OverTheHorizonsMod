@@ -11,6 +11,7 @@ import com.prohitman.overthehorizons.common.item.HuntingRifleItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraftforge.client.gui.IIngameOverlay;
 import net.minecraftforge.client.gui.OverlayRegistry;
@@ -28,10 +29,7 @@ public class ModOverlayRenderer {
             assert Minecraft.getInstance().player != null;
             if (Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
                 renderSpyglassOverlay(OverTheHorizonsMod.scopeScale);
-            }/* else
-            {
-                OverTheHorizonsMod.scopeScale = 0.5F;
-            }*/
+            }
         }
     }
 

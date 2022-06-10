@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:smooth_adobe_stairs_from_smooth_adobe_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_smooth_adobe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "overthehorizons:smooth_adobe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:smooth_adobe_stairs_from_smooth_adobe_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smooth_adobe",
+      "has_the_recipe"
+    ]
+  ]
+}

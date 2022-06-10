@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "overthehorizons:adobe"
+  },
+  "result": "overthehorizons:adobe_bricks",
+  "count": 1
+}

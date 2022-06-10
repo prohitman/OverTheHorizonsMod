@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "overthehorizons:adobe_bricks"
+  },
+  "result": "overthehorizons:adobe_bricks_stairs",
+  "count": 1
+}

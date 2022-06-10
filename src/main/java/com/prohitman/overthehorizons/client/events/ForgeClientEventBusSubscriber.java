@@ -13,6 +13,7 @@ import net.minecraft.client.Options;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,6 +23,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public final class ForgeClientEventBusSubscriber {
@@ -93,7 +95,7 @@ public final class ForgeClientEventBusSubscriber {
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
-    public static void onEvent(InputEvent event) {
+    public static void onShootEvent(InputEvent event) {
         LocalPlayer player = Minecraft.getInstance().player;
         if (player != null) {
             if (player.getMainHandItem().getItem() instanceof IExtendedReach) {
@@ -103,6 +105,20 @@ public final class ForgeClientEventBusSubscriber {
                     if (keys.keyUse.consumeClick() && !player.getCooldowns().isOnCooldown(item)) {
                         ExtendedReachUtils.extendAttackReach(player);
                     }
+                }
+            }
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+    public static void playZoomSound(InputEvent.KeyInputEvent event) {
+        LocalPlayer player = Minecraft.getInstance().player;
+        if (player != null) {
+            Item item = player.getMainHandItem().getItem();
+            if(item instanceof HuntingRifleItem){
+                if(ModKeyBindings.zoomRifleKeyMapping.consumeClick() && event.getAction() == GLFW.GLFW_PRESS){
+                    Minecraft.getInstance().player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
                 }
             }
         }
