@@ -4,19 +4,13 @@ import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.item.ModBlockItem;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModItemGroups;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.RegistryObject;
-import org.apache.commons.lang3.event.EventUtils;
+import net.minecraftforge.registries.*;
 
 import java.util.Objects;
 
@@ -35,4 +29,21 @@ public class CommonModEvents {
             }
         });
     }
+
+    /*@SubscribeEvent
+    public static void onRegisterItems(final RegisterEvent event) {
+        final IForgeRegistry<Item> registry = event.getForgeRegistry();
+
+        ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
+            if(!(block instanceof StandingSignBlock || block instanceof WallSignBlock)){
+                final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OverTheHorizonsMod.MOD_ID);
+
+                final Item.Properties properties = new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS);
+                final ModBlockItem blockItem = new ModBlockItem(block, properties);
+                final RegistryObject<Item> BLOCK_ITEM = ITEMS.register(blockItem.getBlock().getName(), () -> blockItem);
+                assert registry != null;
+                registry.register(Objects.requireNonNull(block.getName().toString()), BLOCK_ITEM);
+            }
+        });
+    }*/
 }
