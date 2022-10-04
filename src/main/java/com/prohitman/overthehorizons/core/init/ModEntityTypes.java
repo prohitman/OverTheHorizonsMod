@@ -2,6 +2,7 @@ package com.prohitman.overthehorizons.core.init;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.entity.ModBoat;
+import com.prohitman.overthehorizons.common.entity.Perch;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -18,4 +19,9 @@ public class ModEntityTypes {
             .<ModBoat>of(ModBoat::new, MobCategory.MISC)
             .sized(1.375F, 0.5625F)
             .build(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "boat").toString()));
+
+    public static final RegistryObject<EntityType<Perch>> PERCH = ENTITY_TYPES.register("perch",() -> EntityType.Builder
+            .<Perch>of(Perch::new, MobCategory.WATER_CREATURE)
+            .sized(0.4F, 0.2F)
+            .build(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "perch").toString()));
 }

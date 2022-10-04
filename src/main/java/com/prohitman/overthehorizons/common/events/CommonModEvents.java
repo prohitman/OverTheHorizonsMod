@@ -1,13 +1,16 @@
 package com.prohitman.overthehorizons.common.events;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.common.entity.Perch;
 import com.prohitman.overthehorizons.common.item.ModBlockItem;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
+import com.prohitman.overthehorizons.core.init.ModEntityTypes;
 import com.prohitman.overthehorizons.core.init.ModItemGroups;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.*;
@@ -29,6 +32,12 @@ public class CommonModEvents {
             }
         });
     }
+
+    @SubscribeEvent
+    public static void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(ModEntityTypes.PERCH.get(), Perch.createAttributes().build());
+    }
+
 
     /*@SubscribeEvent
     public static void onRegisterItems(final RegisterEvent event) {

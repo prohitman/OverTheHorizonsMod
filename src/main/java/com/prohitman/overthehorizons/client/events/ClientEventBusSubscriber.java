@@ -4,8 +4,10 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.keybinds.ModKeyBindings;
+import com.prohitman.overthehorizons.client.models.PerchModel;
 import com.prohitman.overthehorizons.client.particles.LeafParticle;
 import com.prohitman.overthehorizons.client.renderers.ModBoatRenderer;
+import com.prohitman.overthehorizons.client.renderers.PerchRenderer;
 import com.prohitman.overthehorizons.common.blocks.entity.ModSignBlockEntity;
 import com.prohitman.overthehorizons.common.entity.ModBoat;
 import com.prohitman.overthehorizons.common.item.HuntingRifleItem;
@@ -92,6 +94,7 @@ public class ClientEventBusSubscriber {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event){
         event.registerEntityRenderer(ModEntityTypes.MOD_BOAT.get(), ModBoatRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.PERCH.get(), PerchRenderer::new);
     }
 
     @SubscribeEvent
@@ -99,6 +102,7 @@ public class ClientEventBusSubscriber {
         for(ModBoat.ModType boat$type : ModBoat.ModType.values()) {
             event.registerLayerDefinition(ModBoatRenderer.createBoatModelName(boat$type), BoatModel::createBodyModel);
         }
+        event.registerLayerDefinition(PerchModel.LAYER_LOCATION, PerchModel::createBodyLayer);
     }
 
     @SubscribeEvent
