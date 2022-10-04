@@ -69,6 +69,11 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.PINE_BOAT.get(), "Pine Boat");
         add(ModItems.HUNTING_RIFLE.get(), "Hunting Rifle");
         add(ModItems.PINE_TEA.get(), "Pine Tea");
+        add(ModItems.PERCH_SPAWN_EGG.get(), "Perch Spawn Egg");
+        add(ModItems.PERCH_BUCKET.get(), "Perch Bucket");
+        add(ModItems.RAW_PERCH.get(), "Raw Perch");
+
+        add(ModEntityTypes.PERCH.get(), "Perch");
 
         add("subtitles.overthehorizons.rifle_shoot_bullet", "Rifle Shooting Bullet");
         add("subtitles.overthehorizons.rifle_reload", "Reloading Rifle");

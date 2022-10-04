@@ -85,6 +85,12 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture(ModItems.PINE_BOAT.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/pine_boat"));
+        singleTexture(ModItems.RAW_PERCH.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/raw_perch"));
+
+        //Spawn Eggs
+        withExistingParent(ModItems.PERCH_SPAWN_EGG.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));
 
     }
 }
