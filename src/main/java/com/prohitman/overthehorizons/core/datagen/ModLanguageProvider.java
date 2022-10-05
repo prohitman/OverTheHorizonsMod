@@ -72,6 +72,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.PERCH_SPAWN_EGG.get(), "Perch Spawn Egg");
         add(ModItems.PERCH_BUCKET.get(), "Perch Bucket");
         add(ModItems.RAW_PERCH.get(), "Raw Perch");
+        add(ModItems.COOKED_PERCH.get(), "Cooked Perch");
 
         add(ModEntityTypes.PERCH.get(), "Perch");
 

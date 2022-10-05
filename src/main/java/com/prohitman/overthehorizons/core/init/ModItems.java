@@ -25,10 +25,11 @@ public class ModItems {
     //FoodProperties
     public static final FoodProperties PINE_TEA_FOOD = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.1F).effect( () -> new MobEffectInstance(MobEffects.REGENERATION, 75, 0), 1.0F).build();
     public static final FoodProperties RAW_FISH = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).build();
-
+    public static final FoodProperties COOKED_FISH = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.6F).build();
 
     //Food
     public static final RegistryObject<Item> RAW_PERCH = ITEMS.register("raw_perch", () -> new Item(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64).food(RAW_FISH)));
+    public static final RegistryObject<Item> COOKED_PERCH = ITEMS.register("cooked_perch", () -> new Item(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64).food(COOKED_FISH)));
     public static final RegistryObject<Item> PINE_TEA = ITEMS.register("pine_tea", () -> new PineTeaItem(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).craftRemainder(Items.GLASS_BOTTLE).food(PINE_TEA_FOOD).stacksTo(16)));
 
     //Spawn Eggs

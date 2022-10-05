@@ -3,15 +3,14 @@ package com.prohitman.overthehorizons.core.datagen;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SimpleCookingSerializer;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
@@ -60,5 +59,14 @@ public class ModRecipes extends RecipeProvider {
         stonecutterResultFromBase(consumer, ModBlocks.SMOOTH_ADOBE_STAIRS.get(), ModBlocks.SMOOTH_ADOBE.get());
         //stonecutterResultFromBase(consumer, ModBlocks.SMOOTH_ADOBE.get(), ModBlocks.ADOBE.get());
         stonecutterResultFromBase(consumer, ModBlocks.FRAMED_ADOBE.get(), ModBlocks.ADOBE.get());
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_PERCH.get()), ModItems.COOKED_PERCH.get(), 0.35F, 200).unlockedBy("has_raw_perch", has(ModItems.RAW_PERCH.get())).save(consumer);
+
+        cookModRecipes(consumer, "smoking", RecipeSerializer.SMOKING_RECIPE, 100);
+        cookModRecipes(consumer, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING_RECIPE, 600);
+    }
+
+    protected static void cookModRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, String pCookingMethod, SimpleCookingSerializer<?> pCookingSerializer, int pCookingTime) {
+        simpleCookingRecipe(pFinishedRecipeConsumer, pCookingMethod, pCookingSerializer, pCookingTime, ModItems.RAW_PERCH.get(), ModItems.COOKED_PERCH.get(), 0.35F);
     }
 }
