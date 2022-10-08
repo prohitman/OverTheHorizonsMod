@@ -29,11 +29,13 @@ public class ModItems {
 
     //Food
     public static final RegistryObject<Item> RAW_PERCH = ITEMS.register("raw_perch", () -> new Item(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64).food(RAW_FISH)));
+    public static final RegistryObject<Item> RAW_CATFISH = ITEMS.register("raw_catfish", () -> new Item(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.8F).build())));
     public static final RegistryObject<Item> COOKED_PERCH = ITEMS.register("cooked_perch", () -> new Item(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64).food(COOKED_FISH)));
     public static final RegistryObject<Item> PINE_TEA = ITEMS.register("pine_tea", () -> new PineTeaItem(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).craftRemainder(Items.GLASS_BOTTLE).food(PINE_TEA_FOOD).stacksTo(16)));
 
     //Spawn Eggs
     public static final RegistryObject<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new ForgeSpawnEggItem(ModEntityTypes.PERCH, /*823D38*/0x9C523A, 0x39593D, new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64)));
+    public static final RegistryObject<Item> CATFISH_SPAWN_EGG = ITEMS.register("catfish_spawn_egg", () -> new ForgeSpawnEggItem(ModEntityTypes.CATFISH, /*823D38*/0x9C53A, 0x393D, new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64)));
 
     //Items
     public static final RegistryObject<Item> HUNTING_RIFLE_INVENTORY = ITEMS.register("hunting_rifle_inventory", () -> new Item(new Item.Properties()));

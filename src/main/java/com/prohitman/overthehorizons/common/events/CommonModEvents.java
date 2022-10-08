@@ -1,6 +1,7 @@
 package com.prohitman.overthehorizons.common.events;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.common.entity.CatFish;
 import com.prohitman.overthehorizons.common.entity.Perch;
 import com.prohitman.overthehorizons.common.item.ModBlockItem;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
@@ -15,6 +16,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.*;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -36,6 +38,7 @@ public class CommonModEvents {
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntityTypes.PERCH.get(), Perch.createAttributes().build());
+        event.put(ModEntityTypes.CATFISH.get(), CatFish.createAttributes().build());
     }
 
 

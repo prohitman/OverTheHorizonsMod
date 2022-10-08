@@ -75,6 +75,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.COOKED_PERCH.get(), "Cooked Perch");
 
         add(ModEntityTypes.PERCH.get(), "Perch");
+        add(ModEntityTypes.CATFISH.get(), "Catfish");
 
         add("subtitles.overthehorizons.rifle_shoot_bullet", "Rifle Shooting Bullet");
         add("subtitles.overthehorizons.rifle_reload", "Reloading Rifle");
