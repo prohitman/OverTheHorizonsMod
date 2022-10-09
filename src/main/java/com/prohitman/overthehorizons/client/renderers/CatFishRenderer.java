@@ -8,16 +8,18 @@ import com.prohitman.overthehorizons.common.entity.Perch;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 public class CatFishRenderer extends MobRenderer<CatFish, CatFishModel<CatFish>>  {
-    private static final ResourceLocation CATFISH_LOCATION = new ResourceLocation(OverTheHorizonsMod.MOD_ID, "textures/entity/catfish.png");
+    private static final ResourceLocation GREY_CATFISH_LOCATION = new ResourceLocation(OverTheHorizonsMod.MOD_ID, "textures/entity/catfish/grey_catfish.png");
+    private static final ResourceLocation BROWN_CATFISH_LOCATION = new ResourceLocation(OverTheHorizonsMod.MOD_ID, "textures/entity/catfish/brown_catfish.png");
 
     public CatFishRenderer(EntityRendererProvider.Context context) {
         super(context, new CatFishModel<>(context.bakeLayer(CatFishModel.LAYER_LOCATION)), 0.5f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(CatFish pEntity) {
-        return CATFISH_LOCATION;
+    public @NotNull ResourceLocation getTextureLocation(CatFish pEntity) {
+        return pEntity.getVariant() == 1 ? GREY_CATFISH_LOCATION : BROWN_CATFISH_LOCATION;
     }
 }

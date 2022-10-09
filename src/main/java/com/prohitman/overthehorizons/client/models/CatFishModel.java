@@ -1,7 +1,9 @@
 package com.prohitman.overthehorizons.client.models;
 
+import com.ibm.icu.text.Normalizer2;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -12,11 +14,15 @@ import net.minecraft.world.entity.Entity;
 
 public class CatFishModel<T extends Entity> extends EntityModel<T> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("overthehorizons", "catfish"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "catfish"), "main");
     private final ModelPart Body;
+    private final ModelPart Head;
+    private final ModelPart Mouth;
 
     public CatFishModel(ModelPart root) {
         this.Body = root.getChild("Body");
+        this.Head = Body.getChild("Head");
+        this.Mouth = Head.getChild("Mouth");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -55,5 +61,6 @@ public class CatFishModel<T extends Entity> extends EntityModel<T> {
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         Body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        Mouth.visible = false;
     }
 }
