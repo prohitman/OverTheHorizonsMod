@@ -28,6 +28,6 @@ public class ModEntityTypes {
 
     public static final RegistryObject<EntityType<CatFish>> CATFISH = ENTITY_TYPES.register("catfish",() -> EntityType.Builder
             .<CatFish>of(CatFish::new, MobCategory.WATER_CREATURE)
-            .sized(1.5F, 0.5F)
+            .sized(0.75F, 0.5F)
             .build(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "catfish").toString()));
 }

@@ -4,11 +4,13 @@ import com.ibm.icu.text.Normalizer2;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.common.entity.CatFish;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
@@ -55,12 +57,16 @@ public class CatFishModel<T extends Entity> extends EntityModel<T> {
 
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
+        Mouth.visible = ((CatFish) entity).getIsSucking();
     }
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         Body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-        Mouth.visible = false;
+        /*CompoundTag tag = new CompoundTag();
+        boolean sucking = tag.getBoolean("Sucking");
+        //Mouth.visible = !((CatFish) this.entity).getIsSucking();
+        Mouth.visible = !sucking;*/
+
     }
 }
