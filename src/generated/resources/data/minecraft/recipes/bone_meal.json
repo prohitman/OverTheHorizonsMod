@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "overthehorizons:fish_bones"
+    }
+  ],
+  "result": {
+    "item": "minecraft:bone_meal"
+  }
+}

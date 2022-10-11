@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "overthehorizons:cooked_catfish"
+    ]
+  },
+  "criteria": {
+    "has_raw_catfish": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "overthehorizons:raw_catfish"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overthehorizons:cooked_catfish"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_catfish",
+      "has_the_recipe"
+    ]
+  ]
+}

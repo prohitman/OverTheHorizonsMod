@@ -40,7 +40,7 @@ public class CatFish extends WaterAnimal {
 
     public CatFish(EntityType<? extends WaterAnimal> p_30341_, Level p_30342_) {
         super(p_30341_, p_30342_);
-        this.moveControl = new SmoothSwimmingMoveControl(this, 85, 5, 0.02F, 0.1F, true);
+        this.moveControl = new SmoothSwimmingMoveControl(this, 85, 5, 0.04F, 0.1F, true);
     }
 
     @Nullable
@@ -64,7 +64,7 @@ public class CatFish extends WaterAnimal {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 15.0D)
                 .add(Attributes.ATTACK_DAMAGE, 3)
-                .add(Attributes.MOVEMENT_SPEED, 0.4F)
+                .add(Attributes.MOVEMENT_SPEED, 0.6F)
                 .add(Attributes.FOLLOW_RANGE, 48.0D);
     }
 

@@ -6,16 +6,37 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
+import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.phys.Vec3;
 
 public class SuckEntityGoal extends MoveTowardsTargetGoal {
+
     private final CatFish catfish;
+    private final float within;
     private int unseenTicks;
     protected int unseenMemoryTicks = 60;
 
     public SuckEntityGoal(CatFish pMob, double pSpeedModifier, float pWithin) {
         super(pMob, pSpeedModifier, pWithin);
         this.catfish = pMob;
+        this.within = pWithin;
+    }
+
+    @Override
+    public boolean canUse() {
+        LivingEntity target = this.catfish.getTarget();
+        if (target == null) {
+            return false;
+        } else if (target.distanceToSqr(this.catfish) > (double)(this.within * this.within)) {
+            return false;
+        } else {
+            Vec3 vec3 = DefaultRandomPos.getPosTowards(this.catfish, 8, 0, target.position(), (double)((float)Math.PI / 2F));
+            if (vec3 == null) {
+                return false;
+            } else {
+                return super.canUse();
+            }
+        }
     }
 
     @Override
@@ -28,9 +49,7 @@ public class SuckEntityGoal extends MoveTowardsTargetGoal {
                 return false;
             }
         }
-
         return super.canContinueToUse();
-
     }
 
     @Override

@@ -29,7 +29,17 @@ public class ModRecipes extends RecipeProvider {
                 .requires(ModBlocks.PINE_CONE.get())
                 .unlockedBy("pine_cone", has(ModBlocks.PINE_CONE.get())).save(consumer);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.ADOBE_BRICKS.get()).define('#', ModBlocks.ADOBE.get().asItem()).pattern("##").pattern("##").unlockedBy("adobe", has(ModBlocks.ADOBE.get().asItem())).save(consumer);
+        ShapelessRecipeBuilder
+                .shapeless(Items.BONE_MEAL)
+                .requires(ModItems.FISH_BONES.get())
+                .unlockedBy("fish_bones", has(ModItems.FISH_BONES.get())).save(consumer);
+
+        ShapedRecipeBuilder
+                .shaped(ModBlocks.ADOBE_BRICKS.get())
+                .define('#', ModBlocks.ADOBE.get().asItem())
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("adobe", has(ModBlocks.ADOBE.get().asItem())).save(consumer);
 
         woodenBoat(consumer, ModItems.PINE_BOAT.get(), ModBlocks.PINE_PLANKS.get().asItem());
         woodFromLogs(consumer, ModBlocks.PINE_WOOD.get().asItem(), ModBlocks.PINE_LOG.get().asItem());
@@ -61,6 +71,7 @@ public class ModRecipes extends RecipeProvider {
         stonecutterResultFromBase(consumer, ModBlocks.FRAMED_ADOBE.get(), ModBlocks.ADOBE.get());
 
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_PERCH.get()), ModItems.COOKED_PERCH.get(), 0.35F, 200).unlockedBy("has_raw_perch", has(ModItems.RAW_PERCH.get())).save(consumer);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_CATFISH.get()), ModItems.COOKED_CATFISH.get(), 0.4F, 200).unlockedBy("has_raw_catfish", has(ModItems.RAW_CATFISH.get())).save(consumer);
 
         cookModRecipes(consumer, "smoking", RecipeSerializer.SMOKING_RECIPE, 100);
         cookModRecipes(consumer, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING_RECIPE, 600);
@@ -68,5 +79,7 @@ public class ModRecipes extends RecipeProvider {
 
     protected static void cookModRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, String pCookingMethod, SimpleCookingSerializer<?> pCookingSerializer, int pCookingTime) {
         simpleCookingRecipe(pFinishedRecipeConsumer, pCookingMethod, pCookingSerializer, pCookingTime, ModItems.RAW_PERCH.get(), ModItems.COOKED_PERCH.get(), 0.35F);
+        simpleCookingRecipe(pFinishedRecipeConsumer, pCookingMethod, pCookingSerializer, pCookingTime, ModItems.RAW_CATFISH.get(), ModItems.COOKED_CATFISH.get(), 0.35F);
+
     }
 }

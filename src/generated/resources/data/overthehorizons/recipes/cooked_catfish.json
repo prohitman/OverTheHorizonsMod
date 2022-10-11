@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "overthehorizons:raw_catfish"
+  },
+  "result": "overthehorizons:cooked_catfish",
+  "experience": 0.4,
+  "cookingtime": 200
+}
