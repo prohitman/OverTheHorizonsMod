@@ -87,6 +87,7 @@ public class ClientEventBusSubscriber {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_WHEAT.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.DUNE_GRASS.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TALL_WILD_WHEAT.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPROUTS.get(), RenderType.cutoutMipped());
 
             BlockEntityRenderers.register(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
             Sheets.addWoodType(ModWoodTypes.PINE);

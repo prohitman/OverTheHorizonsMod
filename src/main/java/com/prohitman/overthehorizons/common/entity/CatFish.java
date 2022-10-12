@@ -1,10 +1,12 @@
 package com.prohitman.overthehorizons.common.entity;
 
 import com.prohitman.overthehorizons.common.entity.goals.SuckEntityGoal;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -49,15 +52,19 @@ public class CatFish extends WaterAnimal {
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
         this.setVariant(rand.nextInt(2));
+        this.setXRot(0.0F);
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(2, new SuckEntityGoal(this, 0.8D, 5.0F));
         this.goalSelector.addGoal(3, new TryFindWaterGoal(this));
-        this.goalSelector.addGoal(3, new RandomSwimmingGoal(this, 3, 30));
+        this.goalSelector.addGoal(3, new RandomSwimmingGoal(this, 2, 20));// 3 30
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+
 
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Perch.class, true));
     }
@@ -72,6 +79,14 @@ public class CatFish extends WaterAnimal {
 
     protected @NotNull PathNavigation createNavigation(@NotNull Level pLevel) {
         return new WaterBoundPathNavigation(this, pLevel);
+    }
+
+    public int getMaxHeadXRot() {
+        return 1;
+    }
+
+    public int getMaxHeadYRot() {
+        return 1;
     }
 
     public void travel(@NotNull Vec3 pTravelVector) {
@@ -129,39 +144,25 @@ public class CatFish extends WaterAnimal {
         return pSize.height * 0.65F;
     }
 
-    static class CatFishMoveControl extends MoveControl {
-        private final CatFish fish;
-
-        CatFishMoveControl(CatFish catfish) {
-            super(catfish);
-            this.fish = catfish;
+    public void aiStep() {
+        if (!this.isInWater() && this.onGround && this.verticalCollision) {
+            this.setDeltaMovement(this.getDeltaMovement().add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F), (double)0.4F, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F)));
+            this.onGround = false;
+            this.hasImpulse = true;
+            this.playSound(SoundEvents.SALMON_FLOP, this.getSoundVolume(), this.getVoicePitch());
         }
 
-        public void tick() {
-            if (this.fish.isEyeInFluid(FluidTags.WATER)) {
-                this.fish.setDeltaMovement(this.fish.getDeltaMovement().add(0.0D, 0.005D, 0.0D));
-            }
+        super.aiStep();
+    }
 
-            if (this.operation == MoveControl.Operation.MOVE_TO && !this.fish.getNavigation().isDone()) {
-                float f = (float)(this.speedModifier * this.fish.getAttributeValue(Attributes.MOVEMENT_SPEED));
-                this.fish.setSpeed(Mth.lerp(0.125F, this.fish.getSpeed(), f));
-                double d0 = this.wantedX - this.fish.getX();
-                double d1 = this.wantedY - this.fish.getY();
-                double d2 = this.wantedZ - this.fish.getZ();
-                if (d1 != 0.0D) {
-                    double d3 = Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
-                    this.fish.setDeltaMovement(this.fish.getDeltaMovement().add(0.0D, (double)this.fish.getSpeed() * (d1 / d3) * 0.1D, 0.0D));
-                }
-
-                if (d0 != 0.0D || d2 != 0.0D) {
-                    float f1 = (float)(Mth.atan2(d2, d0) * (double)(180F / (float)Math.PI)) - 90.0F;
-                    this.fish.setYRot(this.rotlerp(this.fish.getYRot(), f1, 75.0F));
-                    this.fish.yBodyRot = this.fish.getYRot();
-                }
-
-            } else {
-                this.fish.setSpeed(0.0F);
-            }
-        }
+    @Override
+    public void tick() {
+        super.tick();
+        /*if (this.onGround) {
+            this.setDeltaMovement(this.getDeltaMovement().add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.2F), 0.5D, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.2F)));
+            this.setYRot(this.random.nextFloat() * 360.0F);
+            this.onGround = false;
+            this.hasImpulse = true;
+        }*/
     }
 }

@@ -46,6 +46,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.DUNE_GRASS.get(), "Dune Grass");
         add(ModBlocks.TALL_WILD_WHEAT.get(), "Tall Wild Wheat");
         add(ModBlocks.WILD_WHEAT.get(), "Wild Wheat");
+        add(ModBlocks.SPROUTS.get(), "Sprouts");
 
         add(ModBlocks.PINE_LEAVES.get(), "Pine Leaves");
         add(ModBlocks.PINE_SLAB.get(), "Pine Slab");

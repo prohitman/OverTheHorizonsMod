@@ -12,6 +12,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
 public class CatFishModel<T extends Entity> extends EntityModel<T> {
@@ -55,12 +56,20 @@ public class CatFishModel<T extends Entity> extends EntityModel<T> {
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
 
+
+
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        if(((CatFish) entity).getIsSucking()){
-            Mouth.visible = ((CatFish) entity).getIsSucking();
-            //this.Body.xRot = netHeadYaw * ((float)Math.PI / 180F);
-            //this.Body.yRot = headPitch * ((float)Math.PI / 180F);
+        //if(((CatFish) entity).getIsSucking()){
+        Mouth.visible = ((CatFish) entity).getIsSucking();
+
+       // }
+        this.Body.xRot = netHeadYaw * ((float)Math.PI / 180F);
+        this.Body.yRot = headPitch * ((float)Math.PI / 180F);
+        if (entity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-7D) {
+            this.Body.xRot += -0.05F - 0.05F * Mth.cos(ageInTicks * 0.3F);
+            //this.tail.xRot = -0.1F * Mth.cos(pAgeInTicks * 0.3F);
+            //this.tailFin.xRot = -0.2F * Mth.cos(pAgeInTicks * 0.3F);
         }
     }
 

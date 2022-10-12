@@ -68,6 +68,9 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture((ModBlocks.PINE_DOOR.get().getRegistryName().getPath()),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/pine_door"));
+        singleTexture((ModBlocks.SPROUTS.get().getRegistryName().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/sprouts"));
 
         //Items
         singleTexture(ModItems.LICHEN_CLUSTER.get().getRegistryName().getPath(),

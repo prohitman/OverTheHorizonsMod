@@ -3,6 +3,7 @@ package com.prohitman.overthehorizons.core.init;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.blocks.*;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
@@ -69,6 +70,9 @@ public class ModBlocks {//REMEMBER TURN ON GRADLE ONLINE ONCE INTERNET IS BACK
     public static final RegistryObject<Block> DUNE_GRASS = BLOCKS.register("dune_grass", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> WILD_WHEAT = BLOCKS.register("wild_wheat", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<DoublePlantBlock> TALL_WILD_WHEAT = BLOCKS.register("tall_wild_wheat", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> SPROUTS = BLOCKS.register("sprouts", () -> new BushBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS)));
+    //public static final RegistryObject<Block> HEDGEHOG_MUSHROOM = BLOCKS.register("hedgehog_mushroom", () -> new MushroomBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+    //public static final RegistryObject<Block> HEDGEHOG_MUSHROOM_TALL = BLOCKS.register("hedgehog_mushroom_tall", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
 
     private static Block normalStoneBlock(MaterialColor color, SoundType soundType) {
         return new Block(BlockBehaviour.Properties.of(Material.STONE, color).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(soundType));

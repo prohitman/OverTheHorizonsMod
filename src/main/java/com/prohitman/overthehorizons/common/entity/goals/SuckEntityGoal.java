@@ -66,9 +66,9 @@ public class SuckEntityGoal extends MoveTowardsTargetGoal {
             ItemEntity itemEntity = new ItemEntity(catfish.getLevel(), target.getX(), target.getY(), target.getZ(), fish_bones);
             this.catfish.level.addFreshEntity(itemEntity);
             target.remove(Entity.RemovalReason.KILLED);
-            this.catfish.playSound(SoundEvents.POLISHED_DEEPSLATE_PLACE, 1,1);
+            this.catfish.playSound(SoundEvents.CHICKEN_EGG, 1,1);
         } else {
-            Vec3 vector3d = (new Vec3(this.catfish.getX() - target.getX(), this.catfish.getY() - target.getY(), this.catfish.getZ() - target.getZ())).scale(0.02D);
+            Vec3 vector3d = (new Vec3(this.catfish.getX() - target.getX(), this.catfish.getY() - target.getY(), this.catfish.getZ() - target.getZ())).scale(0.03D + target.getRandom().nextFloat(0.03F));
             target.setDeltaMovement(target.getDeltaMovement().add(vector3d));
         }
 

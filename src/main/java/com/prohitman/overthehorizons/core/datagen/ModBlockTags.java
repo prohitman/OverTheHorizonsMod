@@ -61,7 +61,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.DRIED_BIRCH_LEAVES.get())
                 .add(ModBlocks.DRIED_DARK_OAK_LEAVES.get())
                 .add(ModBlocks.DRIED_OAK_LEAVES.get())
-                .add(ModBlocks.PACKED_ROOTS.get());
+                .add(ModBlocks.PACKED_ROOTS.get())
+                .add(ModBlocks.SPROUTS.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(ModBlocks.ARID_SOIL.get());
         tag(BlockTags.NEEDS_STONE_TOOL)
@@ -74,7 +75,10 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.PEBBLES.get());
         tag(BlockTags.REPLACEABLE_PLANTS)
                 .add(ModBlocks.GREEN_LICHEN_COVERAGE.get())
-                .add(ModBlocks.RED_LICHEN_COVERAGE.get());
+                .add(ModBlocks.RED_LICHEN_COVERAGE.get())
+                .add(ModBlocks.SPROUTS.get())
+                .add(ModBlocks.DUNE_GRASS.get())
+                .add(ModBlocks.WILD_WHEAT.get());
         tag(BlockTags.CLIMBABLE)
                 .add(ModBlocks.TREE_MOSS.get());
         tag(BlockTags.LOGS)

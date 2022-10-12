@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "overthehorizons:green_lichen_coverage",
-    "overthehorizons:red_lichen_coverage"
+    "overthehorizons:red_lichen_coverage",
+    "overthehorizons:sprouts",
+    "overthehorizons:dune_grass",
+    "overthehorizons:wild_wheat"
   ]
 }
