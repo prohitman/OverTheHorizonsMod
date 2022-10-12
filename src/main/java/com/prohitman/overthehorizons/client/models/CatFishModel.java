@@ -57,7 +57,11 @@ public class CatFishModel<T extends Entity> extends EntityModel<T> {
 
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        Mouth.visible = ((CatFish) entity).getIsSucking();
+        if(((CatFish) entity).getIsSucking()){
+            Mouth.visible = ((CatFish) entity).getIsSucking();
+            //this.Body.xRot = netHeadYaw * ((float)Math.PI / 180F);
+            //this.Body.yRot = headPitch * ((float)Math.PI / 180F);
+        }
     }
 
     @Override

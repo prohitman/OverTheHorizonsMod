@@ -1,12 +1,15 @@
 package com.prohitman.overthehorizons.common.entity.goals;
 
 import com.prohitman.overthehorizons.common.entity.CatFish;
+import com.prohitman.overthehorizons.core.init.ModItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
 import net.minecraft.world.entity.ai.util.DefaultRandomPos;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
 public class SuckEntityGoal extends MoveTowardsTargetGoal {
@@ -57,7 +60,11 @@ public class SuckEntityGoal extends MoveTowardsTargetGoal {
         super.tick();
         LivingEntity target = this.catfish.getTarget();
         assert target != null;
+        catfish.lookAt(target, 90.0F, 90.0F);
         if(this.catfish.distanceToSqr(target) < 0.5){
+            ItemStack fish_bones = new ItemStack(ModItems.FISH_BONES.get());
+            ItemEntity itemEntity = new ItemEntity(catfish.getLevel(), target.getX(), target.getY(), target.getZ(), fish_bones);
+            this.catfish.level.addFreshEntity(itemEntity);
             target.remove(Entity.RemovalReason.KILLED);
             this.catfish.playSound(SoundEvents.POLISHED_DEEPSLATE_PLACE, 1,1);
         } else {
@@ -77,6 +84,9 @@ public class SuckEntityGoal extends MoveTowardsTargetGoal {
     @Override
     public void start() {
         super.start();
+        /*LivingEntity target = catfish.getTarget();
+        assert target != null;
+        catfish.lookAt(target, 90.0F, 90.0F);*/
         catfish.setIsSucking(true);
     }
 }

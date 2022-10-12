@@ -12,6 +12,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
@@ -41,6 +42,7 @@ public class CatFish extends WaterAnimal {
     public CatFish(EntityType<? extends WaterAnimal> p_30341_, Level p_30342_) {
         super(p_30341_, p_30342_);
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 5, 0.04F, 0.1F, true);
+        this.lookControl = new SmoothSwimmingLookControl(this, 10);
     }
 
     @Nullable
