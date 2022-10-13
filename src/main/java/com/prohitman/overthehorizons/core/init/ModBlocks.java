@@ -37,6 +37,10 @@ public class ModBlocks {//REMEMBER TURN ON GRADLE ONLINE ONCE INTERNET IS BACK
     public static final RegistryObject<SlabBlock> ADOBE_BRICKS_SLAB = BLOCKS.register("adobe_bricks_slab", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(2.0F, 6.0F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> ARID_SOIL = BLOCKS.register("arid_soil", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> PACKED_ROOTS = BLOCKS.register("packed_roots", () -> new RootedDirtBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(0.5F).sound(SoundType.ANVIL)));
+    public static final RegistryObject<Block> ERODED_SLATE = BLOCKS.register("eroded_slate", () -> normalStoneBlock(MaterialColor.STONE, SoundType.STONE));
+    public static final RegistryObject<Block> SLATE_BRICKS = BLOCKS.register("slate_bricks", () -> normalStoneBlock(MaterialColor.STONE, SoundType.STONE));
+    public static final RegistryObject<Block> SLATE_TILES = BLOCKS.register("slate_tiles", () -> normalStoneBlock(MaterialColor.STONE, SoundType.STONE));
+    public static final RegistryObject<Block> SLATE = BLOCKS.register("slate", () -> new SlateBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(SoundType.STONE)));
 
     //Tree
     public static final RegistryObject<Block> PINE_LEAVES = BLOCKS.register("pine_leaves", () -> leaves(SoundType.GRASS, ModLeavesBlock.LeafParticleType.NONE));
@@ -87,7 +91,7 @@ public class ModBlocks {//REMEMBER TURN ON GRADLE ONLINE ONCE INTERNET IS BACK
     }
 
     private static Boolean never(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> entityType) {
-        return (boolean)false;
+        return false;
     }
     private static Boolean ocelotOrParrot(BlockState state, BlockGetter blockGetter, BlockPos pos, EntityType<?> entityType) {
         return entityType == EntityType.OCELOT || entityType == EntityType.PARROT;

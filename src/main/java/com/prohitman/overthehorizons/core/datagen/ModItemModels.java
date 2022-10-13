@@ -40,6 +40,10 @@ public class ModItemModels extends ItemModelProvider {
         withExistingParent(ModBlocks.ADOBE_BRICKS_STAIRS.get().getRegistryName().getPath(), modLoc("block/adobe_bricks_stairs"));
         withExistingParent(ModBlocks.ARID_SOIL.get().getRegistryName().getPath(), modLoc("block/arid_soil"));
         withExistingParent(ModBlocks.PACKED_ROOTS.get().getRegistryName().getPath(), modLoc("block/packed_roots"));
+        withExistingParent(ModBlocks.SLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/slate_bricks"));
+        withExistingParent(ModBlocks.SLATE_TILES.get().getRegistryName().getPath(), modLoc("block/slate_tiles"));
+        withExistingParent(ModBlocks.ERODED_SLATE.get().getRegistryName().getPath(), modLoc("block/eroded_slate"));
+        withExistingParent(ModBlocks.SLATE.get().getRegistryName().getPath(), modLoc("block/slate"));
 
         singleTexture((ModBlocks.ROSE.get().getRegistryName().getPath()),
                 mcLoc("item/generated"),

@@ -39,7 +39,12 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.ADOBE_BRICKS_STAIRS.get())
                 .add(ModBlocks.ADOBE_BRICKS_SLAB.get())
                 .add(ModBlocks.SMOOTH_ADOBE_SLAB.get())
-                .add(ModBlocks.SMOOTH_ADOBE_STAIRS.get());
+                .add(ModBlocks.SMOOTH_ADOBE_STAIRS.get())
+                .add(ModBlocks.SLATE.get())
+                .add(ModBlocks.SLATE_TILES.get())
+                .add(ModBlocks.SLATE_BRICKS.get())
+                .add(ModBlocks.ERODED_SLATE.get());
+
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.PINE_LOG.get())
                 .add(ModBlocks.PINE_BUTTON.get())

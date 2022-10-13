@@ -47,6 +47,10 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.TALL_WILD_WHEAT.get(), "Tall Wild Wheat");
         add(ModBlocks.WILD_WHEAT.get(), "Wild Wheat");
         add(ModBlocks.SPROUTS.get(), "Sprouts");
+        add(ModBlocks.SLATE.get(), "Slate");
+        add(ModBlocks.SLATE_TILES.get(), "Slate Tiles");
+        add(ModBlocks.SLATE_BRICKS.get(), "Slate Bricks");
+        add(ModBlocks.ERODED_SLATE.get(), "Eroded Slate");
 
         add(ModBlocks.PINE_LEAVES.get(), "Pine Leaves");
         add(ModBlocks.PINE_SLAB.get(), "Pine Slab");

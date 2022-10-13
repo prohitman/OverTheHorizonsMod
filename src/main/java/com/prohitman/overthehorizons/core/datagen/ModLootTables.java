@@ -70,6 +70,11 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(ModBlocks.WILD_WHEAT.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.WILD_WHEAT.get()));
         lootTables.put(ModBlocks.TALL_WILD_WHEAT.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.TALL_WILD_WHEAT.get()));
         lootTables.put(ModBlocks.PINE_DOOR.get(), createDoorTable(ModBlocks.PINE_DOOR.get()));
+        lootTables.put(ModBlocks.SLATE_BRICKS.get(), createSimpleTable("slate_bricks", ModBlocks.SLATE_BRICKS.get()));
+        lootTables.put(ModBlocks.SLATE_TILES.get(), createSimpleTable("slate_tiles", ModBlocks.SLATE_TILES.get()));
+        lootTables.put(ModBlocks.ERODED_SLATE.get(), createSimpleTable("eroded_slate", ModBlocks.ERODED_SLATE.get()));
+        lootTables.put(ModBlocks.SLATE.get(), createSimpleTable("slate", ModBlocks.SLATE.get()));
+
 
     }
 }

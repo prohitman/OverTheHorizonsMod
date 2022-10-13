@@ -13,6 +13,10 @@
     "overthehorizons:adobe_bricks_stairs",
     "overthehorizons:adobe_bricks_slab",
     "overthehorizons:smooth_adobe_slab",
-    "overthehorizons:smooth_adobe_stairs"
+    "overthehorizons:smooth_adobe_stairs",
+    "overthehorizons:slate",
+    "overthehorizons:slate_tiles",
+    "overthehorizons:slate_bricks",
+    "overthehorizons:eroded_slate"
   ]
 }

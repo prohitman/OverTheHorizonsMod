@@ -24,6 +24,10 @@ public class ModBlockStates extends BlockStateProvider {
         simpleBlock(ModBlocks.ARID_SOIL.get(), models().cubeAll("arid_soil", modLoc("block/arid_soil")));
         simpleBlock(ModBlocks.PACKED_ROOTS.get(), models().cubeAll("packed_roots", modLoc("block/packed_roots")));
         simpleBlock(ModBlocks.ROSE.get(), models().cross("rose", modLoc("block/rose")));
+        simpleBlock(ModBlocks.SLATE_BRICKS.get(), models().cubeAll("slate_bricks", modLoc("block/slate_bricks")));
+        simpleBlock(ModBlocks.SLATE_TILES.get(), models().cubeAll("slate_tiles", modLoc("block/slate_tiles")));
+        simpleBlock(ModBlocks.SLATE.get(), models().cubeAll("slate", modLoc("block/slate")));
+        simpleBlock(ModBlocks.ERODED_SLATE.get(), models().cubeAll("eroded_slate", modLoc("block/eroded_slate")));
 
         simpleBlock(ModBlocks.DUNE_GRASS.get(), models().cross("dune_grass", modLoc("block/dune_grass")));
         simpleBlock(ModBlocks.WILD_WHEAT.get(), models().cross("wild_wheat", modLoc("block/wild_wheat")));
