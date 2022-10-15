@@ -6,21 +6,25 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
 public class SlateBlock extends Block {
-    //public static final IntegerProperty EROSION_TIMER = ModBlockStateProperties.EROSION_TIME;
-    //private final Random rand = new Random();
-    private int erosionTicks = 0;
-    private final Block erodedSlate = ModBlocks.ERODED_SLATE.get();
+    public static final IntegerProperty EROSION_TIMER = ModBlockStateProperties.EROSION_TIME;
+    private final BlockState eroded_slate_blockstate;
 
     public SlateBlock(Properties properties) {
         super(properties);
+        Block erodedSlate = ModBlocks.ERODED_SLATE.get();
+        this.eroded_slate_blockstate = erodedSlate.defaultBlockState();
+        this.registerDefaultState(this.stateDefinition.any().setValue(EROSION_TIMER, 0));
     }
 
     private static boolean canErode(BlockState pState) {
@@ -54,14 +58,26 @@ public class SlateBlock extends Block {
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random rand) {
-        if(touchesLiquid(pLevel, pPos)){
-            erosionTicks++;
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+        super.randomTick(pState, pLevel, pPos, pRandom);
+        int i = pState.getValue(EROSION_TIMER);
+        if (touchesLiquid(pLevel, pPos)) {
+            if (i < 6) {
+                pLevel.setBlock(pPos, pState.setValue(EROSION_TIMER, i + 1), 2);
+            } else {
+                pLevel.setBlockAndUpdate(pPos, this.eroded_slate_blockstate);
+            }
+        } else {
+            pLevel.setBlock(pPos, pState.setValue(EROSION_TIMER, 0), 2);
         }
-        else if(erosionTicks == 60 + rand.nextInt(60)){
-            BlockState state = erodedSlate.defaultBlockState();
-            pLevel.setBlock(pPos, state, 1);
-        }
-        super.tick(pState, pLevel, pPos, rand);
+    }
+
+    @Override
+    public @NotNull BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+        return pState.getValue(EROSION_TIMER) > 5 ? this.eroded_slate_blockstate :  super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+    }
+
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(EROSION_TIMER);
     }
 }
