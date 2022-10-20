@@ -2,6 +2,7 @@ package com.prohitman.overthehorizons.core.init;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.entity.CatFish;
+import com.prohitman.overthehorizons.common.entity.FennecFox;
 import com.prohitman.overthehorizons.common.entity.ModBoat;
 import com.prohitman.overthehorizons.common.entity.Perch;
 import net.minecraft.resources.ResourceLocation;
@@ -30,4 +31,9 @@ public class ModEntityTypes {
             .<CatFish>of(CatFish::new, MobCategory.WATER_CREATURE)
             .sized(0.75F, 0.5F)
             .build(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "catfish").toString()));
+
+    public static final RegistryObject<EntityType<FennecFox>> FENNEC_FOX = ENTITY_TYPES.register("fennec_fox",() -> EntityType.Builder
+            .<FennecFox>of(FennecFox::new, MobCategory.CREATURE)
+            .sized(0.5F, 0.6F)
+            .build(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "fennec_fox").toString()));
 }

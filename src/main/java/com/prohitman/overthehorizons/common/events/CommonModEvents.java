@@ -2,6 +2,7 @@ package com.prohitman.overthehorizons.common.events;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.entity.CatFish;
+import com.prohitman.overthehorizons.common.entity.FennecFox;
 import com.prohitman.overthehorizons.common.entity.Perch;
 import com.prohitman.overthehorizons.common.item.ModBlockItem;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
@@ -39,6 +40,7 @@ public class CommonModEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntityTypes.PERCH.get(), Perch.createAttributes().build());
         event.put(ModEntityTypes.CATFISH.get(), CatFish.createAttributes().build());
+        event.put(ModEntityTypes.FENNEC_FOX.get(), FennecFox.createAttributes().build());
     }
 
 

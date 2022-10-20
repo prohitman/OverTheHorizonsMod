@@ -1,4 +1,5 @@
 package com.prohitman.overthehorizons.common.entity;
+// MOGAMBI AFRICA HHHH
 
 import com.prohitman.overthehorizons.common.entity.goals.SuckEntityGoal;
 import net.minecraft.core.particles.ParticleTypes;
@@ -36,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
+// MOGAMBI AFRICA HHHH
 
 public class CatFish extends WaterAnimal {
     private final Random rand = new Random();
@@ -47,6 +49,7 @@ public class CatFish extends WaterAnimal {
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 5, 0.04F, 0.1F, true);
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
     }
+// MOGAMBI AFRICA HHHH
 
     @Nullable
     @Override
@@ -80,6 +83,9 @@ public class CatFish extends WaterAnimal {
     protected @NotNull PathNavigation createNavigation(@NotNull Level pLevel) {
         return new WaterBoundPathNavigation(this, pLevel);
     }
+    // MOGAMBI AFRICA HHHH
+
+
 
     public int getMaxHeadXRot() {
         return 1;
@@ -102,6 +108,7 @@ public class CatFish extends WaterAnimal {
         }
 
     }
+// MOGAMBI AFRICA HHHH
 
     public int getVariant() {
         return Mth.clamp(this.entityData.get(DATA_VARIANT_ID), 0, 1);
@@ -166,3 +173,4 @@ public class CatFish extends WaterAnimal {
         }*/
     }
 }
+// MOGAMBI AFRICA HHHH

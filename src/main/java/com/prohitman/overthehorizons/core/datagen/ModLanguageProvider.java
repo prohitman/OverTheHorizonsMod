@@ -82,9 +82,11 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.CATFISH_SPAWN_EGG.get(), "Catfish Spawn Egg");
         add(ModItems.COOKED_CATFISH.get(), "Cooked Catfish");
         add(ModItems.FISH_BONES.get(), "Fish Bones");
+        add(ModItems.FENNEC_FOX_SPAWN_EGG.get(), "Fennec Fox Spawn Egg");
 
         add(ModEntityTypes.PERCH.get(), "Perch");
         add(ModEntityTypes.CATFISH.get(), "Catfish");
+        add(ModEntityTypes.FENNEC_FOX.get(), "Fennec Fox");
 
         add("subtitles.overthehorizons.rifle_shoot_bullet", "Rifle Shooting Bullet");
         add("subtitles.overthehorizons.rifle_reload", "Reloading Rifle");

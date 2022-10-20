@@ -114,5 +114,6 @@ public class ModItemModels extends ItemModelProvider {
         //Spawn Eggs
         withExistingParent(ModItems.PERCH_SPAWN_EGG.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.CATFISH_SPAWN_EGG.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.FENNEC_FOX_SPAWN_EGG.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));
     }
 }

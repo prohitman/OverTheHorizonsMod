@@ -5,9 +5,11 @@ import com.mojang.blaze3d.vertex.*;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.keybinds.ModKeyBindings;
 import com.prohitman.overthehorizons.client.models.CatFishModel;
+import com.prohitman.overthehorizons.client.models.FennecFoxModel;
 import com.prohitman.overthehorizons.client.models.PerchModel;
 import com.prohitman.overthehorizons.client.particles.LeafParticle;
 import com.prohitman.overthehorizons.client.renderers.CatFishRenderer;
+import com.prohitman.overthehorizons.client.renderers.FennecFoxRenderer;
 import com.prohitman.overthehorizons.client.renderers.ModBoatRenderer;
 import com.prohitman.overthehorizons.client.renderers.PerchRenderer;
 import com.prohitman.overthehorizons.common.blocks.entity.ModSignBlockEntity;
@@ -99,6 +101,7 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(ModEntityTypes.MOD_BOAT.get(), ModBoatRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.PERCH.get(), PerchRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.CATFISH.get(), CatFishRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.FENNEC_FOX.get(), FennecFoxRenderer::new);
     }
 
     @SubscribeEvent
@@ -108,6 +111,7 @@ public class ClientEventBusSubscriber {
         }
         event.registerLayerDefinition(PerchModel.LAYER_LOCATION, PerchModel::createBodyLayer);
         event.registerLayerDefinition(CatFishModel.LAYER_LOCATION, CatFishModel::createBodyLayer);
+        event.registerLayerDefinition(FennecFoxModel.LAYER_LOCATION, FennecFoxModel::createBodyLayer);
     }
 
     @SubscribeEvent
