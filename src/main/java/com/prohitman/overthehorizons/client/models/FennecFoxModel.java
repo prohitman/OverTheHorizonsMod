@@ -1,9 +1,11 @@
 package com.prohitman.overthehorizons.client.models;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.entity.FennecFox;
+import net.minecraft.client.model.AgeableListModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -13,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
-public class FennecFoxModel<T extends FennecFox> extends EntityModel<T> {
+public class FennecFoxModel<T extends FennecFox> extends AgeableListModel<T> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "fennec_fox"), "main");
     private final ModelPart body;
@@ -29,6 +31,8 @@ public class FennecFoxModel<T extends FennecFox> extends EntityModel<T> {
     private float legMotionPos;
 
     public FennecFoxModel(ModelPart pRoot) {
+        super(true, 8.0F, 3.35F);
+
         this.body = pRoot.getChild("Body");
         this.head = body.getChild("Head");
         this.rightHindLeg = body.getChild("right_hind_leg");
@@ -65,7 +69,7 @@ public class FennecFoxModel<T extends FennecFox> extends EntityModel<T> {
     }
 
     public void prepareMobModel(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pPartialTick) {
-        this.body.xRot = ((float)Math.PI / 2F);
+        /*this.body.xRot = ((float)Math.PI / 2F);
         this.tail.xRot = -0.05235988F;
         this.rightHindLeg.xRot = Mth.cos(pLimbSwing * 0.6662F) * 1.4F * pLimbSwingAmount;
         this.leftHindLeg.xRot = Mth.cos(pLimbSwing * 0.6662F + (float)Math.PI) * 1.4F * pLimbSwingAmount;
@@ -82,7 +86,7 @@ public class FennecFoxModel<T extends FennecFox> extends EntityModel<T> {
         this.body.zRot = 0.0F;
         this.rightHindLeg.setPos(-5.0F, 17.5F, 7.0F);
         this.leftHindLeg.setPos(-1.0F, 17.5F, 7.0F);
-        if (pEntity.isCrouching()) {
+        */if (pEntity.isCrouching()) {
             this.body.xRot = 1.6755161F;
             float f = pEntity.getCrouchAmount(pPartialTick);
             this.body.setPos(0.0F, 16.0F + pEntity.getCrouchAmount(pPartialTick), -6.0F);
@@ -162,5 +166,13 @@ public class FennecFoxModel<T extends FennecFox> extends EntityModel<T> {
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    protected Iterable<ModelPart> headParts() {
+        return ImmutableList.of(this.head);
+    }
+
+    protected Iterable<ModelPart> bodyParts() {
+        return ImmutableList.of(this.body, this.rightHindLeg, this.leftHindLeg, this.rightFrontLeg, this.leftFrontLeg);
     }
 }

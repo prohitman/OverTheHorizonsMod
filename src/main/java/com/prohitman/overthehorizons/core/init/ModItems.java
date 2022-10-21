@@ -36,9 +36,9 @@ public class ModItems {
     public static final RegistryObject<Item> PINE_TEA = ITEMS.register("pine_tea", () -> new PineTeaItem(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).craftRemainder(Items.GLASS_BOTTLE).food(PINE_TEA_FOOD).stacksTo(16)));
 
     //Spawn Eggs
-    public static final RegistryObject<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new ForgeSpawnEggItem(ModEntityTypes.PERCH, /*823D38*/0x59412F, 0x512B23, new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64)));
-    public static final RegistryObject<Item> CATFISH_SPAWN_EGG = ITEMS.register("catfish_spawn_egg", () -> new ForgeSpawnEggItem(ModEntityTypes.CATFISH, /*823D38*/0x595651, 0x776558, new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64)));
-    public static final RegistryObject<Item> FENNEC_FOX_SPAWN_EGG = ITEMS.register("fennec_fox_spawn_egg", () -> new ForgeSpawnEggItem(ModEntityTypes.FENNEC_FOX, /*823D38*/0x595651, 0x776558, new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64)));
+    public static final RegistryObject<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new ForgeSpawnEggItem(ModEntityTypes.PERCH, 0x59412F, 0x512B23, new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64)));
+    public static final RegistryObject<Item> CATFISH_SPAWN_EGG = ITEMS.register("catfish_spawn_egg", () -> new ForgeSpawnEggItem(ModEntityTypes.CATFISH, 0x595651, 0x776558, new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64)));
+    public static final RegistryObject<Item> FENNEC_FOX_SPAWN_EGG = ITEMS.register("fennec_fox_spawn_egg", () -> new ForgeSpawnEggItem(ModEntityTypes.FENNEC_FOX, 0xD9C99E, 0x9B724D, new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(64)));
 
     //Items
     public static final RegistryObject<Item> HUNTING_RIFLE_INVENTORY = ITEMS.register("hunting_rifle_inventory", () -> new Item(new Item.Properties()));

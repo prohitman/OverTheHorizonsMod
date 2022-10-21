@@ -1,5 +1,4 @@
 package com.prohitman.overthehorizons.common.entity;
-// MOGAMBI AFRICA HHHH
 
 import com.prohitman.overthehorizons.common.entity.goals.SuckEntityGoal;
 import net.minecraft.core.particles.ParticleTypes;
@@ -37,7 +36,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
-// MOGAMBI AFRICA HHHH
 
 public class CatFish extends WaterAnimal {
     private final Random rand = new Random();
@@ -49,12 +47,11 @@ public class CatFish extends WaterAnimal {
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 5, 0.04F, 0.1F, true);
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
     }
-// MOGAMBI AFRICA HHHH
 
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        this.setVariant(rand.nextInt(2));
+        this.setVariant(rand.nextInt(4));
         this.setXRot(0.0F);
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
@@ -83,9 +80,6 @@ public class CatFish extends WaterAnimal {
     protected @NotNull PathNavigation createNavigation(@NotNull Level pLevel) {
         return new WaterBoundPathNavigation(this, pLevel);
     }
-    // MOGAMBI AFRICA HHHH
-
-
 
     public int getMaxHeadXRot() {
         return 1;
@@ -108,10 +102,14 @@ public class CatFish extends WaterAnimal {
         }
 
     }
-// MOGAMBI AFRICA HHHH
+
+    @Override
+    public boolean isPersistenceRequired() {
+        return true;
+    }
 
     public int getVariant() {
-        return Mth.clamp(this.entityData.get(DATA_VARIANT_ID), 0, 1);
+        return Mth.clamp(this.entityData.get(DATA_VARIANT_ID), 0, 4);
     }
 
     public void setVariant(int pVariant) {
@@ -162,15 +160,5 @@ public class CatFish extends WaterAnimal {
         super.aiStep();
     }
 
-    @Override
-    public void tick() {
-        super.tick();
-        /*if (this.onGround) {
-            this.setDeltaMovement(this.getDeltaMovement().add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.2F), 0.5D, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.2F)));
-            this.setYRot(this.random.nextFloat() * 360.0F);
-            this.onGround = false;
-            this.hasImpulse = true;
-        }*/
-    }
+
 }
-// MOGAMBI AFRICA HHHH
