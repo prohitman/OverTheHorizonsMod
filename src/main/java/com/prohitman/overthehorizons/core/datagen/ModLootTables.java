@@ -21,6 +21,8 @@ public class ModLootTables extends BaseLootTableProvider{
 
     @Override
     protected void addTables() {
+        lootTables.put(ModBlocks.HEDGEHOG_MUSHROOM.get(), createSimpleTable("hedgehog_mushroom", ModBlocks.HEDGEHOG_MUSHROOM.get()));
+        lootTables.put(ModBlocks.HEDGEHOG_MUSHROOM_TALL.get(), createSimpleTable("hedgehog_mushroom_tall", ModBlocks.HEDGEHOG_MUSHROOM_TALL.get()));
         lootTables.put(ModBlocks.ROSE.get(), createSimpleTable("rose", ModBlocks.ROSE.get()));
         lootTables.put(ModBlocks.PACKED_ROOTS.get(), createSimpleTable("packed_roots", ModBlocks.PACKED_ROOTS.get()));
         lootTables.put(ModBlocks.ARID_SOIL.get(), createSimpleTable("arid_soil", ModBlocks.ARID_SOIL.get()));

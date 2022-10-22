@@ -75,6 +75,12 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture((ModBlocks.SPROUTS.get().getRegistryName().getPath()),
                 mcLoc("item/generated"),
                 "layer0", modLoc("block/sprouts"));
+        singleTexture((ModBlocks.HEDGEHOG_MUSHROOM.get().getRegistryName().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/hedgehog_mushroom"));
+        singleTexture((ModBlocks.HEDGEHOG_MUSHROOM_TALL.get().getRegistryName().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/hedgehog_mushroom_tall"));
 
         //Items
         singleTexture(ModItems.LICHEN_CLUSTER.get().getRegistryName().getPath(),

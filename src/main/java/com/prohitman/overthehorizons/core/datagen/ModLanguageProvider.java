@@ -68,6 +68,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.PINE_FENCE.get(), "Pine Fence");
         add(ModBlocks.PINE_FENCE_GATE.get(), "Pine Fence Gate");
 
+        add(ModBlocks.HEDGEHOG_MUSHROOM_TALL.get(), "Hedgehog Mushroom Tall");
+        add(ModBlocks.HEDGEHOG_MUSHROOM.get(), "Hedgehog Mushroom");
+
         add(ModItems.LICHEN_CLUSTER.get(), "Lichen Cluster");
         add(ModItems.COPPER_BULLET.get(), "Copper Bullet");
         add(ModItems.PINE_SIGN.get(), "Pine Sign");

@@ -86,7 +86,7 @@ public class FennecFoxModel<T extends FennecFox> extends AgeableListModel<T> {
         this.body.zRot = 0.0F;
         this.rightHindLeg.setPos(-5.0F, 17.5F, 7.0F);
         this.leftHindLeg.setPos(-1.0F, 17.5F, 7.0F);
-        */if (pEntity.isCrouching()) {
+        if (pEntity.isCrouching()) {
             this.body.xRot = 1.6755161F;
             float f = pEntity.getCrouchAmount(pPartialTick);
             this.body.setPos(0.0F, 16.0F + pEntity.getCrouchAmount(pPartialTick), -6.0F);
@@ -127,7 +127,7 @@ public class FennecFoxModel<T extends FennecFox> extends AgeableListModel<T> {
             this.leftHindLeg.setPos(-1.0F, 21.5F, 6.75F);
             this.rightFrontLeg.xRot = -0.2617994F;
             this.leftFrontLeg.xRot = -0.2617994F;
-        }
+        }*/
 
     }
 

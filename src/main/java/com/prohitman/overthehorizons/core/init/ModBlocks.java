@@ -3,6 +3,7 @@ package com.prohitman.overthehorizons.core.init;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.blocks.*;
 import net.minecraft.core.BlockPos;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -17,7 +18,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModBlocks {//REMEMBER TURN ON GRADLE ONLINE ONCE INTERNET IS BACK
+public class ModBlocks {
     //Blocks
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, OverTheHorizonsMod.MOD_ID);
 
@@ -75,8 +76,14 @@ public class ModBlocks {//REMEMBER TURN ON GRADLE ONLINE ONCE INTERNET IS BACK
     public static final RegistryObject<Block> WILD_WHEAT = BLOCKS.register("wild_wheat", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<DoublePlantBlock> TALL_WILD_WHEAT = BLOCKS.register("tall_wild_wheat", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> SPROUTS = BLOCKS.register("sprouts", () -> new BushBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS)));
-    //public static final RegistryObject<Block> HEDGEHOG_MUSHROOM = BLOCKS.register("hedgehog_mushroom", () -> new MushroomBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-    //public static final RegistryObject<Block> HEDGEHOG_MUSHROOM_TALL = BLOCKS.register("hedgehog_mushroom_tall", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> HEDGEHOG_MUSHROOM = BLOCKS.register("hedgehog_mushroom", () -> new MushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)
+            .lightLevel((p_50892_) -> 1)
+            .hasPostProcess(ModBlocks::always),
+            () -> TreeFeatures.HUGE_BROWN_MUSHROOM));
+    public static final RegistryObject<Block> HEDGEHOG_MUSHROOM_TALL = BLOCKS.register("hedgehog_mushroom_tall", () -> new OTHTallMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)
+            .lightLevel((p_50892_) -> 1)
+            .hasPostProcess(ModBlocks::always),
+            () -> TreeFeatures.HUGE_BROWN_MUSHROOM));
 
     private static Block normalStoneBlock(MaterialColor color, SoundType soundType) {
         return new Block(BlockBehaviour.Properties.of(Material.STONE, color).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(soundType));
@@ -84,6 +91,10 @@ public class ModBlocks {//REMEMBER TURN ON GRADLE ONLINE ONCE INTERNET IS BACK
 
     private static LeavesBlock leaves(SoundType soundType, ModLeavesBlock.LeafParticleType particleType) {
         return new ModLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(soundType).noOcclusion().isValidSpawn(ModBlocks::ocelotOrParrot).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never), particleType);
+    }
+
+    private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
+        return true;
     }
 
     private static boolean never(BlockState state, BlockGetter getter, BlockPos pos) {
