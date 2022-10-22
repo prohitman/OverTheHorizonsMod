@@ -35,7 +35,7 @@ public class RiverRocks extends HorizontalDirectionalBlock implements SimpleWate
 
     public RiverRocks(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.FALSE));
+        this.registerDefaultState(this.stateDefinition.any()/*.setValue(FACING, Direction.NORTH)*/.setValue(WATERLOGGED, Boolean.FALSE));
     }
 
     public BlockBehaviour.OffsetType getOffsetType() {
