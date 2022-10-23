@@ -28,14 +28,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.stream.Stream;
 
 public class RiverRocks extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
-    //public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public static final VoxelShape SHAPE = Block.box(2, 0, 2, 13, 7, 14);
 
     public RiverRocks(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any()/*.setValue(FACING, Direction.NORTH)*/.setValue(WATERLOGGED, Boolean.FALSE));
+        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE));
     }
 
     public BlockBehaviour.OffsetType getOffsetType() {
@@ -81,8 +80,6 @@ public class RiverRocks extends HorizontalDirectionalBlock implements SimpleWate
             pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
         return !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
-
-        //return Direction.DOWN == pDirection && !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
     }
 
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
@@ -97,14 +94,4 @@ public class RiverRocks extends HorizontalDirectionalBlock implements SimpleWate
     public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
     }
-
-    /*@Override
-    public BlockState rotate(BlockState state, LevelAccessor level, BlockPos pos, Rotation direction) {
-        return state.setValue(FACING, direction.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(BlockState state, Mirror pMirror) {
-        return state.rotate(pMirror.getRotation(state.getValue(FACING)));
-    }*/
 }

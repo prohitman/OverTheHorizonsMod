@@ -76,7 +76,6 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(ModBlocks.SLATE_TILES.get(), createSimpleTable("slate_tiles", ModBlocks.SLATE_TILES.get()));
         lootTables.put(ModBlocks.ERODED_SLATE.get(), createSimpleTable("eroded_slate", ModBlocks.ERODED_SLATE.get()));
         lootTables.put(ModBlocks.SLATE.get(), createSimpleTable("slate", ModBlocks.SLATE.get()));
-
-
+        lootTables.put(ModBlocks.TRAMPLED_GRASS.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.DUNE_GRASS.get()));
     }
 }

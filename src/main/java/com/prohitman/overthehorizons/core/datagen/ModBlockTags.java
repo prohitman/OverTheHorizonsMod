@@ -87,7 +87,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.RED_LICHEN_COVERAGE.get())
                 .add(ModBlocks.SPROUTS.get())
                 .add(ModBlocks.DUNE_GRASS.get())
-                .add(ModBlocks.WILD_WHEAT.get());
+                .add(ModBlocks.WILD_WHEAT.get())
+                .add(ModBlocks.TRAMPLED_GRASS.get());
 
         tag(BlockTags.CLIMBABLE)
                 .add(ModBlocks.TREE_MOSS.get());
@@ -143,6 +144,7 @@ public class ModBlockTags extends BlockTagsProvider {
 
         tag(BlockTags.WALL_SIGNS)
                 .add(ModBlocks.PINE_WALL_SIGN.get());
+
     }
 
     private static TagKey<Block> bind(String pName) {

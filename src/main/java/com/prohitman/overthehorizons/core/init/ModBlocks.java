@@ -75,7 +75,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> DUNE_GRASS = BLOCKS.register("dune_grass", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> WILD_WHEAT = BLOCKS.register("wild_wheat", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<DoublePlantBlock> TALL_WILD_WHEAT = BLOCKS.register("tall_wild_wheat", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-    public static final RegistryObject<Block> SPROUTS = BLOCKS.register("sprouts", () -> new BushBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS)));
+    public static final RegistryObject<Block> SPROUTS = BLOCKS.register("sprouts", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS)));
     public static final RegistryObject<Block> HEDGEHOG_MUSHROOM = BLOCKS.register("hedgehog_mushroom", () -> new MushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)
             .lightLevel((p_50892_) -> 1)
             .hasPostProcess(ModBlocks::always),
@@ -84,6 +84,7 @@ public class ModBlocks {
             .lightLevel((p_50892_) -> 1)
             .hasPostProcess(ModBlocks::always),
             () -> TreeFeatures.HUGE_BROWN_MUSHROOM));
+    public static final RegistryObject<Block> TRAMPLED_GRASS = BLOCKS.register("trampled_grass", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
 
     private static Block normalStoneBlock(MaterialColor color, SoundType soundType) {
         return new Block(BlockBehaviour.Properties.of(Material.STONE, color).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(soundType));

@@ -38,10 +38,12 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.EntityHitResult;
@@ -92,6 +94,7 @@ public class ClientEventBusSubscriber {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPROUTS.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEDGEHOG_MUSHROOM.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEDGEHOG_MUSHROOM_TALL.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TRAMPLED_GRASS.get(), RenderType.cutoutMipped());
 
             BlockEntityRenderers.register(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
             Sheets.addWoodType(ModWoodTypes.PINE);
@@ -124,16 +127,24 @@ public class ClientEventBusSubscriber {
     }
 
     @SubscribeEvent
-    public static void registerBlockLeavesColors(ColorHandlerEvent.Block event){
+    public static void registerBlockColors(ColorHandlerEvent.Block event){
         event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) ->
                 pLevel != null && pPos != null ? BiomeColors.getAverageFoliageColor(pLevel, pPos) : FoliageColor.getDefaultColor(),
                 ModBlocks.PINE_LEAVES.get());
+        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> pLevel != null &&
+                pPos != null ? BiomeColors.getAverageGrassColor(pLevel, pPos) :
+                GrassColor.get(0.5D, 1.0D), ModBlocks.TRAMPLED_GRASS.get());
 
         //event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> new Color(0x358539FF).getRGB(), ModBlocks.PINE_LEAVES.get());
     }
 
     @SubscribeEvent
-    public static void registerBlockItemLeavesColors(ColorHandlerEvent.Item event){
+    public static void registerBlockItemColors(ColorHandlerEvent.Item event){
         event.getItemColors().register((pState, pTintIndex) -> new Color(0x408143).getRGB(), ModBlocks.PINE_LEAVES.get());
+        event.getItemColors().register((p_92687_, p_92688_) -> {
+            BlockState blockstate = ((BlockItem)p_92687_.getItem()).getBlock().defaultBlockState();
+            return event.getBlockColors().getColor(blockstate, (BlockAndTintGetter)null, (BlockPos)null, p_92688_);
+        }, ModBlocks.TRAMPLED_GRASS.get());
+
     }//4d6031
 }
