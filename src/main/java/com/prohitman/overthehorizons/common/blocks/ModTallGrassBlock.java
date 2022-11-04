@@ -21,6 +21,10 @@ public class ModTallGrassBlock extends TallGrassBlock {
     protected static final VoxelShape TRAMPLED_GRASS_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 15.0D, 10.0D, 15.0D);
     protected static final VoxelShape SPROUT_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 15.0D, 10.0D, 15.0D);
 
+    //protected static final VoxelShape UPPER_TALL_WILD_WHEAT_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
+    //protected static final VoxelShape LOWER_TALL_WILD_WHEAT_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+
+
     public ModTallGrassBlock(Properties p_57318_) {
         super(p_57318_);
     }

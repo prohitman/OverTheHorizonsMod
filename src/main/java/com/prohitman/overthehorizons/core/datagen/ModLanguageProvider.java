@@ -71,6 +71,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.HEDGEHOG_MUSHROOM_TALL.get(), "Hedgehog Mushroom Tall");
         add(ModBlocks.HEDGEHOG_MUSHROOM.get(), "Hedgehog Mushroom");
         add(ModBlocks.TRAMPLED_GRASS.get(), "Trampled Grass");
+        add(ModBlocks.WATER_REEDS.get(), "Water Reeds");
+        add(ModBlocks.LAND_REEDS.get(), "Land Reeds");
 
         add(ModItems.LICHEN_CLUSTER.get(), "Lichen Cluster");
         add(ModItems.COPPER_BULLET.get(), "Copper Bullet");
@@ -87,6 +89,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.COOKED_CATFISH.get(), "Cooked Catfish");
         add(ModItems.FISH_BONES.get(), "Fish Bones");
         add(ModItems.FENNEC_FOX_SPAWN_EGG.get(), "Fennec Fox Spawn Egg");
+        add(ModItems.CATTAIL_SEEDS.get(), "Cattail Seeds");
 
         add(ModEntityTypes.PERCH.get(), "Perch");
         add(ModEntityTypes.CATFISH.get(), "Catfish");

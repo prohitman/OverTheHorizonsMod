@@ -3,10 +3,7 @@ package com.prohitman.overthehorizons.core.init;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.entity.ModBoat;
 import com.prohitman.overthehorizons.common.entity.Perch;
-import com.prohitman.overthehorizons.common.item.HuntingRifleItem;
-import com.prohitman.overthehorizons.common.item.LichenCluster;
-import com.prohitman.overthehorizons.common.item.ModBoatItem;
-import com.prohitman.overthehorizons.common.item.PineTeaItem;
+import com.prohitman.overthehorizons.common.item.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -51,6 +48,7 @@ public class ModItems {
     public static final RegistryObject<Item> PINE_SIGN = ITEMS.register("pine_sign", () -> new SignItem(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS).stacksTo(16), ModBlocks.PINE_STANDING_SIGN.get(), ModBlocks.PINE_WALL_SIGN.get()));
     public static final RegistryObject<Item> PINE_BOAT = ITEMS.register("pine_boat", () -> new ModBoatItem(ModBoat.ModType.PINE, (new Item.Properties()).stacksTo(1).tab(ModItemGroups.OVER_THE_HORIZONS)));
     public static final RegistryObject<Item> FISH_BONES = ITEMS.register("fish_bones", () -> new Item(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS)));
+    public static final RegistryObject<Item> CATTAIL_SEEDS = ITEMS.register("cattail_seeds", () -> new CattailSeeds(new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS)));
 
 
 

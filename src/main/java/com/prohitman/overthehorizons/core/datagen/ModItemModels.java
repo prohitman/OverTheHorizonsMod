@@ -84,6 +84,12 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture((ModBlocks.TRAMPLED_GRASS.get().getRegistryName().getPath()),
                 mcLoc("item/generated"),
                 "layer0", modLoc("block/trampled_grass"));
+        singleTexture((ModBlocks.LAND_REEDS.get().getRegistryName().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/land_reeds_top"));
+        singleTexture((ModBlocks.WATER_REEDS.get().getRegistryName().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/water_reeds_top"));
         //Items
         singleTexture(ModItems.LICHEN_CLUSTER.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
@@ -118,6 +124,9 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture(ModItems.FISH_BONES.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/fish_bones"));
+        singleTexture(ModItems.CATTAIL_SEEDS.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/cattail_seeds"));
 
         //Spawn Eggs
         withExistingParent(ModItems.PERCH_SPAWN_EGG.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));

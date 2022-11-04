@@ -95,6 +95,8 @@ public class ClientEventBusSubscriber {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEDGEHOG_MUSHROOM.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEDGEHOG_MUSHROOM_TALL.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TRAMPLED_GRASS.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WATER_REEDS.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAND_REEDS.get(), RenderType.cutoutMipped());
 
             BlockEntityRenderers.register(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
             Sheets.addWoodType(ModWoodTypes.PINE);

@@ -1,15 +1,21 @@
 package com.prohitman.overthehorizons.core.datagen;
 
+import com.prohitman.overthehorizons.common.blocks.WaterReedsBlock;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
+import com.prohitman.overthehorizons.core.init.ModItems;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.fml.common.Mod;
@@ -77,5 +83,33 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(ModBlocks.ERODED_SLATE.get(), createSimpleTable("eroded_slate", ModBlocks.ERODED_SLATE.get()));
         lootTables.put(ModBlocks.SLATE.get(), createSimpleTable("slate", ModBlocks.SLATE.get()));
         lootTables.put(ModBlocks.TRAMPLED_GRASS.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.DUNE_GRASS.get()));
+        lootTables.put(ModBlocks.WATER_REEDS.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.WATER_REEDS.get()));
+        lootTables.put(ModBlocks.LAND_REEDS.get(), createSilkTouchOrShearsDispatchTableNoCondition(ModBlocks.LAND_REEDS.get()));
+        /*lootTables.put(ModBlocks.WATER_REEDS.get(), LootTable.lootTable().withPool(LootPool.lootPool()
+                .name("water_reeds")
+                .setRolls(UniformGenerator.between(2.0F, 5.0F))
+                .add(LootItem.lootTableItem(ModItems.CATTAIL_SEEDS.get()))));*/
+        /*lootTables.put(ModBlocks.LAND_REEDS.get(), LootTable.lootTable().withPool(LootPool.lootPool()
+                .name("land_reeds")
+                .setRolls(UniformGenerator.between(2.0F, 5.0F))
+                .add(LootItem.lootTableItem(ModItems.CATTAIL_SEEDS.get()))));*/
+        lootTables.put(ModBlocks.WATER_REEDS.get(), LootTable.lootTable()
+                .withPool(applyExplosionCondition(ModBlocks.WATER_REEDS.get(),
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.CATTAIL_SEEDS.get())
+                                        .when(LootItemBlockStatePropertyCondition
+                                                .hasBlockStateProperties(ModBlocks.WATER_REEDS.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(WaterReedsBlock.HALF, DoubleBlockHalf.LOWER)))))));
+        lootTables.put(ModBlocks.LAND_REEDS.get(), LootTable.lootTable()
+                .withPool(applyExplosionCondition(ModBlocks.LAND_REEDS.get(),
+                        LootPool.lootPool()
+                                .setRolls(UniformGenerator.between(0.0F, 4.0F))
+                                .add(LootItem.lootTableItem(ModItems.CATTAIL_SEEDS.get())
+                                        .when(LootItemBlockStatePropertyCondition
+                                                .hasBlockStateProperties(ModBlocks.WATER_REEDS.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(WaterReedsBlock.HALF, DoubleBlockHalf.LOWER)))))));
     }
 }

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "overthehorizons:block/land_reeds_bottom"
+    },
+    "half=upper": {
+      "model": "overthehorizons:block/land_reeds_top"
+    }
+  }
+}

@@ -48,6 +48,9 @@ public class CommonForgeEvents {
         ComposterBlock.COMPOSTABLES.put(ModBlocks.TREE_MOSS.get().asItem(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.PINE_CONE.get().asItem(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModItems.LICHEN_CLUSTER.get().asItem(), 0.8F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.CATTAIL_SEEDS.get().asItem(), 0.2F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.LAND_REEDS.get().asItem(), 0.5F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.WATER_REEDS.get().asItem(), 0.5F);
     }
 
     public static void registerFlammables(){
