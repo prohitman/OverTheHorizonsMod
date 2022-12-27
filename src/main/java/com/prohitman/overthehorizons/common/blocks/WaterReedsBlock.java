@@ -4,6 +4,7 @@ import com.prohitman.overthehorizons.core.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IPlantable;
@@ -39,7 +41,7 @@ public class WaterReedsBlock extends DoublePlantBlock implements LiquidBlockCont
 
     @Override
     public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable) {
-        if(this.mayPlaceOn(state, world, pos)){
+        if (this.mayPlaceOn(state, world, pos)) {
             return true;
         }
         return super.canSustainPlant(state, world, pos, facing, plantable);
@@ -47,30 +49,12 @@ public class WaterReedsBlock extends DoublePlantBlock implements LiquidBlockCont
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        if(pLevel.getFluidState(pPos.above(2)).is(FluidTags.WATER)){
-            return  false;
+        if (pLevel.getFluidState(pPos.above(2)).is(FluidTags.WATER)) {
+            return false;
         }
 
         return this.canSurvive(pState, (LevelReader) pLevel, pPos);
     }
-
-    /*@Override
-    protected boolean mayPlaceOn(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
-       System.out.println("HERE I AM!!!");
-        if (!canSurvive(blockState, , blockPos)) {
-
-        }
-        /*if(blockState.getValue(HALF) == DoubleBlockHalf.LOWER
-                && !blockState.getValue(WATERLOGGED)){
-            return blockState.isFaceSturdy(blockGetter, blockPos, Direction.UP) && !blockState.is(Blocks.MAGMA_BLOCK);
-        }else if(blockState.getValue(HALF) == DoubleBlockHalf.UPPER){
-            return !blockGetter.getFluidState(blockPos).is(FluidTags.WATER);
-        }*/
-        //BlockState state = blockGetter.getBlockState(blockPos.atY(blockPos.getY() + 2));
-       //System.out.println(state.getBlock());
-
-    //    return blockState.isFaceSturdy(blockGetter, blockPos, Direction.UP) && !blockState.is(Blocks.MAGMA_BLOCK);
-    //}
 
     @Override
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world,
@@ -125,11 +109,6 @@ public class WaterReedsBlock extends DoublePlantBlock implements LiquidBlockCont
 
             if (world.getFluidState(pos).getType() == Fluids.WATER)
                 return canGrow(ground);
-            /*for (Direction direction : Direction.Plane.HORIZONTAL) {
-                if (world.getFluidState(groundPos.relative(direction)).getType() == Fluids.WATER) {
-                    return canGrow(ground);
-                }
-            }*/
 
             return false;
         } else {
@@ -137,21 +116,22 @@ public class WaterReedsBlock extends DoublePlantBlock implements LiquidBlockCont
             BlockState blockstate = world.getBlockState(pos.below());
             if (state.getBlock() != this)
                 return false;
-            if(world.isWaterAt(pos.above(1))){
+            if (world.isWaterAt(pos.above(1))) {
                 return false;
             }
             return blockstate.getBlock() == this && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
         }
     }
 
-    public boolean canGrow(Block ground) {
+    public static boolean canGrow(Block ground) {
         return ground == Blocks.DIRT || ground instanceof GrassBlock || ground instanceof SandBlock
                 || ground == Blocks.GRAVEL || ground == Blocks.CLAY;
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter p_154764_, BlockPos p_154765_, CollisionContext p_154766_) {
-        return pState.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE : UPPER_SHAPE;
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext p_154766_) {
+        Vec3 vec3 = pState.getOffset(pLevel, pPos);
+        return pState.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE.move(vec3.x, vec3.y, vec3.z) : UPPER_SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
 
     @Override
@@ -177,5 +157,13 @@ public class WaterReedsBlock extends DoublePlantBlock implements LiquidBlockCont
     @Override
     public boolean placeLiquid(LevelAccessor pLevel, BlockPos pPos, BlockState pState, FluidState pFluidState) {
         return false;
+    }
+
+    @Override
+    public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+        if (!pLevel.isClientSide) {
+            preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
+        }
+        super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
     }
 }

@@ -5,7 +5,7 @@
       "rolls": {
         "type": "minecraft:uniform",
         "min": 0.0,
-        "max": 4.0
+        "max": 2.0
       },
       "bonus_rolls": 0.0,
       "entries": [
@@ -14,7 +14,7 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "overthehorizons:water_reeds",
+              "block": "overthehorizons:land_reeds",
               "properties": {
                 "half": "lower"
               }

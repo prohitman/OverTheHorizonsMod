@@ -11,16 +11,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.IPlantable;
 
-public class PineConeBlock extends BushBlock{
-    public static final VoxelShape SHAPE = Block.box(4, 4, 4, 12, 16, 12);
+public class PineConeBlock extends BushBlock {
+    public static final VoxelShape SHAPE = Block.box(4, 6, 4, 12, 16, 12);
 
     public PineConeBlock(Properties properties) {
         super(properties);
@@ -39,6 +37,7 @@ public class PineConeBlock extends BushBlock{
     public PushReaction getPistonPushReaction(BlockState pState) {
         return PushReaction.DESTROY;
     }
+
     /**
      * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
      * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately

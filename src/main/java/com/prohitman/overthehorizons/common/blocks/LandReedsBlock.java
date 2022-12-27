@@ -2,12 +2,15 @@ package com.prohitman.overthehorizons.common.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -21,11 +24,15 @@ public class LandReedsBlock extends DoublePlantBlock {
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return pState.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE : UPPER_SHAPE;
+        Vec3 vec3 = pState.getOffset(pLevel, pPos);
+        return pState.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE.move(vec3.x, vec3.y, vec3.z) : UPPER_SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+        if (world.isWaterAt(pos)) {
+            return false;
+        }
         if (state.getValue(HALF) != DoubleBlockHalf.UPPER) {
             BlockPos groundPos = pos.below();
             Block ground = world.getBlockState(groundPos).getBlock();
@@ -46,8 +53,16 @@ public class LandReedsBlock extends DoublePlantBlock {
         }
     }
 
-    public boolean canGrow(Block ground) {
+    public static boolean canGrow(Block ground) {
         return ground == Blocks.DIRT || ground instanceof GrassBlock || ground instanceof SandBlock
                 || ground == Blocks.GRAVEL || ground == Blocks.CLAY;
+    }
+
+    @Override
+    public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+        if(!pLevel.isClientSide){
+            preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
+        }
+        super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
     }
 }

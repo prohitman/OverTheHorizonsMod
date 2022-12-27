@@ -12,10 +12,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
-public class OTHTallMushroomBlock extends MushroomBlock {
-    protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
+public class ModTallMushroomBlock extends MushroomBlock {
+    protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 11.0D, 12.0D);
 
-    public OTHTallMushroomBlock(Properties p_153983_, Supplier<Holder<? extends ConfiguredFeature<?, ?>>> p_153984_) {
+    public ModTallMushroomBlock(Properties p_153983_, Supplier<Holder<? extends ConfiguredFeature<?, ?>>> p_153984_) {
         super(p_153983_, p_153984_);
     }
 

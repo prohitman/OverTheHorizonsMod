@@ -105,11 +105,20 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(ModBlocks.LAND_REEDS.get(), LootTable.lootTable()
                 .withPool(applyExplosionCondition(ModBlocks.LAND_REEDS.get(),
                         LootPool.lootPool()
+                                .setRolls(UniformGenerator.between(0, 2))
+                                .add(LootItem.lootTableItem(ModItems.CATTAIL_SEEDS.get())
+                                        .when(LootItemBlockStatePropertyCondition
+                                                .hasBlockStateProperties(ModBlocks.LAND_REEDS.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(WaterReedsBlock.HALF, DoubleBlockHalf.LOWER)))))));
+        /*lootTables.put(ModBlocks.LAND_REEDS.get(), LootTable.lootTable()
+                .withPool(applyExplosionCondition(ModBlocks.LAND_REEDS.get(),
+                        LootPool.lootPool()
                                 .setRolls(UniformGenerator.between(0.0F, 4.0F))
                                 .add(LootItem.lootTableItem(ModItems.CATTAIL_SEEDS.get())
                                         .when(LootItemBlockStatePropertyCondition
                                                 .hasBlockStateProperties(ModBlocks.WATER_REEDS.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
-                                                        .hasProperty(WaterReedsBlock.HALF, DoubleBlockHalf.LOWER)))))));
+                                                        .hasProperty(WaterReedsBlock.HALF, DoubleBlockHalf.LOWER)))))));*/
     }
 }

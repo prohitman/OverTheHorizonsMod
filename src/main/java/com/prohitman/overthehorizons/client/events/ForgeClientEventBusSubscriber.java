@@ -1,6 +1,6 @@
 package com.prohitman.overthehorizons.client.events;
 
-import com.mojang.blaze3d.vertex.*;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.keybinds.ModKeyBindings;
 import com.prohitman.overthehorizons.common.item.HuntingRifleItem;
@@ -18,7 +18,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.event.FOVModifierEvent;
+import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,34 +30,57 @@ import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public final class ForgeClientEventBusSubscriber {
-    private ForgeClientEventBusSubscriber(){
 
-
+    private ForgeClientEventBusSubscriber() {
     }
 
     @SubscribeEvent
-    public static void clientTickEvents(TickEvent.ClientTickEvent event){
+    public static void clientTickEvents(TickEvent.ClientTickEvent event) {
         if (ModKeyBindings.reloadRifleKeyMapping.consumeClick()) {
             OTHPacketHandler.HANDLER.sendToServer(new MessageReloadRifle());
             System.out.println("Keybinding pressed");
         }
-        if(Minecraft.getInstance().player != null){
-            if(!ModKeyBindings.zoomRifleKeyMapping.isDown()){
+        if (Minecraft.getInstance().player != null) {
+            //System.out.println("Called.");
+            if (!ModKeyBindings.zoomRifleKeyMapping.isDown()) {
                 OverTheHorizonsMod.scopeScale = 0.5f;
             }
-        }
-        /*if(Minecraft.getInstance().player != null){
-            if (ModKeyBindings.zoomRifleKeyMapping.isDown()
-                    && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof  HuntingRifleItem) {
-                Minecraft.getInstance().player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
-                System.out.println("Sending Sound");
+            Minecraft.getInstance().getProfiler().push("mouse");
+            double d4 = Minecraft.getInstance().options.sensitivity * (double) 0.6F + (double) 0.2F;
+            double d5 = d4 * d4 * d4;
+            double d6 = d5 * 8.0D;
+            double d2;
+            double d3;
+            double accumulatedDX = Minecraft.getInstance().mouseHandler.getXVelocity();
+            double accumulatedDY = Minecraft.getInstance().mouseHandler.getYVelocity();
+
+            if (Minecraft.getInstance().options.getCameraType().isFirstPerson()
+                    && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem
+                    && ModKeyBindings.zoomRifleKeyMapping.isDown()) {
+                Minecraft.getInstance().mouseHandler.turnPlayer();
+                d2 = accumulatedDX * d5;
+                d3 = accumulatedDY * d5;
+
+                accumulatedDX = 0;
+                accumulatedDY = 0;
+
+                int i = 1;
+                if (Minecraft.getInstance().options.invertYMouse) {
+                    i = -1;
+                }
+                Minecraft.getInstance().getTutorial().onMouse(d2, d3);
+                if (Minecraft.getInstance().player != null) {
+                    Minecraft.getInstance().player.turn(d2, d3 * (double) i);
+                }
             }
-        }*/
+            Minecraft.getInstance().getProfiler().pop();
+
+        }
     }
 
     @SubscribeEvent
-    public static void renderRifle(RenderHandEvent event){
-        if(ModKeyBindings.zoomRifleKeyMapping.isDown()) {
+    public static void renderRifle(RenderHandEvent event) {
+        if (ModKeyBindings.zoomRifleKeyMapping.isDown()) {
             assert Minecraft.getInstance().player != null;
             if (Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
                 event.setCanceled(true);
@@ -64,32 +90,36 @@ public final class ForgeClientEventBusSubscriber {
 
     /*@SubscribeEvent
     public static void mouseHandler(ScreenEvent.MouseDragEvent event){
-        double d4 = Minecraft.getInstance().options.sensitivity * (double)0.6F + (double)0.2F;
-        double d5 = d4 * d4 * d4;
-        double d6 = d5 * 8.0D;
-        double d2;
-        double d3;
-        double accumulatedDX = Minecraft.getInstance().mouseHandler.getXVelocity();
-        double accumulatedDY = Minecraft.getInstance().mouseHandler.getYVelocity();
+        if(Minecraft.getInstance().player != null){
+            Minecraft.getInstance().getProfiler().push("mouse");
+            double d4 = Minecraft.getInstance().options.sensitivity * (double)0.6F + (double)0.2F;
+            double d5 = d4 * d4 * d4;
+            double d6 = d5 * 8.0D;
+            double d2;
+            double d3;
+            double accumulatedDX = Minecraft.getInstance().mouseHandler.getXVelocity();
+            double accumulatedDY = Minecraft.getInstance().mouseHandler.getYVelocity();
 
-        if(Minecraft.getInstance().options.getCameraType().isFirstPerson()
-                && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem
-                && ModKeyBindings.zoomRifleKeyMapping.isDown()){
-            Minecraft.getInstance().mouseHandler.turnPlayer();
-            d2 = accumulatedDX * d5;
-            d3 = accumulatedDY * d5;
+            if(Minecraft.getInstance().options.getCameraType().isFirstPerson()
+                    && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem
+                    && ModKeyBindings.zoomRifleKeyMapping.isDown()){
+                Minecraft.getInstance().mouseHandler.turnPlayer();
+                d2 = accumulatedDX * d5;
+                d3 = accumulatedDY * d5;
 
-            accumulatedDX = 0;
-            accumulatedDY = 0;
+                accumulatedDX = 0;
+                accumulatedDY = 0;
 
-            int i = 1;
-            if (Minecraft.getInstance().options.invertYMouse) {
-                i = -1;
+                int i = 1;
+                if (Minecraft.getInstance().options.invertYMouse) {
+                    i = -1;
+                }
+                Minecraft.getInstance().getTutorial().onMouse(d2, d3);
+                if (Minecraft.getInstance().player != null) {
+                    Minecraft.getInstance().player.turn(d2, d3 * (double)i);
+                }
             }
-            Minecraft.getInstance().getTutorial().onMouse(d2, d3);
-            if (Minecraft.getInstance().player != null) {
-                Minecraft.getInstance().player.turn(d2, d3 * (double)i);
-            }
+            Minecraft.getInstance().getProfiler().pop();
         }
     }*/
 
@@ -116,8 +146,8 @@ public final class ForgeClientEventBusSubscriber {
         LocalPlayer player = Minecraft.getInstance().player;
         if (player != null) {
             Item item = player.getMainHandItem().getItem();
-            if(item instanceof HuntingRifleItem){
-                if(ModKeyBindings.zoomRifleKeyMapping.consumeClick() && event.getAction() == GLFW.GLFW_PRESS){
+            if (item instanceof HuntingRifleItem) {
+                if (ModKeyBindings.zoomRifleKeyMapping.consumeClick() && event.getAction() == GLFW.GLFW_PRESS) {
                     Minecraft.getInstance().player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
                 }
             }
@@ -125,14 +155,14 @@ public final class ForgeClientEventBusSubscriber {
     }
 
     @SubscribeEvent
-    public static void modifyFOV(FOVModifierEvent event){
-        if(Minecraft.getInstance().options.getCameraType().isFirstPerson() && event.getEntity().getMainHandItem().getItem() instanceof HuntingRifleItem && ModKeyBindings.zoomRifleKeyMapping.isDown()){
+    public static void modifyFOV(FOVModifierEvent event) {
+        if (Minecraft.getInstance().options.getCameraType().isFirstPerson() && event.getEntity().getMainHandItem().getItem() instanceof HuntingRifleItem && ModKeyBindings.zoomRifleKeyMapping.isDown()) {
             event.setNewfov(0.1f);
         }
     }
 
     @SubscribeEvent
-    public static void renderAmmoCount(RenderGameOverlayEvent.Text event){
+    public static void renderAmmoCount(RenderGameOverlayEvent.Text event) {
         AbstractClientPlayer clientplayer = Minecraft.getInstance().player;
         if (clientplayer != null) {
             ItemStack stack = clientplayer.getMainHandItem();

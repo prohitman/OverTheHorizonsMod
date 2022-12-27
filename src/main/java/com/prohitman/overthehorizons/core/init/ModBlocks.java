@@ -58,10 +58,10 @@ public class ModBlocks {
     public static final RegistryObject<PressurePlateBlock> PINE_PRESSURE_PLATE = BLOCKS.register("pine_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of(Material.WOOD, PINE_PLANKS.get().defaultMaterialColor()).noCollission().strength(0.5F).sound(SoundType.WOOD)));
     public static final RegistryObject<WoodButtonBlock> PINE_BUTTON = BLOCKS.register("pine_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
     public static final RegistryObject<DoorBlock> PINE_DOOR = BLOCKS.register("pine_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion()));
-    public static final RegistryObject<TrapDoorBlock> PINE_TRAPDOOR = BLOCKS.register("pine_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, PINE_PLANKS.get().defaultMaterialColor()).strength( 3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
+    public static final RegistryObject<TrapDoorBlock> PINE_TRAPDOOR = BLOCKS.register("pine_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, PINE_PLANKS.get().defaultMaterialColor()).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
     public static final RegistryObject<Block> PINE_CONE = BLOCKS.register("pine_cone", () -> new PineConeBlock(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.WOOD).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<FenceBlock> PINE_FENCE = BLOCKS.register("pine_fence", () -> new FenceBlock(BlockBehaviour.Properties.of(Material.WOOD, PINE_PLANKS.get().defaultMaterialColor()).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<FenceGateBlock> PINE_FENCE_GATE = BLOCKS.register("pine_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of(Material.WOOD, PINE_PLANKS.get().defaultMaterialColor()).strength( 3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
+    public static final RegistryObject<FenceGateBlock> PINE_FENCE_GATE = BLOCKS.register("pine_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of(Material.WOOD, PINE_PLANKS.get().defaultMaterialColor()).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never)));
     public static final RegistryObject<ModStandingSignBlock> PINE_STANDING_SIGN = BLOCKS.register("pine_standing_sign", () -> new ModStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ModWoodTypes.PINE));
     public static final RegistryObject<ModWallSignBlock> PINE_WALL_SIGN = BLOCKS.register("pine_wall_sign", () -> new ModWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ModWoodTypes.PINE));
 
@@ -72,13 +72,13 @@ public class ModBlocks {
     public static final RegistryObject<WaterlilyBlock> DUCKWEED = BLOCKS.register("duckweed", () -> new WaterlilyBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.LILY_PAD).noOcclusion()));
     public static final RegistryObject<Block> DUNE_GRASS = BLOCKS.register("dune_grass", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> WILD_WHEAT = BLOCKS.register("wild_wheat", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-    public static final RegistryObject<DoublePlantBlock> TALL_WILD_WHEAT = BLOCKS.register("tall_wild_wheat", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<TallWildWheatBlock> TALL_WILD_WHEAT = BLOCKS.register("tall_wild_wheat", () -> new TallWildWheatBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> SPROUTS = BLOCKS.register("sprouts", () -> new ModTallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS)));
     public static final RegistryObject<Block> HEDGEHOG_MUSHROOM = BLOCKS.register("hedgehog_mushroom", () -> new MushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)
             .lightLevel((p_50892_) -> 1)
             .hasPostProcess(ModBlocks::always),
             () -> TreeFeatures.HUGE_BROWN_MUSHROOM));
-    public static final RegistryObject<Block> HEDGEHOG_MUSHROOM_TALL = BLOCKS.register("hedgehog_mushroom_tall", () -> new OTHTallMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)
+    public static final RegistryObject<Block> HEDGEHOG_MUSHROOM_TALL = BLOCKS.register("hedgehog_mushroom_tall", () -> new ModTallMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)
             .lightLevel((p_50892_) -> 1)
             .hasPostProcess(ModBlocks::always),
             () -> TreeFeatures.HUGE_BROWN_MUSHROOM));
@@ -105,6 +105,7 @@ public class ModBlocks {
     private static Boolean never(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> entityType) {
         return false;
     }
+
     private static Boolean ocelotOrParrot(BlockState state, BlockGetter blockGetter, BlockPos pos, EntityType<?> entityType) {
         return entityType == EntityType.OCELOT || entityType == EntityType.PARROT;
     }
