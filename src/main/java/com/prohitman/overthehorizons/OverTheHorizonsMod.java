@@ -49,7 +49,6 @@ public class OverTheHorizonsMod
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModEntityTypes.ENTITY_TYPES.register(modEventBus);
         ModSounds.SOUND_TYPES.register(modEventBus);
-        //ModFeatures.FEATURES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -66,7 +65,4 @@ public class OverTheHorizonsMod
     public void onServerStarting(ServerStartingEvent event) {
 
     }
-
-
-
 }

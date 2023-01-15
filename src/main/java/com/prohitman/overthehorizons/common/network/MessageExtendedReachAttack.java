@@ -2,13 +2,12 @@ package com.prohitman.overthehorizons.common.network;
 
 import com.prohitman.overthehorizons.common.util.IExtendedReach;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraftforge.network.NetworkEvent;
@@ -68,8 +67,8 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 				if (reachSq >= distanceSq) {
 					if (theEntity instanceof ItemEntity || theEntity instanceof ExperienceOrb
 							|| theEntity instanceof AbstractArrow || theEntity == thePlayer) {
-						thePlayer.connection.disconnect(new TranslatableComponent(
-								"multiplayer.disconnect.invalid_entity_attacked", new Object[0]));
+						thePlayer.connection.disconnect(Component.translatable(
+								"multiplayer.disconnect.invalid_entity_attacked"));
 						// this.serverController.logWarning("Player " + thePlayer.getName() + " tried to
 						// attack an invalid entity");
 					}else if(theEntity instanceof LivingEntity){

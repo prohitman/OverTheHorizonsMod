@@ -6,6 +6,7 @@ import com.prohitman.overthehorizons.core.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -129,7 +130,7 @@ public class ModBoat extends Boat {
                 this.setHurtTime(10);
                 this.setDamage(this.getDamage() + pAmount * 10.0F);
                 this.markHurt();
-                this.gameEvent(GameEvent.ENTITY_DAMAGED, pSource.getEntity());
+                this.gameEvent(GameEvent.ENTITY_DAMAGE, pSource.getEntity());
                 boolean flag = pSource.getEntity() instanceof Player && ((Player) pSource.getEntity()).getAbilities().instabuild;
                 if (flag || this.getDamage() > 40.0F) {
                     if (!flag && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
@@ -146,9 +147,8 @@ public class ModBoat extends Boat {
     }
 
     @Override
-    public Packet<?> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
+    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+        return new ClientboundAddEntityPacket(this);    }
 
 
     public enum ModType{

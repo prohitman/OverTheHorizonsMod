@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:river",
+  "features": "overthehorizons:plants/water_reeds",
+  "step": "vegetal_decoration"
+}

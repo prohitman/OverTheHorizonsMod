@@ -54,7 +54,7 @@ public class FennecFoxHeldItemLayer extends RenderLayer<FennecFox, FennecFoxMode
         }
 
         ItemStack itemstack = pLivingEntity.getItemBySlot(EquipmentSlot.MAINHAND);
-        Minecraft.getInstance().getItemInHandRenderer().renderItem(pLivingEntity, itemstack, ItemTransforms.TransformType.GROUND, false, pMatrixStack, pBuffer, pPackedLight);
+        Minecraft.getInstance().getItemRenderer().render(itemstack, ItemTransforms.TransformType.GROUND, false, pMatrixStack, pBuffer, pPackedLight);
         pMatrixStack.popPose();
     }
 }

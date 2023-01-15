@@ -3,6 +3,7 @@ package com.prohitman.overthehorizons.core.datagen;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -10,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 
 public class ModBlockStates extends BlockStateProvider {
 
-    public ModBlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
+    public ModBlockStates(PackOutput gen, ExistingFileHelper exFileHelper) {
         super(gen, OverTheHorizonsMod.MOD_ID, exFileHelper);
     }
 

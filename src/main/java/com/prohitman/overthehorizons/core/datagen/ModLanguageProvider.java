@@ -7,10 +7,11 @@ import com.prohitman.overthehorizons.core.init.ModEntityTypes;
 import com.prohitman.overthehorizons.core.init.ModItems;
 import com.prohitman.overthehorizons.core.init.ModSounds;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLanguageProvider extends LanguageProvider {
-    public ModLanguageProvider(DataGenerator gen, String locale) {
+    public ModLanguageProvider(PackOutput gen, String locale) {
         super(gen, OverTheHorizonsMod.MOD_ID, locale);
     }
 

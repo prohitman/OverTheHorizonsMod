@@ -12,8 +12,10 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
-public class SuckEntityGoal extends MoveTowardsTargetGoal {
+import java.util.Random;
 
+public class SuckEntityGoal extends MoveTowardsTargetGoal {
+    private final Random random = new Random();
     private final CatFish catfish;
     private final float within;
     private int unseenTicks;
@@ -68,7 +70,7 @@ public class SuckEntityGoal extends MoveTowardsTargetGoal {
             target.remove(Entity.RemovalReason.KILLED);
             this.catfish.playSound(SoundEvents.CHICKEN_EGG, 1,1);
         } else {
-            Vec3 vector3d = (new Vec3(this.catfish.getX() - target.getX(), this.catfish.getY() - target.getY(), this.catfish.getZ() - target.getZ())).scale(0.03D + target.getRandom().nextFloat(0.03F));
+            Vec3 vector3d = (new Vec3(this.catfish.getX() - target.getX(), this.catfish.getY() - target.getY(), this.catfish.getZ() - target.getZ())).scale(0.03D + random.nextFloat(0.03F));//+ target.getRandom().nextFloat());//0.03F in nextFloat
             target.setDeltaMovement(target.getDeltaMovement().add(vector3d));
         }
 

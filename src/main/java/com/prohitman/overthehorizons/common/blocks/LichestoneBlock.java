@@ -12,6 +12,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class LichestoneBlock extends Block implements BonemealableBlock{
+public class LichestoneBlock extends Block /*implements BonemealableBlock*/{
     public LichestoneBlock(Properties properties) {
         super(properties);
     }
@@ -87,7 +88,7 @@ public class LichestoneBlock extends Block implements BonemealableBlock{
     /**
      * Performs a random tick on a block.
      */
-    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (!canBeGrass(pState, pLevel, pPos)) {
             if (!pLevel.isAreaLoaded(pPos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             pLevel.setBlockAndUpdate(pPos, Blocks.STONE.defaultBlockState());
@@ -107,7 +108,7 @@ public class LichestoneBlock extends Block implements BonemealableBlock{
         }
     }
 
-    @Override
+   /* @Override
     public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
         return pLevel.getBlockState(pPos.above()).isAir();
     }
@@ -124,5 +125,5 @@ public class LichestoneBlock extends Block implements BonemealableBlock{
         } else if(pState.is(ModBlocks.RED_LICHENSTONE.get())){
             ModFeatureUtils.RED_LICHENSTONE_PATCH_BONEMEAL.value().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
         }
-    }
+    }*/
 }

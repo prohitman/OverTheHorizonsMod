@@ -3,29 +3,31 @@ package com.prohitman.overthehorizons.core.datagen;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModItems;
-import com.sun.jna.platform.win32.WinBase;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.CompletableFuture;
 
 public class ModItemTags extends ItemTagsProvider {
     public static final TagKey<Item> PINE_LOGS = bind("pine_logs");
 
-    public ModItemTags(DataGenerator generator, BlockTagsProvider blockTags, @Nullable ExistingFileHelper existingFileHelper) {
-        super(generator, blockTags, OverTheHorizonsMod.MOD_ID, existingFileHelper);
+    public ModItemTags(PackOutput generator, CompletableFuture<HolderLookup.Provider> pLookupProvider, BlockTagsProvider blockTags, @Nullable ExistingFileHelper existingFileHelper) {
+        super(generator, pLookupProvider, blockTags, OverTheHorizonsMod.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider pProvider) {
         tag(Tags.Items.FENCE_GATES_WOODEN).add(ModBlocks.PINE_FENCE_GATE.get().asItem());
         tag(Tags.Items.FENCES_WOODEN).add(ModBlocks.PINE_FENCE.get().asItem());
         tag(ItemTags.LOGS_THAT_BURN).add(ModBlocks.PINE_WOOD.get().asItem());
@@ -70,6 +72,6 @@ public class ModItemTags extends ItemTagsProvider {
     }
 
     private static TagKey<Item> bind(String pName) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(pName));
+        return TagKey.create(Registries.ITEM, new ResourceLocation(pName));
     }
 }

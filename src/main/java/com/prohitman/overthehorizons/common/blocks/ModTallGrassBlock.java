@@ -3,6 +3,7 @@ package com.prohitman.overthehorizons.common.blocks;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoublePlantBlock;
@@ -40,7 +41,7 @@ public class ModTallGrassBlock extends TallGrassBlock {
     }
 
     @Override
-    public void performBonemeal(ServerLevel pLevel, Random pRandom, BlockPos pPos, BlockState pState) {
+    public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
         if ((pState.is(ModBlocks.WILD_WHEAT.get()))) {
             DoublePlantBlock doubleplantblock = ModBlocks.TALL_WILD_WHEAT.get();
             if (doubleplantblock.defaultBlockState().canSurvive(pLevel, pPos) && pLevel.isEmptyBlock(pPos.above())) {

@@ -2,28 +2,33 @@ package com.prohitman.overthehorizons.core.datagen;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.concurrent.CompletableFuture;
+
 public class ModBlockTags extends BlockTagsProvider {
     public static final TagKey<Block> LICHEN_REPLACEABLES = bind("pine_logs");
 
-    public ModBlockTags(DataGenerator generator, @Nullable ExistingFileHelper existingFileHelper) {
-        super(generator, OverTheHorizonsMod.MOD_ID, existingFileHelper);
+    public ModBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider,  OverTheHorizonsMod.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider pProvider) {
         tag(LICHEN_REPLACEABLES)
                 .add(Blocks.STONE);
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -151,7 +156,9 @@ public class ModBlockTags extends BlockTagsProvider {
 
     }
 
+
+
     private static TagKey<Block> bind(String pName) {
-        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(pName));
+        return TagKey.create(Registries.BLOCK, new ResourceLocation(pName));
     }
 }

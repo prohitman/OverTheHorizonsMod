@@ -4,29 +4,22 @@ import com.prohitman.overthehorizons.common.blocks.WaterReedsBlock;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
 import com.prohitman.overthehorizons.core.init.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.data.loot.LootTableSubProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.fml.common.Mod;
 
-public class ModLootTables extends BaseLootTableProvider{
-    public ModLootTables(PackOutput dataGeneratorIn) {
-        super(dataGeneratorIn);
-    }
+import java.util.function.BiConsumer;
 
+public class BaseLootTableSubProvider implements LootTableSubProvider {
     @Override
-    protected void addTables() {
+    public void generate(BiConsumer<ResourceLocation, LootTable.Builder> lootTables) {
         lootTables.put(ModBlocks.HEDGEHOG_MUSHROOM.get(), createSimpleTable("hedgehog_mushroom", ModBlocks.HEDGEHOG_MUSHROOM.get()));
         lootTables.put(ModBlocks.HEDGEHOG_MUSHROOM_TALL.get(), createSimpleTable("hedgehog_mushroom_tall", ModBlocks.HEDGEHOG_MUSHROOM_TALL.get()));
         lootTables.put(ModBlocks.ROSE.get(), createSimpleTable("rose", ModBlocks.ROSE.get()));

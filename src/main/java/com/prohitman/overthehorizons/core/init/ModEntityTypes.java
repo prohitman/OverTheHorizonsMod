@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModEntityTypes {
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, OverTheHorizonsMod.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, OverTheHorizonsMod.MOD_ID);
 
     public static final RegistryObject<EntityType<ModBoat>> MOD_BOAT = ENTITY_TYPES.register("boat",() -> EntityType.Builder
             .<ModBoat>of(ModBoat::new, MobCategory.MISC)

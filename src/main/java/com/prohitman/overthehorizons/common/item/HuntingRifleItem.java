@@ -16,9 +16,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.KeybindComponent;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -41,8 +38,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.IItemRenderProperties;
-import net.minecraftforge.client.settings.KeyBindingMap;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -100,7 +96,7 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
                 } else {
                     if (!user.isCreative()) {
                         world.playSound(user, user.getX(), user.getY(), user.getZ(), ModSounds.RIFLE_NO_AMMO.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                        user.displayClientMessage((new TranslatableComponent("overthehorizons.message.no_ammo")).withStyle(ChatFormatting.RED, ChatFormatting.BOLD), true);
+                        user.displayClientMessage((Component.translatable("overthehorizons.message.no_ammo")).withStyle(ChatFormatting.RED, ChatFormatting.BOLD), true);
                     }
                 }
             }
@@ -110,13 +106,13 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
     }*/
 
     @Override
-    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         super.initializeClient(consumer);
-        consumer.accept(new IItemRenderProperties() {
+        consumer.accept(new IClientItemExtensions() {
             private final BlockEntityWithoutLevelRenderer renderer = new ItemStackRenderer();
 
             @Override
-            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                 return renderer;
             }
         });
@@ -136,11 +132,11 @@ public class HuntingRifleItem extends Item implements IExtendedReach {
         }
 
         //if (Minecraft.getInstance().options.keyShift.isDown()) {
-        tooltip.add((new TranslatableComponent("overthehorizons.tooltip.rifle_shooting_range")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 20));
-        tooltip.add((new TranslatableComponent("overthehorizons.tooltip.bullet_capacity")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 25));
-        tooltip.add((new TranslatableComponent("overthehorizons.tooltip.current_bullets")).withStyle(ChatFormatting.BLUE).append("\u00A77" + ((Integer) bullets)));
+        tooltip.add((Component.translatable("overthehorizons.tooltip.rifle_shooting_range")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 20));
+        tooltip.add((Component.translatable("overthehorizons.tooltip.bullet_capacity")).withStyle(ChatFormatting.BLUE).append("\u00A77" + 25));
+        tooltip.add((Component.translatable("overthehorizons.tooltip.current_bullets")).withStyle(ChatFormatting.BLUE).append("\u00A77" + ((Integer) bullets)));
         //} else {
-        //    tooltip.add((new TranslatableComponent("overthehorizons.tooltip.press_shift")).withStyle(ChatFormatting.GRAY));
+        //    tooltip.add((Component.translatable("overthehorizons.tooltip.press_shift")).withStyle(ChatFormatting.GRAY));
         //}
     }
 

@@ -11,7 +11,6 @@ import com.prohitman.overthehorizons.core.init.ModItemGroups;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -22,19 +21,19 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CommonModEvents {
-    @SubscribeEvent
-    public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
-        final IForgeRegistry<Item> registry = event.getRegistry();
+    /*@SubscribeEvent
+    public static void onRegisterItems(final RegisterEvent event) {
+        final IForgeRegistry<Item> registry = event.getForgeRegistry();
 
         ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
             if(!(block instanceof StandingSignBlock || block instanceof WallSignBlock)){
-                final Item.Properties properties = new Item.Properties().tab(ModItemGroups.OVER_THE_HORIZONS);
+                final Item.Properties properties = new Item.Properties();
                 final ModBlockItem blockItem = new ModBlockItem(block, properties);
                 blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
                 registry.register(blockItem);
             }
         });
-    }
+    }*/
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
