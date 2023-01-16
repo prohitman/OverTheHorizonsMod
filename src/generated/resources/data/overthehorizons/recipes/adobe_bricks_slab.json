@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "overthehorizons:adobe_bricks"
     }
   },
+  "pattern": [
+    "###"
+  ],
   "result": {
-    "item": "overthehorizons:adobe_bricks_slab",
-    "count": 6
+    "count": 6,
+    "item": "overthehorizons:adobe_bricks_slab"
   }
 }

@@ -1,19 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "overthehorizons:pine_planks"
+    }
+  },
   "pattern": [
     "W#W",
     "W#W"
   ],
-  "key": {
-    "W": {
-      "item": "overthehorizons:pine_planks"
-    },
-    "#": {
-      "item": "minecraft:stick"
-    }
-  },
   "result": {
-    "item": "overthehorizons:pine_fence",
-    "count": 3
+    "count": 3,
+    "item": "overthehorizons:pine_fence"
   }
 }

@@ -1,13 +1,15 @@
 package com.prohitman.overthehorizons.client.renderers.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.prohitman.overthehorizons.client.models.FennecFoxModel;
 import com.prohitman.overthehorizons.common.entity.FennecFox;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.FoxModel;
+import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.FoxHeldItemLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
@@ -16,8 +18,11 @@ import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.item.ItemStack;
 
 public class FennecFoxHeldItemLayer extends RenderLayer<FennecFox, FennecFoxModel<FennecFox>> {
-    public FennecFoxHeldItemLayer(RenderLayerParent<FennecFox, FennecFoxModel<FennecFox>> p_116994_) {
+    private final ItemInHandRenderer itemInHandRenderer;
+
+    public FennecFoxHeldItemLayer(RenderLayerParent<FennecFox, FennecFoxModel<FennecFox>> p_116994_, ItemInHandRenderer renderer) {
         super(p_116994_);
+        this.itemInHandRenderer = renderer;
     }
 
     @Override
@@ -33,9 +38,9 @@ public class FennecFoxHeldItemLayer extends RenderLayer<FennecFox, FennecFoxMode
 
         pMatrixStack.translate((double)((this.getParentModel()).head.x / 16.0F), (double)((this.getParentModel()).head.y / 16.0F), (double)((this.getParentModel()).head.z / 16.0F));
         float f1 = pLivingEntity.getHeadRollAngle(pPartialTicks);
-        pMatrixStack.mulPose(Vector3f.ZP.rotation(f1));
-        pMatrixStack.mulPose(Vector3f.YP.rotationDegrees(pNetHeadYaw));
-        pMatrixStack.mulPose(Vector3f.XP.rotationDegrees(pHeadPitch));
+        pMatrixStack.mulPose(Axis.ZP.rotation(f1));
+        pMatrixStack.mulPose(Axis.YP.rotationDegrees(pNetHeadYaw));
+        pMatrixStack.mulPose(Axis.XP.rotationDegrees(pHeadPitch));
         if (pLivingEntity.isBaby()) {
             if (flag) {
                 pMatrixStack.translate((double)0.4F, (double)0.26F, (double)0.15F);
@@ -48,13 +53,13 @@ public class FennecFoxHeldItemLayer extends RenderLayer<FennecFox, FennecFoxMode
             pMatrixStack.translate((double)0.06F, (double)0.27F, -0.5D);
         }
 
-        pMatrixStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
+        pMatrixStack.mulPose(Axis.XP.rotationDegrees(90.0F));
         if (flag) {
-            pMatrixStack.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+            pMatrixStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
         }
 
         ItemStack itemstack = pLivingEntity.getItemBySlot(EquipmentSlot.MAINHAND);
-        Minecraft.getInstance().getItemRenderer().render(itemstack, ItemTransforms.TransformType.GROUND, false, pMatrixStack, pBuffer, pPackedLight);
+        this.itemInHandRenderer.renderItem(pLivingEntity, itemstack, ItemTransforms.TransformType.GROUND, false, pMatrixStack, pBuffer, pPackedLight);
         pMatrixStack.popPose();
     }
 }

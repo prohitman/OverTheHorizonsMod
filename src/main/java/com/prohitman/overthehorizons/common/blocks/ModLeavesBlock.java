@@ -78,13 +78,12 @@ public class ModLeavesBlock extends LeavesBlock{
     /**
      * Called periodically clientside on blocks near the player to show effects (like furnace fire particles).
      */
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRand) {
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (this.leafParticleType != LeafParticleType.NONE) {
-            if(pRand.nextInt(10) == 0){
+            if(pRandom.nextInt(10) == 0){
                 this.trySpawnLeavesParticles(pLevel, pPos, pState, this.leafParticleType);
             }
         }
-
     }
 
     private void trySpawnLeavesParticles(Level pLevel, BlockPos pPos, BlockState pState, LeafParticleType type) {

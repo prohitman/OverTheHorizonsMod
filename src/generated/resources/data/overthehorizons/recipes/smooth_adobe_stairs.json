@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#  ",
-    "## ",
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "overthehorizons:smooth_adobe"
     }
   },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
   "result": {
-    "item": "overthehorizons:smooth_adobe_stairs",
-    "count": 4
+    "count": 4,
+    "item": "overthehorizons:smooth_adobe_stairs"
   }
 }

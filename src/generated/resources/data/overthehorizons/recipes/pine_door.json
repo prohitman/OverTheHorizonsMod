@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "##",
-    "##",
-    "##"
-  ],
+  "category": "redstone",
   "key": {
     "#": {
       "item": "overthehorizons:pine_planks"
     }
   },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
   "result": {
-    "item": "overthehorizons:pine_door",
-    "count": 3
+    "count": 3,
+    "item": "overthehorizons:pine_door"
   }
 }

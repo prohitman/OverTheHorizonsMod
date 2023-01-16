@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "overthehorizons:block/tall_wild_wheat_bottom",
+      "uvlock": true
+    },
+    "half=upper": {
+      "model": "overthehorizons:block/tall_wild_wheat_top",
+      "uvlock": true
+    }
+  }
+}

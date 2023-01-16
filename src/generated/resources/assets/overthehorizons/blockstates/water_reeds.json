@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "half=lower,waterlogged=false": {
+      "model": "overthehorizons:block/water_reeds_bottom",
+      "uvlock": true
+    },
+    "half=lower,waterlogged=true": {
+      "model": "overthehorizons:block/water_reeds_bottom",
+      "uvlock": true
+    },
+    "half=upper,waterlogged=false": {
+      "model": "overthehorizons:block/water_reeds_top",
+      "uvlock": true
+    },
+    "half=upper,waterlogged=true": {
+      "model": "overthehorizons:block/water_reeds_top",
+      "uvlock": true
+    }
+  }
+}

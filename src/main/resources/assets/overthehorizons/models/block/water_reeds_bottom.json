@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "overthehorizons:block/water_reeds_bottom"
-  }
-}

@@ -1,9 +1,13 @@
 package com.prohitman.overthehorizons.client.keybinds;
 
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.client.ClientRegistry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+//import net.minecraftforge.client.ClientRegistry;
 
 public final class ModKeyBindings {
     public static KeyMapping reloadRifleKeyMapping;
@@ -20,7 +24,7 @@ public final class ModKeyBindings {
 
     private static KeyMapping registerKey(String name, String category, int keycode) {
         final var key = new KeyMapping("key." + OverTheHorizonsMod.MOD_ID + "." + name, keycode, category);
-        ClientRegistry.registerKeyBinding(key);
+        //ClientRegistry.registerKeyBinding(key);
         return key;
     }
 }

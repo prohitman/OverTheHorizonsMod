@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "group": "bark",
-  "pattern": [
-    "##",
-    "##"
-  ],
   "key": {
     "#": {
       "item": "overthehorizons:pine_log"
     }
   },
+  "pattern": [
+    "##",
+    "##"
+  ],
   "result": {
-    "item": "overthehorizons:pine_wood",
-    "count": 3
+    "count": 3,
+    "item": "overthehorizons:pine_wood"
   }
 }

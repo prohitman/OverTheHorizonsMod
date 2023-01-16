@@ -1,7 +1,7 @@
 package com.prohitman.overthehorizons.client.renderers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.models.PerchModel;
 import com.prohitman.overthehorizons.common.entity.Perch;
@@ -30,10 +30,10 @@ public class PerchRenderer extends MobRenderer<Perch, PerchModel<Perch>> {
     protected void setupRotations(Perch pEntityLiving, PoseStack pMatrixStack, float pAgeInTicks, float pRotationYaw, float pPartialTicks) {
         super.setupRotations(pEntityLiving, pMatrixStack, pAgeInTicks, pRotationYaw, pPartialTicks);
         float f = 4.3F * Mth.sin(0.6F * pAgeInTicks);
-        pMatrixStack.mulPose(Vector3f.YP.rotationDegrees(f));
+        pMatrixStack.mulPose(Axis.YP.rotationDegrees(f));
         if (!pEntityLiving.isInWater()) {
             pMatrixStack.translate((double)0.2F, (double)0.1F, 0.0D);
-            pMatrixStack.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+            pMatrixStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
         }
 
     }

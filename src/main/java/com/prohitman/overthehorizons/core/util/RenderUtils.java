@@ -13,9 +13,9 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.gui.IIngameOverlay;
-import net.minecraftforge.client.gui.OverlayRegistry;
+//import net.minecraftforge.client.event.RenderGameOverlayEvent;
+//import net.minecraftforge.client.gui.IIngameOverlay;
+//import net.minecraftforge.client.gui.OverlayRegistry;
 
 import javax.annotation.Nullable;
 

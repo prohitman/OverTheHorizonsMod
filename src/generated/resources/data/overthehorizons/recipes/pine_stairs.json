@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#  ",
-    "## ",
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "overthehorizons:pine_planks"
     }
   },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
   "result": {
-    "item": "overthehorizons:pine_stairs",
-    "count": 4
+    "count": 4,
+    "item": "overthehorizons:pine_stairs"
   }
 }

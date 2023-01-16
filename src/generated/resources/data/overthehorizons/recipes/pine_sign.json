@@ -1,11 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "sign",
-  "pattern": [
-    "###",
-    "###",
-    " X "
-  ],
   "key": {
     "#": {
       "item": "overthehorizons:pine_planks"
@@ -14,8 +10,13 @@
       "item": "minecraft:stick"
     }
   },
+  "pattern": [
+    "###",
+    "###",
+    " X "
+  ],
   "result": {
-    "item": "overthehorizons:pine_sign",
-    "count": 3
+    "count": 3,
+    "item": "overthehorizons:pine_sign"
   }
 }

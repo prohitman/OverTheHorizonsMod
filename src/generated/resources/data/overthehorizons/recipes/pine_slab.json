@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "overthehorizons:pine_planks"
     }
   },
+  "pattern": [
+    "###"
+  ],
   "result": {
-    "item": "overthehorizons:pine_slab",
-    "count": 6
+    "count": 6,
+    "item": "overthehorizons:pine_slab"
   }
 }

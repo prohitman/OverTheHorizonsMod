@@ -18,7 +18,7 @@ public class DataGenerators {
         ModBlockTags blockTags = new ModBlockTags(dataGenerator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper());
         dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<ModBlockTags>) output -> blockTags);
         dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<ModItemTags>) output -> new ModItemTags(dataGenerator.getPackOutput(), event.getLookupProvider(), blockTags, event.getExistingFileHelper()));
-        dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<ModLootTables>) output -> new ModLootTables(dataGenerator));
+        //dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<ModLootTableProvider>) output -> new ModLootTableProvider(dataGenerator.getPackOutput()));
 
         dataGenerator.addProvider(event.includeClient(), (DataProvider.Factory<ModBlockStates>) output -> new ModBlockStates(dataGenerator.getPackOutput(), event.getExistingFileHelper()));
         dataGenerator.addProvider(event.includeClient(), (DataProvider.Factory<ModItemModels>) output -> new ModItemModels(dataGenerator.getPackOutput(), event.getExistingFileHelper()));

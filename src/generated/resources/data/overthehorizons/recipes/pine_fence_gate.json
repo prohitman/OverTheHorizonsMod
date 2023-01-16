@@ -1,9 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#W#",
-    "#W#"
-  ],
+  "category": "redstone",
   "key": {
     "#": {
       "item": "minecraft:stick"
@@ -12,6 +9,10 @@
       "item": "overthehorizons:pine_planks"
     }
   },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
   "result": {
     "item": "overthehorizons:pine_fence_gate"
   }

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "overthehorizons:pine_tea"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "pine_cone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "overthehorizons:pine_cone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "pine_cone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overthehorizons:pine_tea"
+    ]
+  }
+}

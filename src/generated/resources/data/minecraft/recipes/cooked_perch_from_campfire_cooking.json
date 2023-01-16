@@ -1,9 +1,10 @@
 {
   "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
   "ingredient": {
     "item": "overthehorizons:raw_perch"
   },
-  "result": "overthehorizons:cooked_perch",
-  "experience": 0.35,
-  "cookingtime": 600
+  "result": "overthehorizons:cooked_perch"
 }

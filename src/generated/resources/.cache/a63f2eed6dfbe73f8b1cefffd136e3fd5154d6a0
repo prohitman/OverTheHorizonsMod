@@ -1,0 +1,23 @@
+// 1.19.3	2023-01-16T18:45:02.6184547	Tags for minecraft:block mod id overthehorizons
+aa804007bbdcb29f4e0380f6b1d6c7855e034f09 data/minecraft/tags/blocks/climbable.json
+5c1a927e18181d847c1b77ed5a0c5d7d2965ee17 data/minecraft/tags/blocks/fence_gates.json
+d09f1b33f7a9728f7350f5b5f52e2e6cc61f00a5 data/minecraft/tags/blocks/leaves.json
+cd30d8b5a007b21c1b280199921edc8376667a90 data/minecraft/tags/blocks/logs.json
+cd30d8b5a007b21c1b280199921edc8376667a90 data/minecraft/tags/blocks/logs_that_burn.json
+271a8baea252e9cbd42a8993c6354b57ebe9865e data/minecraft/tags/blocks/mineable/axe.json
+e2f0e9bc84e20daaf47819ced4f3d2d85520b51d data/minecraft/tags/blocks/mineable/hoe.json
+9655ed279216e4a34b67d521196d95cc8e84a3c5 data/minecraft/tags/blocks/mineable/pickaxe.json
+ca0240ba629f35140918c675dacb7bd5fc9bb32e data/minecraft/tags/blocks/mineable/shovel.json
+3263d841cb74b79ec3e998fce29095f0408df16d data/minecraft/tags/blocks/needs_stone_tool.json
+f92c41ce4c3dd51d875dafefe81e048bf6b8f9ed data/minecraft/tags/blocks/pine_logs.json
+8c87f22d794dffd20e82f6d9fd76c1a7322592d2 data/minecraft/tags/blocks/planks.json
+a1491572d6967b9e31f6530d9f5e03ed293b75c1 data/minecraft/tags/blocks/replaceable_plants.json
+e89705dda83079ee3a2634b3cd729c1508ac8e4a data/minecraft/tags/blocks/stairs.json
+8ec6449442d83c685997560b2d56dc2113074e33 data/minecraft/tags/blocks/standing_signs.json
+77848de7c59ef4b57ae8387e647f3470d11286cf data/minecraft/tags/blocks/wall_signs.json
+0593cc46b42604ce56bfa3826983eb783d85f962 data/minecraft/tags/blocks/wooden_buttons.json
+ceb1ac781e970bba8a4c3921aca974249ef246cc data/minecraft/tags/blocks/wooden_doors.json
+98187cf938e62e79e28a0e82c6997ab8f3b9b3a2 data/minecraft/tags/blocks/wooden_fences.json
+a18d6bd0bfa83029892fad6e6183cd2939a75f0b data/minecraft/tags/blocks/wooden_pressure_plates.json
+53a7c2a641a3b8c3593a72318645abbfc32544e3 data/minecraft/tags/blocks/wooden_slabs.json
+0407f420cb63c455a3f2cbef54423bbd237273e8 data/minecraft/tags/blocks/wooden_trapdoors.json

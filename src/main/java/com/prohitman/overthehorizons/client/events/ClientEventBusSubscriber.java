@@ -29,11 +29,13 @@ import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+//import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
-import net.minecraftforge.client.gui.IIngameOverlay;
-import net.minecraftforge.client.gui.OverlayRegistry;
+//import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+//import net.minecraftforge.client.gui.IIngameOverlay;
+//import net.minecraftforge.client.gui.OverlayRegistry;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -43,19 +45,19 @@ import java.awt.*;
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventBusSubscriber {
 
-    public static final IIngameOverlay RIFLE_SCOPE_ELEMENT = OverlayRegistry.registerOverlayTop("Rifle", (gui, poseStack, partialTick, screenWidth, screenHeight) -> {
+    /*public static final IIngameOverlay RIFLE_SCOPE_ELEMENT = OverlayRegistry.registerOverlayTop("Rifle", (gui, poseStack, partialTick, screenWidth, screenHeight) -> {
         gui.setupOverlayRenderState(true, false);
         if (ModKeyBindings.zoomRifleKeyMapping.isDown() && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
             ModOverlayRenderer.renderSpyglassOverlay();
         }
-    });
+    });*/
 
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             ModKeyBindings.init();
 
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.cutoutMipped());
+            /*ItemBlockRenderTypes.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_LICHEN_COVERAGE.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_LICHEN_COVERAGE.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TREE_MOSS.get(), RenderType.cutoutMipped());
@@ -73,7 +75,7 @@ public class ClientEventBusSubscriber {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEDGEHOG_MUSHROOM_TALL.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TRAMPLED_GRASS.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WATER_REEDS.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAND_REEDS.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAND_REEDS.get(), RenderType.cutoutMipped());*/
 
             BlockEntityRenderers.register(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
             Sheets.addWoodType(ModWoodTypes.PINE);
@@ -99,18 +101,18 @@ public class ClientEventBusSubscriber {
     }
 
     @SubscribeEvent
-    public static void registerParticleProviders(ParticleFactoryRegisterEvent event) {
-        Minecraft.getInstance().particleEngine.register(ModParticleTypes.ORANGE_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
-        Minecraft.getInstance().particleEngine.register(ModParticleTypes.YELLOW_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
-        Minecraft.getInstance().particleEngine.register(ModParticleTypes.BROWN_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+    public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
+        event.register(ModParticleTypes.ORANGE_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+        event.register(ModParticleTypes.YELLOW_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+        event.register(ModParticleTypes.BROWN_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
     }
 
     @SubscribeEvent
-    public static void registerBlockColors(ColorHandlerEvent.Block event) {
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) ->
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+        event.register((pState, pLevel, pPos, pTintIndex) ->
                         pLevel != null && pPos != null ? BiomeColors.getAverageFoliageColor(pLevel, pPos) : FoliageColor.getDefaultColor(),
                 ModBlocks.PINE_LEAVES.get());
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> pLevel != null &&
+        event.register((pState, pLevel, pPos, pTintIndex) -> pLevel != null &&
                 pPos != null ? BiomeColors.getAverageGrassColor(pLevel, pPos) :
                 GrassColor.get(0.5D, 1.0D), ModBlocks.TRAMPLED_GRASS.get());
 
@@ -118,12 +120,12 @@ public class ClientEventBusSubscriber {
     }
 
     @SubscribeEvent
-    public static void registerBlockItemColors(ColorHandlerEvent.Item event) {
-        event.getItemColors().register((pState, pTintIndex) -> new Color(0x408143).getRGB(), ModBlocks.PINE_LEAVES.get());
-        event.getItemColors().register((p_92687_, p_92688_) -> {
+    public static void registerBlockItemColors(RegisterColorHandlersEvent.Item event) {
+        event.register((pState, pTintIndex) -> new Color(0x408143).getRGB(), ModBlocks.PINE_LEAVES.get());
+        event.register((p_92687_, p_92688_) -> {
             BlockState blockstate = ((BlockItem) p_92687_.getItem()).getBlock().defaultBlockState();
             return event.getBlockColors().getColor(blockstate, (BlockAndTintGetter) null, (BlockPos) null, p_92688_);
         }, ModBlocks.TRAMPLED_GRASS.get());
 
-    }//4d6031
+    }//4d6031*/
 }

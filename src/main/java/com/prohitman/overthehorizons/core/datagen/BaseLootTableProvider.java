@@ -46,7 +46,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
-public abstract class BaseLootTableProvider extends LootTableProvider {
+public abstract class BaseLootTableProvider {/*extends LootTableProvider {
 
     protected static final Logger LOGGER = LogManager.getLogger();
     protected static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
@@ -62,7 +62,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
 
     protected PackOutput output;
 
-    protected static <T> T applyExplosionDecay(ItemLike pItem, FunctionUserBuilder<T> pFunction) {
+    protected static <T extends FunctionUserBuilder<T>> T applyExplosionDecay(ItemLike pItem, FunctionUserBuilder<T> pFunction) {
         return (T)(!EXPLOSION_RESISTANT.contains(pItem.asItem()) ? pFunction.apply(ApplyExplosionDecay.explosionDecay()) : pFunction.unwrap());
     }
 
@@ -140,7 +140,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
         return createSilkTouchOrShearsDispatchTable(pLeavesBlock, applyExplosionCondition(pLeavesBlock, LootItem.lootTableItem(Items.STICK)).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, pChances))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(applyExplosionDecay(pLeavesBlock, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 1.5F, 1.025F, 1.55F, 1.035F, 1.2F))));
     }
 
-    protected static <T> T applyExplosionCondition(ItemLike pItem, ConditionUserBuilder<T> pCondition) {
+    protected static <T extends ConditionUserBuilder<T>> T applyExplosionCondition(ItemLike pItem, ConditionUserBuilder<T> pCondition) {
         return (T)(!EXPLOSION_RESISTANT.contains(pItem.asItem()) ? pCondition.when(ExplosionCondition.survivesExplosion()) : pCondition.unwrap());
     }
 
@@ -183,11 +183,11 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
             }
         });
     }
+*/
 
 
-
-    @Override
+    /*@Override
     public String getName() {
         return "Dragons&Dungeons LootTables";
-    }
+    }*/
 }
