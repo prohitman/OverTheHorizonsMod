@@ -57,12 +57,4 @@ public class LandReedsBlock extends DoublePlantBlock {
         return ground == Blocks.DIRT || ground instanceof GrassBlock || ground instanceof SandBlock
                 || ground == Blocks.GRAVEL || ground == Blocks.CLAY;
     }
-
-    @Override
-    public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-        if(!pLevel.isClientSide){
-            preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
-        }
-        super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
-    }
 }

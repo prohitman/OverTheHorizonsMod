@@ -39,13 +39,13 @@ public class WaterReedsBlock extends DoublePlantBlock implements LiquidBlockCont
         this.registerDefaultState(this.getStateDefinition().any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(WATERLOGGED, false));
     }
 
-    @Override
+    /*@Override
     public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable) {
         if (this.mayPlaceOn(state, world, pos)) {
             return true;
         }
         return super.canSustainPlant(state, world, pos, facing, plantable);
-    }
+    }*/
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
@@ -157,13 +157,5 @@ public class WaterReedsBlock extends DoublePlantBlock implements LiquidBlockCont
     @Override
     public boolean placeLiquid(LevelAccessor pLevel, BlockPos pPos, BlockState pState, FluidState pFluidState) {
         return false;
-    }
-
-    @Override
-    public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-        if (!pLevel.isClientSide) {
-            preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
-        }
-        super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
     }
 }

@@ -1,8 +1,10 @@
 package com.prohitman.overthehorizons.core.datagen;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.core.datagen.loottables.CreateLTProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,7 +20,7 @@ public class DataGenerators {
         ModBlockTags blockTags = new ModBlockTags(dataGenerator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper());
         dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<ModBlockTags>) output -> blockTags);
         dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<ModItemTags>) output -> new ModItemTags(dataGenerator.getPackOutput(), event.getLookupProvider(), blockTags, event.getExistingFileHelper()));
-        //dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<ModLootTableProvider>) output -> new ModLootTableProvider(dataGenerator.getPackOutput()));
+        dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<LootTableProvider>) CreateLTProvider::create);
 
         dataGenerator.addProvider(event.includeClient(), (DataProvider.Factory<ModBlockStates>) output -> new ModBlockStates(dataGenerator.getPackOutput(), event.getExistingFileHelper()));
         dataGenerator.addProvider(event.includeClient(), (DataProvider.Factory<ModItemModels>) output -> new ModItemModels(dataGenerator.getPackOutput(), event.getExistingFileHelper()));
