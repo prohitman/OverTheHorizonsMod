@@ -22,7 +22,7 @@ public class ModOverlayRenderer {
         float deltaFrame = Minecraft.getInstance().getDeltaFrameTime();
         OverTheHorizonsMod.scopeScale = Mth.lerp(0.5F * deltaFrame, OverTheHorizonsMod.scopeScale, 1.125F);
         if (Minecraft.getInstance().options.getCameraType().isFirstPerson()
-               && ModKeyBindings.zoomRifleKeyMapping.isDown()) {
+               && ModKeyBindings.zoomRifleKeyMapping.get().isDown()) {
             assert Minecraft.getInstance().player != null;
             if (Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
                 renderSpyglassOverlay(OverTheHorizonsMod.scopeScale);

@@ -26,4 +26,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, OverTheHorizonsMod.MOD_ID);
+
+    //public static final RegistryObject<Feature<?>> WATER_REEDS_FEATURE = FEATURES.register()
 }

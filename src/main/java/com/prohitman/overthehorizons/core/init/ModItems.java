@@ -40,7 +40,7 @@ public class ModItems {
     //Items
     public static final RegistryObject<Item> HUNTING_RIFLE_INVENTORY = ITEMS.register("hunting_rifle_inventory", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HUNTING_RIFLE_HAND = ITEMS.register("hunting_rifle_hand", () ->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> HUNTING_RIFLE = ITEMS.register("hunting_rifle", () -> new HuntingRifleItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).durability(1000), 40));
+    public static final RegistryObject<Item> HUNTING_RIFLE = ITEMS.register("hunting_rifle", () -> new HuntingRifleItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).durability(1000), 100));
 
     public static final RegistryObject<Item> PERCH_BUCKET = ITEMS.register("perch_bucket", () -> new MobBucketItem(ModEntityTypes.PERCH, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, (new Item.Properties()).stacksTo(1)));
     public static final RegistryObject<Item> COPPER_BULLET = ITEMS.register("copper_bullet", () -> new Item(new Item.Properties()));

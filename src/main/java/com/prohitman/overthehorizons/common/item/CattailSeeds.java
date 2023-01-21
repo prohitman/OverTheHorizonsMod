@@ -2,6 +2,7 @@ package com.prohitman.overthehorizons.common.item;
 
 import com.prohitman.overthehorizons.common.blocks.LandReedsBlock;
 import com.prohitman.overthehorizons.core.init.ModBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionResult;
@@ -30,7 +31,8 @@ public class CattailSeeds extends Item {
         reeds.add(waterreeds);
 
         for (BlockState reed : reeds) {
-            if (reed.canSurvive(pContext.getLevel(), pContext.getClickedPos().above())) {
+            if (reed.canSurvive(pContext.getLevel(), pContext.getClickedPos().above())
+                    && pContext.getClickedFace() == Direction.UP) {
                 DoublePlantBlock.placeAt(pContext.getLevel(), reed, pContext.getClickedPos().above(), 2);
                 Objects.requireNonNull(pContext.getPlayer()).awardStat(Stats.ITEM_USED.get(this));
                 if (!pContext.getPlayer().getAbilities().instabuild) {

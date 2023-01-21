@@ -36,7 +36,7 @@ public class FennecFoxHeldItemLayer extends RenderLayer<FennecFox, FennecFoxMode
             pMatrixStack.translate(0.0D, 0.5D, (double)0.209375F);
         }
 
-        pMatrixStack.translate((double)((this.getParentModel()).head.x / 16.0F), (double)((this.getParentModel()).head.y / 16.0F), (double)((this.getParentModel()).head.z / 16.0F));
+        pMatrixStack.translate((this.getParentModel()).head.x / 16.0F, (this.getParentModel()).head.y / 16.0F, (double)((this.getParentModel()).head.z / 16.0F));
         float f1 = pLivingEntity.getHeadRollAngle(pPartialTicks);
         pMatrixStack.mulPose(Axis.ZP.rotation(f1));
         pMatrixStack.mulPose(Axis.YP.rotationDegrees(pNetHeadYaw));

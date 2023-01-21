@@ -1,5 +1,6 @@
 package com.prohitman.overthehorizons.client.events;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.keybinds.ModKeyBindings;
 import com.prohitman.overthehorizons.client.models.CatFishModel;
@@ -16,6 +17,7 @@ import com.prohitman.overthehorizons.core.init.*;
 import com.prohitman.overthehorizons.core.util.ModOverlayRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -23,7 +25,10 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
@@ -35,7 +40,10 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 //import net.minecraftforge.client.gui.IIngameOverlay;
 //import net.minecraftforge.client.gui.OverlayRegistry;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.client.gui.overlay.IGuiOverlay;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -45,38 +53,40 @@ import java.awt.*;
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventBusSubscriber {
 
-    /*public static final IIngameOverlay RIFLE_SCOPE_ELEMENT = OverlayRegistry.registerOverlayTop("Rifle", (gui, poseStack, partialTick, screenWidth, screenHeight) -> {
+    public static final IGuiOverlay RIFLE_SCOPE_ELEMENT = ((gui, poseStack, partialTick, screenWidth, screenHeight) -> {
         gui.setupOverlayRenderState(true, false);
-        if (ModKeyBindings.zoomRifleKeyMapping.isDown() && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
+        if (ModKeyBindings.zoomRifleKeyMapping.get().isDown() && Minecraft.getInstance().player.getMainHandItem().getItem() instanceof HuntingRifleItem) {
             ModOverlayRenderer.renderSpyglassOverlay();
         }
-    });*/
+    });
+
+    public static final IGuiOverlay AMMO_COUNT = ((gui, poseStack, partialTick, screenWidth, screenHeight) -> {
+        gui.setupOverlayRenderState(true, false);
+        AbstractClientPlayer clientplayer = Minecraft.getInstance().player;
+        if (clientplayer != null && !gui.getMinecraft().options.hideGui) {
+            ItemStack stack = clientplayer.getMainHandItem();
+            Item heldItem = stack.getItem();
+            CompoundTag tag = stack.getTag();
+
+            if (heldItem instanceof HuntingRifleItem) {
+                if (tag != null) {
+                    PoseStack textmatrix = new PoseStack();
+                    textmatrix.scale(2.0F, 2.0F, 2.0F);
+                    Minecraft.getInstance().font.draw(textmatrix, "\u00A7e" + tag.getInt("AmmoCount") + "/" + 25, 0, 0, 0);
+                }
+            }
+        }
+    });
+
+    @SubscribeEvent
+    public static void registerOverlays(RegisterGuiOverlaysEvent event){
+        event.registerBelow(VanillaGuiOverlay.HOTBAR.id(), "rifle", RIFLE_SCOPE_ELEMENT);
+        event.registerAbove(VanillaGuiOverlay.TITLE_TEXT.id(), "ammocount", AMMO_COUNT);
+    }
 
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ModKeyBindings.init();
-
-            /*ItemBlockRenderTypes.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_LICHEN_COVERAGE.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_LICHEN_COVERAGE.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TREE_MOSS.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DUCKWEED.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINE_TRAPDOOR.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINE_CONE.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINE_DOOR.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINE_LEAVES.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROSE.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_WHEAT.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DUNE_GRASS.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TALL_WILD_WHEAT.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPROUTS.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEDGEHOG_MUSHROOM.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEDGEHOG_MUSHROOM_TALL.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TRAMPLED_GRASS.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WATER_REEDS.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAND_REEDS.get(), RenderType.cutoutMipped());*/
-
             BlockEntityRenderers.register(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
             Sheets.addWoodType(ModWoodTypes.PINE);
         });
