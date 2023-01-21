@@ -13,21 +13,16 @@ import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-//
-
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class ModKeyBindings {
-    public static Lazy<KeyMapping> reloadRifleKeyMapping;
-    public static Lazy<KeyMapping> zoomRifleKeyMapping;
+    public static Lazy<KeyMapping> reloadRifleKeyMapping = Lazy.of(() -> registerKey("reload_rifle", KeyMapping.CATEGORY_GAMEPLAY, InputConstants.KEY_R));
+    public static Lazy<KeyMapping> zoomRifleKeyMapping = Lazy.of(() -> registerKey("zoom_rifle", KeyMapping.CATEGORY_GAMEPLAY, InputConstants.KEY_B));
 
     private ModKeyBindings() {
     }
 
     @SubscribeEvent
     public static void registerKeyBindings(RegisterKeyMappingsEvent event){
-        reloadRifleKeyMapping = Lazy.of(() -> registerKey("reload_rifle", KeyMapping.CATEGORY_GAMEPLAY, InputConstants.KEY_R));
-        zoomRifleKeyMapping = Lazy.of(() -> registerKey("zoom_rifle", KeyMapping.CATEGORY_GAMEPLAY, InputConstants.KEY_B));
-
         event.register(reloadRifleKeyMapping.get());
         event.register(zoomRifleKeyMapping.get());
     }
