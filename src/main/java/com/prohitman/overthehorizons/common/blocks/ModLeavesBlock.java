@@ -45,31 +45,33 @@ public class ModLeavesBlock extends LeavesBlock{
 
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        Random rand = new Random();
-        boolean flag = false;
-        int y = pPos.getY();
-        int counter = 0;
-        int random = rand.nextInt(15);
-        if(random == 1){
-            do{
-                //LOGGER.info("The method is called!");
-                y--;
-                counter++;
-                BlockPos pos = new BlockPos(pPos.getX(), y, pPos.getZ());
-                BlockPos underPos = new BlockPos(pPos.getX(), y - 1, pPos.getZ());
-                Block block = pLevel.getBlockState(pos).getBlock();
-                if(!(block instanceof AirBlock || !block.defaultBlockState().isSolidRender(pLevel, underPos)/* block.defaultBlockState().isFaceSturdy(pLevel, underPos, Direction.UP)*/)){
-                    flag = true;
-                    BlockPos leavesPos = new BlockPos(pPos.getX(), y + 1, pPos.getZ());
-                    if(pLevel.getBlockState(leavesPos).getBlock() instanceof AirBlock){
-                        pLevel.setBlock(leavesPos, ModBlocks.FALLEN_LEAVES.get().defaultBlockState(), 2);
-                        //LOGGER.info("The block should be placed!");
+        if (pState.is(ModBlocks.DRIED_BIRCH_LEAVES.get()) || pState.is(ModBlocks.DRIED_OAK_LEAVES.get()) || pState.is(ModBlocks.DRIED_DARK_OAK_LEAVES.get())) {
+            Random rand = new Random();
+            boolean flag = false;
+            int y = pPos.getY();
+            int counter = 0;
+            int random = rand.nextInt(15);
+            if (random == 1) {
+                do {
+                    //LOGGER.info("The method is called!");
+                    y--;
+                    counter++;
+                    BlockPos pos = new BlockPos(pPos.getX(), y, pPos.getZ());
+                    BlockPos underPos = new BlockPos(pPos.getX(), y - 1, pPos.getZ());
+                    Block block = pLevel.getBlockState(pos).getBlock();
+                    if (!(block instanceof AirBlock || !block.defaultBlockState().isSolidRender(pLevel, underPos)/* block.defaultBlockState().isFaceSturdy(pLevel, underPos, Direction.UP)*/)) {
+                        flag = true;
+                        BlockPos leavesPos = new BlockPos(pPos.getX(), y + 1, pPos.getZ());
+                        if (pLevel.getBlockState(leavesPos).getBlock() instanceof AirBlock) {
+                            pLevel.setBlock(leavesPos, ModBlocks.FALLEN_LEAVES.get().defaultBlockState(), 2);
+                            //LOGGER.info("The block should be placed!");
+                        }
+                    } else if (block.defaultBlockState().isSolidRender(pLevel, underPos)) {
+                        flag = true;
                     }
-                }else if(block.defaultBlockState().isSolidRender(pLevel, underPos)){
-                    flag = true;
-                }
 
-            }while(!flag && counter <= 50);
+                } while (!flag && counter <= 50);
+            }
         }
 
         super.tick(pState, pLevel, pPos, pRandom);

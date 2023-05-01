@@ -18,8 +18,7 @@ public final class ModKeyBindings {
     public static Lazy<KeyMapping> reloadRifleKeyMapping = Lazy.of(() -> registerKey("reload_rifle", KeyMapping.CATEGORY_GAMEPLAY, InputConstants.KEY_R));
     public static Lazy<KeyMapping> zoomRifleKeyMapping = Lazy.of(() -> registerKey("zoom_rifle", KeyMapping.CATEGORY_GAMEPLAY, InputConstants.KEY_B));
 
-    private ModKeyBindings() {
-    }
+    private ModKeyBindings() {}
 
     @SubscribeEvent
     public static void registerKeyBindings(RegisterKeyMappingsEvent event){
