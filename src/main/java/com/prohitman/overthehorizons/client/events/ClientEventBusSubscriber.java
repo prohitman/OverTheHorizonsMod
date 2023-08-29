@@ -132,7 +132,7 @@ public class ClientEventBusSubscriber {
 
     @SubscribeEvent
     public static void registerBlockItemColors(RegisterColorHandlersEvent.Item event) {
-        event.register((pState, pTintIndex) -> new Color(0x408143).getRGB(), ModBlocks.PINE_LEAVES.get());
+        event.register((pState, pTintIndex) -> new Color(0x09FF11).getRGB(), ModBlocks.PINE_LEAVES.get());
         event.register((p_92687_, p_92688_) -> {
             BlockState blockstate = ((BlockItem) p_92687_.getItem()).getBlock().defaultBlockState();
             return event.getBlockColors().getColor(blockstate, (BlockAndTintGetter) null, (BlockPos) null, p_92688_);
