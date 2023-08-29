@@ -65,8 +65,8 @@ public class SuckEntityGoal extends MoveTowardsTargetGoal {
         catfish.lookAt(target, 90.0F, 90.0F);
         if(this.catfish.distanceToSqr(target) < 0.5){
             ItemStack fish_bones = new ItemStack(ModItems.FISH_BONES.get());
-            ItemEntity itemEntity = new ItemEntity(catfish.getLevel(), target.getX(), target.getY(), target.getZ(), fish_bones);
-            this.catfish.level.addFreshEntity(itemEntity);
+            ItemEntity itemEntity = new ItemEntity(catfish.level(), target.getX(), target.getY(), target.getZ(), fish_bones);
+            this.catfish.level().addFreshEntity(itemEntity);
             target.remove(Entity.RemovalReason.KILLED);
             this.catfish.playSound(SoundEvents.CHICKEN_EGG, 1,1);
         } else {

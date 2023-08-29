@@ -64,7 +64,7 @@ public class MessageReloadRifle implements IMessage<MessageReloadRifle> {
 
                                     tag.putInt("AmmoCount", bulletnumber);
                                     thePlayer.getCooldowns().addCooldown(rifleItem, 4*i);
-                                    thePlayer.getLevel().playSound(null, thePlayer.getOnPos(), ModSounds.RIFLE_RELOAD.get(), SoundSource.PLAYERS, 0.5f, 1f);
+                                    thePlayer.level().playSound(null, thePlayer.getOnPos(), ModSounds.RIFLE_RELOAD.get(), SoundSource.PLAYERS, 0.5f, 1f);
                                 }
                             }
                         }

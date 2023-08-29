@@ -1,15 +1,12 @@
 package com.prohitman.overthehorizons.core.init;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.CreativeModeTabEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.LinkedList;
@@ -18,15 +15,15 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = OverTheHorizonsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModItemGroups {
 
-    @SubscribeEvent
-    public static void registerTab(CreativeModeTabEvent.Register event){
-        event.registerCreativeModeTab(new ResourceLocation(OverTheHorizonsMod.MOD_ID, "oth_tab"), builder -> builder
-                .icon(() -> ModItems.PINE_TEA.get().getDefaultInstance())
-                .title(Component.translatable("itemGroup.overthehorizons"))
-                .displayItems((featureFlags, output, hasOp) -> {
-                    output.acceptAll(getTabItems());
-                        }).build());
-    }
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB,
+            OverTheHorizonsMod.MOD_ID);
+
+    public static RegistryObject<CreativeModeTab> OTH_TAB = CREATIVE_MODE_TABS.register("oth_tab", () ->
+            CreativeModeTab.builder().icon(() -> ModItems.PINE_TEA.get().getDefaultInstance())
+                    .title(Component.translatable("itemGroup.overthehorizons"))
+                    .displayItems((featureFlags, output) -> {
+                        output.acceptAll(getTabItems());
+                    }).build());
 
     private static List<ItemStack> getTabItems(){
         List<ItemStack> list = new LinkedList<>();

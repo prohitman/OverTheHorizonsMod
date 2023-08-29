@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -57,6 +58,7 @@ public class ExtendedReachUtils {
 
                 Vec3 Vector3d1 = entity.getViewVector(1.0F);
                 Vec3 Vector3d2 = Vector3d.add(Vector3d1.x * d0, Vector3d1.y * d0, Vector3d1.z * d0);
+
                 AABB axisalignedbb = entity.getBoundingBox().expandTowards(Vector3d1.scale(d0)).inflate(1.0D, 1.0D, 1.0D);
                 EntityHitResult entityraytraceresult = ProjectileUtil.getEntityHitResult(entity, Vector3d, Vector3d2,
                         axisalignedbb, (Entity) -> !Entity.isSpectator() && Entity.isPickable(), d1);
@@ -67,7 +69,7 @@ public class ExtendedReachUtils {
 
                     if (pointedEntity != null && flag && d2 > d1) {
                         Minecraft.getInstance().hitResult = BlockHitResult.miss(Vector3d3,
-                                Direction.getNearest(Vector3d1.x, Vector3d1.y, Vector3d1.z), new BlockPos(Vector3d3));
+                                Direction.getNearest(Vector3d1.x, Vector3d1.y, Vector3d1.z), BlockPos.containing(Vector3d3));
                     }
 
                     else if (pointedEntity != null && (d2 < d1 || Minecraft.getInstance().hitResult == null)) {
@@ -86,7 +88,7 @@ public class ExtendedReachUtils {
     public static void extendAttackReach(LocalPlayer user) {
         ItemStack itemstack = user.getMainHandItem();
         if (itemstack.getItem() instanceof IExtendedReach) {
-            if (user.level.isClientSide) {
+            if (user.level().isClientSide) {
                 CompoundTag tag = user.getMainHandItem().getOrCreateTag();
 
                 int k = tag.getInt("AmmoCount");
@@ -103,7 +105,7 @@ public class ExtendedReachUtils {
                         case BLOCK:
                             BlockHitResult blockHitResult = (BlockHitResult) Minecraft.getInstance().hitResult;
                             BlockPos blockPos = blockHitResult.getBlockPos();
-                            Block block = user.level.getBlockState(blockPos).getBlock();
+                            Block block = user.level().getBlockState(blockPos).getBlock();
 
                             if (block instanceof AbstractGlassBlock || block instanceof StainedGlassPaneBlock || block == Blocks.GLASS_PANE) {
                                 OTHPacketHandler.HANDLER.sendToServer(new MessageBreakBlock(((BlockHitResult) Minecraft.getInstance().hitResult).getBlockPos()));
@@ -124,7 +126,7 @@ public class ExtendedReachUtils {
 
                 } else {
                     if (!user.isCreative()) {
-                        user.level.playSound(user, user.getX(), user.getY(), user.getZ(), ModSounds.RIFLE_NO_AMMO.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                        user.level().playSound(user, user.getX(), user.getY(), user.getZ(), ModSounds.RIFLE_NO_AMMO.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
                         user.displayClientMessage((Component.translatable("overthehorizons.message.no_ammo")).withStyle(ChatFormatting.RED, ChatFormatting.BOLD), true);
                     }
                 }

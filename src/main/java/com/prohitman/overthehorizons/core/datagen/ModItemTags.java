@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -22,7 +23,7 @@ import java.util.concurrent.CompletableFuture;
 public class ModItemTags extends ItemTagsProvider {
     public static final TagKey<Item> PINE_LOGS = bind("pine_logs");
 
-    public ModItemTags(PackOutput generator, CompletableFuture<HolderLookup.Provider> pLookupProvider, BlockTagsProvider blockTags, @Nullable ExistingFileHelper existingFileHelper) {
+    public ModItemTags(PackOutput generator, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
         super(generator, pLookupProvider, blockTags, OverTheHorizonsMod.MOD_ID, existingFileHelper);
     }
 

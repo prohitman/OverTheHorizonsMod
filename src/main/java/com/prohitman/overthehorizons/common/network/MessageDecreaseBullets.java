@@ -46,7 +46,7 @@ public class MessageDecreaseBullets implements IMessage<MessageDecreaseBullets> 
             if (!thePlayer.isCreative()) {
                 stack.hurtAndBreak(1, thePlayer, e -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));
             }
-            thePlayer.getLevel().playSound(null, thePlayer.getOnPos(), ModSounds.RIFLE_SHOOT_BULLET.get(), SoundSource.PLAYERS, 0.5f, 1f);
+            thePlayer.level().playSound(null, thePlayer.getOnPos(), ModSounds.RIFLE_SHOOT_BULLET.get(), SoundSource.PLAYERS, 0.5f, 1f);
             tag.putInt("AmmoCount", bullets);
         });
         ctx.get().setPacketHandled(true);// no response message

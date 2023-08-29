@@ -43,7 +43,7 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 		final ServerPlayer thePlayer = ctx.get().getSender();
 		ctx.get().enqueueWork(() -> {
 
-			Entity theEntity = thePlayer.getLevel().getEntity(message.entityId);
+			Entity theEntity = thePlayer.level().getEntity(message.entityId);
 			// DEBUG
 			System.out.println("Entity = " + theEntity);
 
@@ -72,7 +72,7 @@ public class MessageExtendedReachAttack implements IMessage<MessageExtendedReach
 						// this.serverController.logWarning("Player " + thePlayer.getName() + " tried to
 						// attack an invalid entity");
 					}else if(theEntity instanceof LivingEntity){
-						theEntity.hurt(DamageSource.playerAttack(thePlayer),20.0F);
+						theEntity.hurt(thePlayer.level().damageSources().playerAttack(thePlayer),20.0F);
 					}
 
 					System.out.println("This was Successful!");

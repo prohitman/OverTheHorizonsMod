@@ -50,7 +50,7 @@ public class ModBoatItem extends Item {
             }
 
             if (hitresult.getType() == HitResult.Type.BLOCK) {
-                ModBoat boat = new ModBoat(pLevel, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
+                ModBoat boat = this.getBoat(pLevel, hitresult);
                 boat.setModBoatType(this.type);
                 boat.setYRot(pPlayer.getYRot());
                 if (!pLevel.noCollision(boat, boat.getBoundingBox())) {
@@ -58,7 +58,7 @@ public class ModBoatItem extends Item {
                 } else {
                     if (!pLevel.isClientSide) {
                         pLevel.addFreshEntity(boat);
-                        pLevel.gameEvent(pPlayer, GameEvent.ENTITY_PLACE, new BlockPos(hitresult.getLocation()));
+                        pLevel.gameEvent(pPlayer, GameEvent.ENTITY_PLACE, hitresult.getLocation());
                         if (!pPlayer.getAbilities().instabuild) {
                             itemstack.shrink(1);
                         }
@@ -71,5 +71,9 @@ public class ModBoatItem extends Item {
                 return InteractionResultHolder.pass(itemstack);
             }
         }
+    }
+
+    private ModBoat getBoat(Level pLevel, HitResult pHitResult) {
+        return /*(ModBoat)(this.hasChest ? new ModChestBoat(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z) :*/ new ModBoat(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z);
     }
 }

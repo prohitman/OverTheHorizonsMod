@@ -1,12 +1,8 @@
 package com.prohitman.overthehorizons.common.blocks;
 
-import com.prohitman.overthehorizons.core.init.ModBlocks;
-import com.prohitman.overthehorizons.core.init.ModFeatures;
 import com.prohitman.overthehorizons.core.init.ModItems;
-import com.prohitman.overthehorizons.core.util.ModFeatureUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,19 +14,16 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.lighting.LayerLightEngine;
+import net.minecraft.world.level.lighting.LightEngine;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.util.ForgeSoundType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
@@ -42,13 +35,13 @@ public class LichestoneBlock extends Block /*implements BonemealableBlock*/{
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if(!pPlayer.level.isClientSide){
+        if(!pPlayer.level().isClientSide){
             ItemStack stack = pPlayer.getItemInHand(pHand);
             if(stack.is(Tags.Items.SHEARS)){
                 pLevel.playSound((Player) null, pPos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
-                pPlayer.level.setBlock(pPos, Blocks.STONE.defaultBlockState(), 2);
+                pPlayer.level().setBlock(pPos, Blocks.STONE.defaultBlockState(), 2);
                 ItemStack cluster = new ItemStack(ModItems.LICHEN_CLUSTER.get());
-                ItemEntity itemEntity = new ItemEntity(pPlayer.level, pPos.getX() + 0.5, pPos.getY() + 1, pPos.getZ() + 0.5, cluster);
+                ItemEntity itemEntity = new ItemEntity(pPlayer.level(), pPos.getX() + 0.5, pPos.getY() + 1, pPos.getZ() + 0.5, cluster);
                 pLevel.addFreshEntity(itemEntity);
                 pLevel.gameEvent(pPlayer, GameEvent.SHEAR, pPos);
                 pPlayer.awardStat(Stats.ITEM_USED.get(Items.SHEARS));
@@ -75,7 +68,7 @@ public class LichestoneBlock extends Block /*implements BonemealableBlock*/{
         if (blockstate.getFluidState().getAmount() == 8) {
             return false;
         } else {
-            int i = LayerLightEngine.getLightBlockInto(pLevelReader, pState, pPos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(pLevelReader, blockpos));
+            int i = LightEngine.getLightBlockInto(pLevelReader, pState, pPos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(pLevelReader, blockpos));
             return i < pLevelReader.getMaxLightLevel();
         }
     }

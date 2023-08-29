@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.entity.layers.FoxHeldItemLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.Fox;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 public class FennecFoxHeldItemLayer extends RenderLayer<FennecFox, FennecFoxModel<FennecFox>> {
@@ -59,7 +60,7 @@ public class FennecFoxHeldItemLayer extends RenderLayer<FennecFox, FennecFoxMode
         }
 
         ItemStack itemstack = pLivingEntity.getItemBySlot(EquipmentSlot.MAINHAND);
-        this.itemInHandRenderer.renderItem(pLivingEntity, itemstack, ItemTransforms.TransformType.GROUND, false, pMatrixStack, pBuffer, pPackedLight);
+        this.itemInHandRenderer.renderItem(pLivingEntity, itemstack, ItemDisplayContext.GROUND, false, pMatrixStack, pBuffer, pPackedLight);
         pMatrixStack.popPose();
     }
 }

@@ -89,7 +89,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.FRAMED_ADOBE.get())
                 .add(ModBlocks.PEBBLES.get());
 
-        tag(BlockTags.REPLACEABLE_PLANTS)
+        tag(BlockTags.REPLACEABLE_BY_TREES)
                 .add(ModBlocks.GREEN_LICHEN_COVERAGE.get())
                 .add(ModBlocks.RED_LICHEN_COVERAGE.get())
                 .add(ModBlocks.SPROUTS.get())

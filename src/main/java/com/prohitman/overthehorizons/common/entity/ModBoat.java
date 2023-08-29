@@ -13,7 +13,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -95,10 +94,10 @@ public class ModBoat extends Boat {
                         return;
                     }
 
-                    this.causeFallDamage(this.fallDistance, 1.0F, DamageSource.FALL);
-                    if (!this.level.isClientSide && !this.isRemoved()) {
+                    this.causeFallDamage(this.fallDistance, 1.0F, this.damageSources().fall());
+                    if (!this.level().isClientSide && !this.isRemoved()) {
                         this.kill();
-                        if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                        if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                             for(int i = 0; i < 3; ++i) {
                                 this.spawnAtLocation(this.getPlanks());
                             }
@@ -111,19 +110,58 @@ public class ModBoat extends Boat {
                 }
 
                 this.resetFallDistance();
-            } else if (!this.level.getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && pY < 0.0D) {
+            } else if (!this.canBoatInFluid(this.level().getFluidState(this.blockPosition().below())) && pY < 0.0D) {
+                this.fallDistance -= (float)pY;
+            }
+
+        }
+    }
+/*
+    @Override
+    protected void checkFallDamage(double pY, boolean pOnGround, BlockState pState, BlockPos pPos) {
+        this.lastYd = this.getDeltaMovement().y;
+        if (!this.isPassenger()) {
+            if (pOnGround) {
+                if (this.fallDistance > 3.0F) {
+                    if (this.status != Boat.Status.ON_LAND) {
+                        this.resetFallDistance();
+                        return;
+                    }
+
+                    this.causeFallDamage(this.fallDistance, 1.0F, DamageSource.FALL);
+                    if (!this.level().isClientSide && !this.isRemoved()) {
+                        this.kill();
+                        if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                            for(int i = 0; i < 3; ++i) {
+                                this.spawnAtLocation(this.getPlanks());
+                            }
+
+                            for(int j = 0; j < 2; ++j) {
+                                this.spawnAtLocation(Items.STICK);
+                            }
+                        }
+                    }
+                }
+
+                this.resetFallDistance();
+            } else if (!this.level().getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && pY < 0.0D) {
                 this.fallDistance = (float)((double)this.fallDistance - pY);
             }
 
         }
     }
-
+*/
+    @Override
+    protected void destroy(DamageSource pDamageSource) {
+        this.spawnAtLocation(this.getDropItem());
+    }
+/*
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
         if (this.isInvulnerableTo(pSource)) {
             return false;
-        } else if (!this.level.isClientSide && !this.isRemoved()) {
-            if (pSource instanceof IndirectEntityDamageSource && pSource.getEntity() != null && this.hasPassenger(pSource.getEntity())) {
+        } else if (!this.level().isClientSide && !this.isRemoved()) {
+            if (pSource instanceof this.damageSources().ind IndirectEntityDamageSource && pSource.getEntity() != null && this.hasPassenger(pSource.getEntity())) {
                 return false;
             } else {
                 this.setHurtDir(-this.getHurtDir());
@@ -145,7 +183,7 @@ public class ModBoat extends Boat {
             return true;
         }
     }
-
+*/
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket() {
         return new ClientboundAddEntityPacket(this);    }

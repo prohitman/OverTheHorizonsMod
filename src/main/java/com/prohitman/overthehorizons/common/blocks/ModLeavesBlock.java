@@ -31,7 +31,6 @@ import java.util.Random;
 
 public class ModLeavesBlock extends LeavesBlock{
     private final LeafParticleType leafParticleType;
-    private static final Logger LOGGER = LogManager.getLogger();
 
     public ModLeavesBlock(Properties properties, LeafParticleType leafParticleType) {
         super(properties);
@@ -53,7 +52,6 @@ public class ModLeavesBlock extends LeavesBlock{
             int random = rand.nextInt(15);
             if (random == 1) {
                 do {
-                    //LOGGER.info("The method is called!");
                     y--;
                     counter++;
                     BlockPos pos = new BlockPos(pPos.getX(), y, pPos.getZ());
@@ -64,7 +62,6 @@ public class ModLeavesBlock extends LeavesBlock{
                         BlockPos leavesPos = new BlockPos(pPos.getX(), y + 1, pPos.getZ());
                         if (pLevel.getBlockState(leavesPos).getBlock() instanceof AirBlock) {
                             pLevel.setBlock(leavesPos, ModBlocks.FALLEN_LEAVES.get().defaultBlockState(), 2);
-                            //LOGGER.info("The block should be placed!");
                         }
                     } else if (block.defaultBlockState().isSolidRender(pLevel, underPos)) {
                         flag = true;

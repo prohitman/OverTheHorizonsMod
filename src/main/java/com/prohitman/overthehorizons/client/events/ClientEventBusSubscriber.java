@@ -26,6 +26,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -68,7 +69,9 @@ public class ClientEventBusSubscriber {
                 if (tag != null) {
                     PoseStack textmatrix = new PoseStack();
                     textmatrix.scale(2.0F, 2.0F, 2.0F);
-                    Minecraft.getInstance().font.draw(textmatrix, "\u00A7e" + tag.getInt("AmmoCount") + "/" + 25, 0, 0, 0);
+                    poseStack.drawString(gui.getFont(), "\u00A7e" + tag.getInt("AmmoCount") + "/" + 25, 0, 0, 0);
+                    poseStack.pose().scale(2,2,2);
+                    //Minecraft.getInstance().font.drawInBatch(textmatrix, "\u00A7e" + tag.getInt("AmmoCount") + "/" + 25, 0, 0, 0);
                 }
             }
         }
@@ -108,9 +111,9 @@ public class ClientEventBusSubscriber {
 
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
-        event.register(ModParticleTypes.ORANGE_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
-        event.register(ModParticleTypes.YELLOW_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
-        event.register(ModParticleTypes.BROWN_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.ORANGE_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.YELLOW_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.BROWN_LEAF_PARTICLE.get(), LeafParticle.Provider::new);
     }
 
     @SubscribeEvent

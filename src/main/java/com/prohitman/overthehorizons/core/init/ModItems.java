@@ -49,7 +49,4 @@ public class ModItems {
     public static final RegistryObject<Item> PINE_BOAT = ITEMS.register("pine_boat", () -> new ModBoatItem(ModBoat.ModType.PINE, (new Item.Properties()).stacksTo(1)));
     public static final RegistryObject<Item> FISH_BONES = ITEMS.register("fish_bones", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CATTAIL_SEEDS = ITEMS.register("cattail_seeds", () -> new CattailSeeds(new Item.Properties()));
-
-
-
 }

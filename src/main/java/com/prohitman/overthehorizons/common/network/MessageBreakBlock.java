@@ -37,10 +37,10 @@ public class MessageBreakBlock implements IMessage<MessageBreakBlock>{
         // Know it will be on the server so make it thread-safe
         final ServerPlayer thePlayer = ctx.get().getSender();
         final BlockPos blockPos = message.blockPos;
-        Block block = thePlayer.getLevel().getBlockState(blockPos).getBlock();
+        Block block = thePlayer.level().getBlockState(blockPos).getBlock();
         ctx.get().enqueueWork(() -> {
             if(block instanceof GlassBlock || block instanceof StainedGlassPaneBlock || block == Blocks.GLASS_PANE){
-                thePlayer.getLevel().destroyBlock(blockPos, false);
+                thePlayer.level().destroyBlock(blockPos, false);
             }
         });
         ctx.get().setPacketHandled(true);// no response message
