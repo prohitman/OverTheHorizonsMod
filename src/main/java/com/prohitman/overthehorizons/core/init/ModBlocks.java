@@ -3,6 +3,7 @@ package com.prohitman.overthehorizons.core.init;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.common.blocks.*;
 import com.prohitman.overthehorizons.common.item.ModBlockItem;
+import com.prohitman.overthehorizons.common.worldgen.tree.PineTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.sounds.SoundEvents;
@@ -74,6 +75,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> PINE_WALL_SIGN = createRegistryWithoutBlockItem("pine_wall_sign", () -> new ModWallSignBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ModWoodTypes.PINE));
     public static final RegistryObject<Block> PINE_HANGING_SIGN = createRegistryWithoutBlockItem("pine_hanging_sign", () -> new ModCeilingHangingSignBlock(BlockBehaviour.Properties.of().mapColor(PINE_LOG.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava(), ModWoodTypes.PINE));
     public static final RegistryObject<Block> PINE_WALL_HANGING_SIGN = createRegistryWithoutBlockItem("pine_wall_hanging_sign", () -> new ModWallHangingSignBlock(BlockBehaviour.Properties.of().mapColor(PINE_LOG.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava().dropsLike(PINE_HANGING_SIGN.get()), ModWoodTypes.PINE));
+    public static final RegistryObject<Block> PINE_SAPLING = createRegistry("pine_sapling",
+            () -> new SaplingBlock(new PineTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), new Item.Properties());
 
     //Plants
     public static final RegistryObject<Block> ROSE = createRegistry("rose", () -> new FlowerBlock(() -> MobEffects.LUCK, 9, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), new Item.Properties());

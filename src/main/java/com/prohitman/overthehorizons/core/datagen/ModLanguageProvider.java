@@ -74,6 +74,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.TRAMPLED_GRASS.get(), "Trampled Grass");
         add(ModBlocks.WATER_REEDS.get(), "Water Reeds");
         add(ModBlocks.LAND_REEDS.get(), "Land Reeds");
+        add(ModBlocks.PINE_SAPLING.get(), "Pine Sapling");
 
         add(ModItems.LICHEN_CLUSTER.get(), "Lichen Cluster");
         add(ModItems.COPPER_BULLET.get(), "Copper Bullet");

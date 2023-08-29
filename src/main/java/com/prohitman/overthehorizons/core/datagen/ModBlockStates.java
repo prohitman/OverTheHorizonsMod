@@ -72,6 +72,12 @@ public class ModBlockStates extends BlockStateProvider {
         fenceGateBlock((FenceGateBlock) ModBlocks.PINE_FENCE_GATE.get(), modLoc("block/pine_planks"));
         signBlock((ModStandingSignBlock)ModBlocks.PINE_STANDING_SIGN.get(), (ModWallSignBlock) ModBlocks.PINE_WALL_SIGN.get(), modLoc("block/pine_planks"));
         hangingSign(ModBlocks.PINE_HANGING_SIGN, ModBlocks.PINE_WALL_HANGING_SIGN, modLoc("block/stripped_pine_log"));
+        createBushBlock(ModBlocks.PINE_SAPLING);
+    }
+
+    private void createBushBlock(RegistryObject<Block> block) {
+        simpleBlock(block.get(), models().cross(block.getId().getPath(),
+                modLoc("block/" + block.getId().getPath())).renderType("cutout_mipped"));
     }
 
     public void hangingSign(RegistryObject<Block> hangingSignBlock, RegistryObject<Block> wallHangingSignBlock, ResourceLocation texture){

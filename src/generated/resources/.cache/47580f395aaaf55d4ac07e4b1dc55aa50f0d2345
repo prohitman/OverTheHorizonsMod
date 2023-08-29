@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-29T18:45:41.7182257	Item Models: overthehorizons
+// 1.20.1	2023-08-29T20:18:16.6238545	Item Models: overthehorizons
 0bd91e5a30855b05af7f36cc2911b8111cfa4716 assets/overthehorizons/models/item/adobe_bricks_slab.json
 c11f393b2d908d094e122248fd8a0792d318e02a assets/overthehorizons/models/item/adobe_bricks_stairs.json
 db0dddfe00dd0b8f32c6e01976018ea76d9dda8f assets/overthehorizons/models/item/adobe_slab.json
@@ -35,6 +35,7 @@ f026705b4f27b217f9d45afff324f65fbda73925 assets/overthehorizons/models/item/pine
 861dcbc3955bbde37877eec9609a5494ab161a10 assets/overthehorizons/models/item/pine_log.json
 9bd7fc325c1af0d685c5687284b8bb2090ab1a5a assets/overthehorizons/models/item/pine_planks.json
 c09baeeeda367de50f7bc2ffaf610146f99d9ac8 assets/overthehorizons/models/item/pine_pressure_plate.json
+2b6ec1f58ac391e795d6cf059f391cd9a91415cc assets/overthehorizons/models/item/pine_sapling.json
 ee546c10d78dcb4c8d7ce48c72e7980f45d4fa1d assets/overthehorizons/models/item/pine_sign.json
 31f1737701276405566ea35da6fe967b2dc743b3 assets/overthehorizons/models/item/pine_slab.json
 a100d5652c167e31f903706140944416e953d87f assets/overthehorizons/models/item/pine_stairs.json

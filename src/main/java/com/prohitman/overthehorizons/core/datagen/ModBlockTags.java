@@ -161,6 +161,9 @@ public class ModBlockTags extends BlockTagsProvider {
 
         tag(BlockTags.WALL_HANGING_SIGNS)
                 .add(ModBlocks.PINE_WALL_HANGING_SIGN.get());
+
+        tag(BlockTags.SAPLINGS)
+                .add(ModBlocks.PINE_SAPLING.get());
     }
 
 

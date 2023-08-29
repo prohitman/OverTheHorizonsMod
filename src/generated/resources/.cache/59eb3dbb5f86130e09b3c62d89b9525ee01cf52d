@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-29T18:25:18.3535164	Loot Tables
+// 1.20.1	2023-08-29T20:13:47.6812825	Loot Tables
 d7c0760906abe1cb22ebcf63746f3f4ca1b36cec data/overthehorizons/loot_tables/blocks/adobe.json
 73f7f761a6e176d1443f3b255fef971eea304491 data/overthehorizons/loot_tables/blocks/adobe_bricks.json
 b8a976b166219e7c089845e6b3cb83b3db394b44 data/overthehorizons/loot_tables/blocks/adobe_bricks_slab.json
@@ -31,6 +31,7 @@ e7fcde173e5e6b82e654c3118646a683d4ffaf49 data/overthehorizons/loot_tables/blocks
 ab1ca98fdc3be88988b11447af03cfbcd46d2e10 data/overthehorizons/loot_tables/blocks/pine_log.json
 1afa38f9c7771969304ed6e3ddc68afa24be7e75 data/overthehorizons/loot_tables/blocks/pine_planks.json
 15ae2b4a1e2e9e006ad85d8e4dde19e57cf2d25f data/overthehorizons/loot_tables/blocks/pine_pressure_plate.json
+cab044315cb470768123ec5aeffd09c30ff5df6b data/overthehorizons/loot_tables/blocks/pine_sapling.json
 cb3f3aa679821ad05dd4fee9f087891cea521f26 data/overthehorizons/loot_tables/blocks/pine_slab.json
 4ba7c5469cf94277fc2e4b7afa72be2ab376a357 data/overthehorizons/loot_tables/blocks/pine_stairs.json
 a4179a0d85becc692112794414bf39b114427cc9 data/overthehorizons/loot_tables/blocks/pine_standing_sign.json

@@ -36,10 +36,10 @@ public class DataGenerators {
         dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<ModItemTags>)
                 output -> new ModItemTags(dataGenerator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), event.getExistingFileHelper()));
 
-        //dataGenerator.addProvider(event.includeServer(), (DataProvider.Factory<LootTableProvider>) CreateLTProvider::create);
         dataGenerator.addProvider(event.includeServer(), new LootTableProvider(dataGenerator.getPackOutput(), Collections.emptySet(),
                List.of(new LootTableProvider.SubProviderEntry(ModBlockLoottables::new, LootContextParamSets.BLOCK))));
 
+        dataGenerator.addProvider(event.includeServer(), new ModWorldGenProvider(dataGenerator.getPackOutput(), lookupProvider));
 
         //Client
         dataGenerator.addProvider(event.includeClient(), (DataProvider.Factory<ModBlockStates>)

@@ -91,6 +91,9 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture((ModBlocks.WATER_REEDS.getId().getPath()),
                 mcLoc("item/generated"),
                 "layer0", modLoc("block/water_reeds_top"));
+        singleTexture((ModBlocks.PINE_SAPLING.getId().getPath()),
+                mcLoc("item/generated"),
+                "layer0", modLoc("block/pine_sapling"));
         //Items
         singleTexture(ModItems.LICHEN_CLUSTER.getId().getPath(),
                 mcLoc("item/generated"),

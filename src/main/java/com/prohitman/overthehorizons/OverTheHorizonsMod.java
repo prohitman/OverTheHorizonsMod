@@ -2,6 +2,7 @@ package com.prohitman.overthehorizons;
 
 import com.prohitman.overthehorizons.client.events.ClientEventBusSubscriber;
 import com.prohitman.overthehorizons.common.events.CommonForgeEvents;
+import com.prohitman.overthehorizons.common.worldgen.ModPlacerTypes;
 import com.prohitman.overthehorizons.core.init.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -50,6 +51,8 @@ public class OverTheHorizonsMod
         ModEntityTypes.ENTITY_TYPES.register(modEventBus);
         ModSounds.SOUND_TYPES.register(modEventBus);
         ModItemGroups.CREATIVE_MODE_TABS.register(modEventBus);
+        ModPlacerTypes.FOLIAGE_PLACER_TYPES.register(modEventBus);
+        ModPlacerTypes.TRUNK_PLACER_TYPES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

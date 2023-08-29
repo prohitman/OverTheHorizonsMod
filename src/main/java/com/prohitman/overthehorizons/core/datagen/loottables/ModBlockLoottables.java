@@ -105,6 +105,7 @@ public class ModBlockLoottables extends VanillaBlockLoot {
         this.add(ModBlocks.TRAMPLED_GRASS.get(), ModBlockLoottables::createSilkTouchOrShearsDispatchTableNoCondition);
         this.add(ModBlocks.LAND_REEDS.get(), this::createCattailDrops);
         this.add(ModBlocks.WATER_REEDS.get(), this::createCattailDrops);
+        dropSelf(ModBlocks.PINE_SAPLING.get());
     }
 
     @Override
