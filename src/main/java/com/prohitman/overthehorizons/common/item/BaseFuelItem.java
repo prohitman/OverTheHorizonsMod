@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class BaseFuelItem extends Item {
     protected int fuelValue;
-
+//TEST
     public BaseFuelItem(Properties pProperties, int fuelValue) {
         super(pProperties);
         this.fuelValue = fuelValue;
