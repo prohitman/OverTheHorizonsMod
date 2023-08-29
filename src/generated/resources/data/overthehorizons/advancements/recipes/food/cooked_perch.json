@@ -30,5 +30,6 @@
     "recipes": [
       "overthehorizons:cooked_perch"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "overthehorizons:adobe_bricks"
-  }
+  },
+  "show_notification": true
 }

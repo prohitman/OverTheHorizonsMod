@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:adobe_slab_from_adobe_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -12,5 +12,6 @@
   "result": {
     "count": 6,
     "item": "overthehorizons:pine_slab"
-  }
+  },
+  "show_notification": true
 }

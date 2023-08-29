@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:adobe_bricks_stairs_from_adobe_bricks_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

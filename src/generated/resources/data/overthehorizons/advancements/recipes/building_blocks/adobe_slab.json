@@ -30,5 +30,6 @@
     "recipes": [
       "overthehorizons:adobe_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

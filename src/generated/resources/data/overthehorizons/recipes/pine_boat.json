@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "overthehorizons:pine_boat"
-  }
+  },
+  "show_notification": true
 }

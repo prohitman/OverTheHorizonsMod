@@ -22,16 +22,16 @@ public class ItemStackRenderer extends BlockEntityWithoutLevelRenderer {
         if(pStack.getItem() == ModItems.HUNTING_RIFLE.get()){
             pPoseStack.translate(0.5F, 0.5f, 0.5f);
             if(pTransformType == ItemDisplayContext.THIRD_PERSON_LEFT_HAND || pTransformType == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND || pTransformType == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND || pTransformType == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                /*
+
                 Minecraft.getInstance().getItemRenderer().renderStatic
                         (new ItemStack(ModItems.HUNTING_RIFLE_HAND.get(), 1,
                                 pStack.getTag()),
-                                pTransformType, pPackedLight, OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, 0);*/
+                                pTransformType, pPackedLight, OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, Minecraft.getInstance().level, 0);
             }else{
-                /*Minecraft.getInstance().getItemRenderer().renderStatic(
+                Minecraft.getInstance().getItemRenderer().renderStatic(
                         new ItemStack(ModItems.HUNTING_RIFLE_INVENTORY.get(), 1,
                                 pStack.getTag()), pTransformType,
-                        pTransformType == ItemDisplayContext.GROUND ? pPackedLight : 240, OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, 0);*/
+                        pTransformType == ItemDisplayContext.GROUND ? pPackedLight : 240, OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, Minecraft.getInstance().level, 0);
             }
         }
     }
