@@ -1,6 +1,7 @@
 package com.prohitman.overthehorizons.common.item;
 
 import com.prohitman.overthehorizons.common.entity.ModBoat;
+import com.prohitman.overthehorizons.common.entity.ModChestBoat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -23,10 +24,12 @@ import java.util.function.Predicate;
 public class ModBoatItem extends Item {
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
     private final ModBoat.ModType type;
+    private final boolean hasChest;
 
-    public ModBoatItem(ModBoat.ModType pType, Item.Properties pProperties) {
+    public ModBoatItem(boolean pHasChest, ModBoat.ModType pType, Item.Properties pProperties) {
         super(pProperties);
         this.type = pType;
+        this.hasChest = pHasChest;
     }
 
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
@@ -74,6 +77,6 @@ public class ModBoatItem extends Item {
     }
 
     private ModBoat getBoat(Level pLevel, HitResult pHitResult) {
-        return /*(ModBoat)(this.hasChest ? new ModChestBoat(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z) :*/ new ModBoat(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z);
+        return (ModBoat)(this.hasChest ? new ModChestBoat(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z) : new ModBoat(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z));
     }
 }

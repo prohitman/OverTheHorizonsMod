@@ -57,8 +57,8 @@ public class ModBlockStates extends BlockStateProvider {
         stairsBlock((StairBlock) ModBlocks.SMOOTH_ADOBE_STAIRS.get(), modLoc("block/smooth_adobe"));
 
         simpleBlock(ModBlocks.PINE_PLANKS.get(), models().cubeAll("pine_planks", modLoc("block/pine_planks")));
-        trapdoorBlock((TrapDoorBlock) ModBlocks.PINE_TRAPDOOR.get(), modLoc("block/pine_trapdoor"), true);
-        doorBlock((DoorBlock) ModBlocks.PINE_DOOR.get(), modLoc("block/pine_door_bottom"), modLoc("block/pine_door_top"));
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.PINE_TRAPDOOR.get(), modLoc("block/pine_trapdoor"), true, "cutout_mipped");
+        doorBlockWithRenderType((DoorBlock) ModBlocks.PINE_DOOR.get(), modLoc("block/pine_door_bottom"), modLoc("block/pine_door_top"), "cutout_mipped");
         buttonBlock((ButtonBlock) ModBlocks.PINE_BUTTON.get(), modLoc("block/pine_planks"));
         slabBlock((SlabBlock) ModBlocks.PINE_SLAB.get(), modLoc("block/pine_planks"), modLoc("block/pine_planks"));
         stairsBlock((StairBlock) ModBlocks.PINE_STAIRS.get(), modLoc("block/pine_planks"));
@@ -71,6 +71,17 @@ public class ModBlockStates extends BlockStateProvider {
         fenceBlock((FenceBlock) ModBlocks.PINE_FENCE.get(), modLoc("block/pine_planks"));
         fenceGateBlock((FenceGateBlock) ModBlocks.PINE_FENCE_GATE.get(), modLoc("block/pine_planks"));
         signBlock((ModStandingSignBlock)ModBlocks.PINE_STANDING_SIGN.get(), (ModWallSignBlock) ModBlocks.PINE_WALL_SIGN.get(), modLoc("block/pine_planks"));
+        hangingSign(ModBlocks.PINE_HANGING_SIGN, ModBlocks.PINE_WALL_HANGING_SIGN, modLoc("block/stripped_pine_log"));
+    }
+
+    public void hangingSign(RegistryObject<Block> hangingSignBlock, RegistryObject<Block> wallHangingSignBlock, ResourceLocation texture){
+        ModelFile sign = models().sign(hangingSignBlock.getId().getPath(), texture);
+        hangingSign(hangingSignBlock, wallHangingSignBlock, sign);
+    }
+
+    public void hangingSign(RegistryObject<Block> hangingSignBlock, RegistryObject<Block> wallHangingSignBlock, ModelFile sign) {
+        simpleBlock(hangingSignBlock.get(), sign);
+        simpleBlock(wallHangingSignBlock.get(), sign);
     }
 
     private void createDoublePlantBlock(RegistryObject<Block> block) {

@@ -1,10 +1,11 @@
 package com.prohitman.overthehorizons.core.init;
 
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
+import com.prohitman.overthehorizons.common.blocks.ModWallHangingSignBlock;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -27,8 +28,19 @@ public class ModItemGroups {
 
     private static List<ItemStack> getTabItems(){
         List<ItemStack> list = new LinkedList<>();
-        list.addAll(ModItems.ITEMS.getEntries().stream().map(RegistryObject::get).filter((item) -> item != ModItems.HUNTING_RIFLE_HAND.get() && item != ModItems.HUNTING_RIFLE_INVENTORY.get() && (!(item instanceof BlockItem) || item == ModItems.PINE_SIGN.get())).map(Item::getDefaultInstance).toList());
-        list.addAll(ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).filter((block) -> block != ModBlocks.PINE_STANDING_SIGN.get() && block != ModBlocks.PINE_WALL_SIGN.get()).map(Block::asItem).map(Item::getDefaultInstance).toList());
+        list.addAll(ModItems.ITEMS.getEntries().stream().map(RegistryObject::get)
+                .filter((item) -> item != ModItems.HUNTING_RIFLE_HAND.get()
+                        && item != ModItems.HUNTING_RIFLE_INVENTORY.get()
+                        && (!(item instanceof BlockItem)
+                        || item instanceof SignItem))
+                .map(Item::getDefaultInstance).toList());
+
+        list.addAll(ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)
+                .filter((block) -> !(block instanceof StandingSignBlock)
+                        && !(block instanceof WallSignBlock)
+                        && !(block instanceof WallHangingSignBlock)
+                        && !(block instanceof CeilingHangingSignBlock))
+                .map(Block::asItem).map(Item::getDefaultInstance).toList());
 
         return list;
     }

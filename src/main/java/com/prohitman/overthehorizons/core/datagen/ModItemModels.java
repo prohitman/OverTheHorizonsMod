@@ -104,9 +104,15 @@ public class ModItemModels extends ItemModelProvider {
         singleTexture(ModItems.PINE_SIGN.getId().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/pine_sign"));
+        singleTexture(ModItems.PINE_HANGING_SIGN.getId().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/pine_hanging_sign"));
         singleTexture(ModItems.PINE_BOAT.getId().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/pine_boat"));
+        singleTexture(ModItems.PINE_CHEST_BOAT.getId().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/pine_chest_boat"));
         singleTexture(ModItems.RAW_PERCH.getId().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/raw_perch"));

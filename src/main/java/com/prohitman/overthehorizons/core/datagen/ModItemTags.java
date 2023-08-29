@@ -65,7 +65,7 @@ public class ModItemTags extends ItemTagsProvider {
         tag(ItemTags.STAIRS).add(ModBlocks.SMOOTH_ADOBE_STAIRS.get().asItem());
         tag(ItemTags.STAIRS).add(ModBlocks.ADOBE_BRICKS_STAIRS.get().asItem());
         tag(ItemTags.FLOWERS).add(ModBlocks.ROSE.get().asItem());
-
+        tag(ItemTags.HANGING_SIGNS).add(ModItems.PINE_HANGING_SIGN.get());
         tag(PINE_LOGS).add(ModBlocks.PINE_WOOD.get().asItem());
         tag(PINE_LOGS).add(ModBlocks.STRIPPED_PINE_WOOD.get().asItem());
         tag(PINE_LOGS).add(ModBlocks.PINE_LOG.get().asItem());

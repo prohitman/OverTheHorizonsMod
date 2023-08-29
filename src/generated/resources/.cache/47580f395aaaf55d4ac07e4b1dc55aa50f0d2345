@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-29T15:55:58.1609588	Item Models: overthehorizons
+// 1.20.1	2023-08-29T18:45:41.7182257	Item Models: overthehorizons
 0bd91e5a30855b05af7f36cc2911b8111cfa4716 assets/overthehorizons/models/item/adobe_bricks_slab.json
 c11f393b2d908d094e122248fd8a0792d318e02a assets/overthehorizons/models/item/adobe_bricks_stairs.json
 db0dddfe00dd0b8f32c6e01976018ea76d9dda8f assets/overthehorizons/models/item/adobe_slab.json
@@ -25,10 +25,12 @@ b7b9e6412b72778736217f0564717f6f01db3022 assets/overthehorizons/models/item/pebb
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/overthehorizons/models/item/perch_spawn_egg.json
 09a5272c016351e984c3f7ec3b730d73a4477c7a assets/overthehorizons/models/item/pine_boat.json
 f026705b4f27b217f9d45afff324f65fbda73925 assets/overthehorizons/models/item/pine_button.json
+890eb3fb59aa66a8b805d936901a0e1144b69c27 assets/overthehorizons/models/item/pine_chest_boat.json
 485eb4cb69718493e88fb3017a7eea64adbbac75 assets/overthehorizons/models/item/pine_cone.json
 05cf13ecefd88929ae51a61d4ccd422e23ca173e assets/overthehorizons/models/item/pine_door.json
 8c26d708381cc1a3881ce1848b8f056c73466895 assets/overthehorizons/models/item/pine_fence.json
 86c2268bbb7e52064b38d3b3feebc8173271e5cd assets/overthehorizons/models/item/pine_fence_gate.json
+9bb13652d65ce84747576fa3d61a1ff2ceeebb1c assets/overthehorizons/models/item/pine_hanging_sign.json
 0120f39f0da5b1f170ec9fe27f46907c8eae7820 assets/overthehorizons/models/item/pine_leaves.json
 861dcbc3955bbde37877eec9609a5494ab161a10 assets/overthehorizons/models/item/pine_log.json
 9bd7fc325c1af0d685c5687284b8bb2090ab1a5a assets/overthehorizons/models/item/pine_planks.json

@@ -1,9 +1,10 @@
-// 1.20.1	2023-08-29T15:55:58.1489908	Tags for minecraft:item mod id overthehorizons
+// 1.20.1	2023-08-29T18:25:18.3485287	Tags for minecraft:item mod id overthehorizons
 98187cf938e62e79e28a0e82c6997ab8f3b9b3a2 data/forge/tags/items/fences/wooden.json
 5c1a927e18181d847c1b77ed5a0c5d7d2965ee17 data/forge/tags/items/fence_gates/wooden.json
 f7ad36e876319758898cf392abb9611f341a29f6 data/minecraft/tags/items/boats.json
 ca0240ba629f35140918c675dacb7bd5fc9bb32e data/minecraft/tags/items/dirt.json
 6bd3357ae0fe5c9946bb1346ef3e3a3414f06fc8 data/minecraft/tags/items/flowers.json
+b38939c653291c132f50efa521ee8b9f4b264bbf data/minecraft/tags/items/hanging_signs.json
 ca212d7b0eee551ccc82382694bc0a27b4c80031 data/minecraft/tags/items/leaves.json
 516fc43488d1ce09d7f61fdf7b06d5c7a4e8b067 data/minecraft/tags/items/logs.json
 99cb3fc326d5e9e0faefa6580979a3b7970ff3b1 data/minecraft/tags/items/logs_that_burn.json

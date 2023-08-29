@@ -43,11 +43,16 @@ public class ModBoat extends Boat {
 
     @Override
     public Item getDropItem() {
-        /*switch (this.getModBoatType()) {
-            default -> ModItems.PINE_BOAT.get();
-        }*/
+        Item item;
+        switch (this.getModBoatType()) {
+            case PINE:
+                item = ModItems.PINE_BOAT.get();
+                break;
+            default:
+                item = Items.OAK_BOAT;
+        }
 
-        return ModItems.PINE_BOAT.get();
+        return item;
     }
 
     public Block getPlanks(){

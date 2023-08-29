@@ -79,6 +79,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.COPPER_BULLET.get(), "Copper Bullet");
         add(ModItems.PINE_SIGN.get(), "Pine Sign");
         add(ModItems.PINE_BOAT.get(), "Pine Boat");
+        add(ModItems.PINE_CHEST_BOAT.get(), "Pine Boat with Chest");
         add(ModItems.HUNTING_RIFLE.get(), "Hunting Rifle");
         add(ModItems.PINE_TEA.get(), "Pine Tea");
         add(ModItems.PERCH_SPAWN_EGG.get(), "Perch Spawn Egg");
@@ -91,10 +92,13 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.FISH_BONES.get(), "Fish Bones");
         add(ModItems.FENNEC_FOX_SPAWN_EGG.get(), "Fennec Fox Spawn Egg");
         add(ModItems.CATTAIL_SEEDS.get(), "Cattail Seeds");
+        add(ModItems.PINE_HANGING_SIGN.get(), "Pine Hanging Sign");
 
         add(ModEntityTypes.PERCH.get(), "Perch");
         add(ModEntityTypes.CATFISH.get(), "Catfish");
         add(ModEntityTypes.FENNEC_FOX.get(), "Fennec Fox");
+
+        add("entity.overthehorizons.chest_boat", "Boat with Chest");
 
         add("subtitles.overthehorizons.rifle_shoot_bullet", "Rifle Shooting Bullet");
         add("subtitles.overthehorizons.rifle_reload", "Reloading Rifle");

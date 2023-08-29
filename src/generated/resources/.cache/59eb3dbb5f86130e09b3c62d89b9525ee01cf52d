@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-29T15:55:58.1549745	Loot Tables
+// 1.20.1	2023-08-29T18:25:18.3535164	Loot Tables
 d7c0760906abe1cb22ebcf63746f3f4ca1b36cec data/overthehorizons/loot_tables/blocks/adobe.json
 73f7f761a6e176d1443f3b255fef971eea304491 data/overthehorizons/loot_tables/blocks/adobe_bricks.json
 b8a976b166219e7c089845e6b3cb83b3db394b44 data/overthehorizons/loot_tables/blocks/adobe_bricks_slab.json
@@ -26,6 +26,7 @@ ad15240c6fcbbf4bb4e3abf5306545c02b23063b data/overthehorizons/loot_tables/blocks
 0423892de6bb3e59e65953bb78edd42790d28dc8 data/overthehorizons/loot_tables/blocks/pine_door.json
 61aeb3b9b81022addb97166ceac469196f529a8b data/overthehorizons/loot_tables/blocks/pine_fence.json
 36de7c29ea36893a218fd01a76b1a55af024bb80 data/overthehorizons/loot_tables/blocks/pine_fence_gate.json
+e7fcde173e5e6b82e654c3118646a683d4ffaf49 data/overthehorizons/loot_tables/blocks/pine_hanging_sign.json
 3b199bc2cc551917625c9e1fe5660e1806aad575 data/overthehorizons/loot_tables/blocks/pine_leaves.json
 ab1ca98fdc3be88988b11447af03cfbcd46d2e10 data/overthehorizons/loot_tables/blocks/pine_log.json
 1afa38f9c7771969304ed6e3ddc68afa24be7e75 data/overthehorizons/loot_tables/blocks/pine_planks.json

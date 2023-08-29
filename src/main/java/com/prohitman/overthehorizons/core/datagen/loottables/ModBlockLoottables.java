@@ -84,6 +84,7 @@ public class ModBlockLoottables extends VanillaBlockLoot {
         dropSelf(ModBlocks.PINE_FENCE_GATE.get());
         dropSelf(ModBlocks.PINE_STANDING_SIGN.get());
         dropSelf(ModBlocks.PINE_WALL_SIGN.get());
+        dropSelf(ModBlocks.PINE_HANGING_SIGN.get());
         dropSelf(ModBlocks.DUCKWEED.get());
         this.add(ModBlocks.PINE_LEAVES.get(), (block) -> this.createLeavesDrops(block, Blocks.BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
         this.add(ModBlocks.DRIED_BIRCH_LEAVES.get(), (block) -> this.createDriedLeavesDrops(block, NORMAL_LEAVES_SAPLING_CHANCES));

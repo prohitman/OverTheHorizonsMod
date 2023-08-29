@@ -65,7 +65,9 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.PINE_STANDING_SIGN.get())
                 .add(ModBlocks.PINE_TRAPDOOR.get())
                 .add(ModBlocks.PINE_WOOD.get())
-                .add(ModBlocks.STRIPPED_PINE_WOOD.get());
+                .add(ModBlocks.STRIPPED_PINE_WOOD.get())
+                .add(ModBlocks.PINE_WALL_HANGING_SIGN.get())
+                .add(ModBlocks.PINE_HANGING_SIGN.get());
 
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.PINE_LEAVES.get())
@@ -154,6 +156,11 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(BlockTags.WALL_SIGNS)
                 .add(ModBlocks.PINE_WALL_SIGN.get());
 
+        tag(BlockTags.CEILING_HANGING_SIGNS)
+                .add(ModBlocks.PINE_HANGING_SIGN.get());
+
+        tag(BlockTags.WALL_HANGING_SIGNS)
+                .add(ModBlocks.PINE_WALL_HANGING_SIGN.get());
     }
 
 

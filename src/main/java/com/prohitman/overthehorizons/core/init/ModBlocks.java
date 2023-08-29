@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.registries.DeferredRegister;
@@ -66,11 +67,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> PINE_BUTTON = createRegistry("pine_button", () -> woodenButton(ModBlockSetTypes.PINE), new Item.Properties());
     public static final RegistryObject<Block> PINE_DOOR = createRegistry("pine_door", () -> new DoorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion(), ModBlockSetTypes.PINE), new Item.Properties());
     public static final RegistryObject<Block> PINE_TRAPDOOR = createRegistry("pine_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never), ModBlockSetTypes.PINE), new Item.Properties());
-    public static final RegistryObject<Block> PINE_CONE = createRegistry("pine_cone", () -> new PineConeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).noCollission().instabreak().sound(SoundType.GRASS)), new Item.Properties());
+    public static final RegistryObject<Block> PINE_CONE = createRegistry("pine_cone", () -> new PineConeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), new Item.Properties());
     public static final RegistryObject<Block> PINE_FENCE = createRegistry("pine_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)), new Item.Properties());
     public static final RegistryObject<Block> PINE_FENCE_GATE = createRegistry("pine_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ModBlocks::never), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN), new Item.Properties());
     public static final RegistryObject<Block> PINE_STANDING_SIGN = createRegistryWithoutBlockItem("pine_standing_sign", () -> new ModStandingSignBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ModWoodTypes.PINE));
     public static final RegistryObject<Block> PINE_WALL_SIGN = createRegistryWithoutBlockItem("pine_wall_sign", () -> new ModWallSignBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ModWoodTypes.PINE));
+    public static final RegistryObject<Block> PINE_HANGING_SIGN = createRegistryWithoutBlockItem("pine_hanging_sign", () -> new ModCeilingHangingSignBlock(BlockBehaviour.Properties.of().mapColor(PINE_LOG.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava(), ModWoodTypes.PINE));
+    public static final RegistryObject<Block> PINE_WALL_HANGING_SIGN = createRegistryWithoutBlockItem("pine_wall_hanging_sign", () -> new ModWallHangingSignBlock(BlockBehaviour.Properties.of().mapColor(PINE_LOG.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava().dropsLike(PINE_HANGING_SIGN.get()), ModWoodTypes.PINE));
 
     //Plants
     public static final RegistryObject<Block> ROSE = createRegistry("rose", () -> new FlowerBlock(() -> MobEffects.LUCK, 9, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)), new Item.Properties());

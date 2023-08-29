@@ -3,9 +3,7 @@ package com.prohitman.overthehorizons.client.events;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.prohitman.overthehorizons.OverTheHorizonsMod;
 import com.prohitman.overthehorizons.client.keybinds.ModKeyBindings;
-import com.prohitman.overthehorizons.client.models.CatFishModel;
-import com.prohitman.overthehorizons.client.models.FennecFoxModel;
-import com.prohitman.overthehorizons.client.models.PerchModel;
+import com.prohitman.overthehorizons.client.models.*;
 import com.prohitman.overthehorizons.client.particles.LeafParticle;
 import com.prohitman.overthehorizons.client.renderers.CatFishRenderer;
 import com.prohitman.overthehorizons.client.renderers.FennecFoxRenderer;
@@ -23,6 +21,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -87,13 +86,15 @@ public class ClientEventBusSubscriber {
     public static void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             BlockEntityRenderers.register(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
             Sheets.addWoodType(ModWoodTypes.PINE);
         });
     }
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntityTypes.MOD_BOAT.get(), ModBoatRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.MOD_BOAT.get(), (pContext -> new ModBoatRenderer(pContext, false)));
+        event.registerEntityRenderer(ModEntityTypes.MOD_CHEST_BOAT.get(), (pContext -> new ModBoatRenderer(pContext, true)));
         event.registerEntityRenderer(ModEntityTypes.PERCH.get(), PerchRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.CATFISH.get(), CatFishRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.FENNEC_FOX.get(), FennecFoxRenderer::new);
@@ -102,7 +103,8 @@ public class ClientEventBusSubscriber {
     @SubscribeEvent
     public static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         for (ModBoat.ModType boat$type : ModBoat.ModType.values()) {
-            event.registerLayerDefinition(ModBoatRenderer.createBoatModelName(boat$type), BoatModel::createBodyModel);
+            event.registerLayerDefinition(ModBoatRenderer.createBoatModelName(boat$type), ModBoatModel::createBodyModel);
+            event.registerLayerDefinition(ModBoatRenderer.createChestBoatModelName(boat$type), ModChestBoatModel::createBodyModel);
         }
         event.registerLayerDefinition(PerchModel.LAYER_LOCATION, PerchModel::createBodyLayer);
         event.registerLayerDefinition(CatFishModel.LAYER_LOCATION, CatFishModel::createBodyLayer);
