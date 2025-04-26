@@ -72,8 +72,7 @@ Set in a forgotten land where ecosystems hide ancient secrets in the Over World,
 - Can **break glass** and **damage mobs** at long range.
 - Designed for survival hunting and exploration scenarios.
 
-🎥 **Video Suggestion #2:**  
-> Clip showing a player zooming in with the rifle, shooting glass or mobs at a distance.
+[![Watch on YouTube](https://img.youtube.com/vi/PR3jhFbJWFc/0.jpg)](https://www.youtube.com/watch?v=PR3jhFbJWFc)
 
 ---
 
